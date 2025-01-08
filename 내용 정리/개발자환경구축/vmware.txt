@@ -1,0 +1,29 @@
+VMnet0 : 호스트pc를 사용하여 어디든지 접속가능
+
+타입
+NAT(보안통신) : 밖에서 안으로 접속 불가능
+
+리눅스OS 버전
+
+Debian : 개인용으로 적합, GUI발달
+Redhat : 서버용으로 적합
+
+리눅스 관리자계정명 - root
+터미널을 열었을경우 
+	- [(유저명)@localhost ~] # = 관리자
+	- [(유저명)@localhost ~] $ = 유저
+
+리눅스 명령어
+passwd (유저명) 	- 패스워드 변경
+
+reboot 		- 재부팅				
+shutdown -r now	
+
+power off	- 종료
+shutdown -h now
+
+cd /		- 디렉토리 변경
+cd user1 		- 현재 위치에서 하위디렉토리로 이동
+cd .		- 현재 디렉토리 
+cd .. 		- 상위 디렉토리 이동 
+cd ~		- 현재 접속중인 사용자의 홈디렉토리로 이동
