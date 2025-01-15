@@ -1,0 +1,29 @@
+브랜치 룰 적용
+셋팅 -> 브랜치 -> branch protection rule
+branch name pattern에 규칙을 적용 할 브랜치 이름을 넣음
+Protect matching branches에서 규칙을 골라 적용함
+
+팀원 초대(퍼블릭으로 셋팅)
+세팅 -> 콜라보레이터
+Require a pull request before merging
+ - Require approvals : 설정해둔 인원이상이 승인을 해야 merging이 되는 규칙
+
+Lock branch
+ - push 불가능 읽기만 가능
+
+프로젝트
+board 형식
+
+add item으로 할 일 추가
+
+각 할 일 메뉴에서 convert to issue로 이슈로 전환가능
+ - 브랜치 선택
+
+이슈탭
+assignees 	: 담당자
+labels 		: 상세한 일
+milestone 	: 목표설정
+development 	: 해당 이슈의 브랜치 생성
+
+close issue 	: 이슈를 끝냄
+
