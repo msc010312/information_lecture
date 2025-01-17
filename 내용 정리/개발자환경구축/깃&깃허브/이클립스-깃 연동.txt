@@ -1,0 +1,22 @@
+이클립스 git 연동 작업
+
+톰캣 서버설정
+ - 서버파일 생성
+ - 포트넘버설정
+ - url설정
+
+다이나믹웹프로젝트 설정
+ - 설정에 project facets에서 java 버전 11로 설정
+ - lib파일에 servlet.jar, jsp-api.jar 생성
+ - index.jsp 생성(webapp폴더안)
+ - 프로젝트 우클릭 후 team탭에 share 클릭
+ - 상단탭 window에 showview / git 관련 뷰어 생성
+	- git reflog 	: 커밋 상세넘버 확인가능
+	- git staging 	: git add, git commit가능
+	- history 		: git log --oneline기능
+	- git repositories 	: 프로젝트 확인
+
+ - 프로젝트 우클릭 team탭
+	- switch to 	: git switch 기능
+              new branch	: git branch "브랜치명" 기능
+	- merge		: git merge 기능
