@@ -1,0 +1,133 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline-style: none;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+
+        html {
+            font-size: 16px;
+            user-select: none;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: relative;
+            display: flex;
+            height: 150px;
+            background-color: #131c27;
+        }
+
+        .header>div {
+            height: 100%;
+        }
+
+        .logo {
+            position: relative;
+            display: flex;
+            width: 150px;
+            background-color: crimson;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo a {
+            color: #fff;
+        }
+
+        .hNav {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 500px;
+            color: #fff;
+        }
+
+        .hNav li {
+            display: inline-block;
+        }
+
+        .hNavList {
+            display: none;
+        }
+
+        .searchBar {
+            position: relative;
+            width: 200px;
+            background: cyan;
+        }
+
+        .hSign {
+            position: relative;
+            width: 150px;
+            background: yellow;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="#">logo</a>
+        </div>
+        <ul class="hNav">
+            <li>
+                <span>스토어</span>
+            </li>
+            <li>
+                <span>공지사항</span>
+            </li>
+            <li>
+                <span>이벤트</span>
+                <ul class="hNavList">
+                    <li><a href="#">진행중인 이벤트</a></li>
+                    <li><a href="#">종료된 이벤트</a></li>
+                </ul>
+            </li>
+            <li>
+                <span>고객지원</span>
+                <ul class="hNavList">
+                    <li><a href="#">자주묻는 질문</a></li>
+                    <li><a href="#">문의하기</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="searchBar">
+
+        </div>
+        <div class="hSign">
+
+        </div>
+    </div>
+</body>
+
+</html>
