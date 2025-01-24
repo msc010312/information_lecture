@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline-style: none;
+            box-sizing: border-box;
+        }
+
+        .mainUl {
+            margin: 50px 0;
+            padding: 0 40px;
+        }
+
+        .mainUl>div {
+            margin-bottom: 25px;
+        }
+
+        .mainUl>div>li:hover {
+            color: crimson;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .mainUl>div>ol{
+            padding-left: 30px;
+        }
+
+        .test1{
+            padding-left: 20px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <ul class="mainUl">
+        <div>
+            <li>2023년도 수강과목</li>
+            <ol>
+                <li>HTML/CSS/JS</li>
+                <li>Jquery</li>
+                <li>React</li>
+                <li>BootStrap</li>
+            </ol>
+        </div>
+        <div>
+            <li>학년</li>
+            <ol type="A">
+                <li>
+                    <span>1학년</span>
+                    <ul class="test1">
+                        <li>HTML/CSS/JS</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>2학년</span>
+                    <ul class="test1">
+                        <li>BootStrap/Clone Coding</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>3학년</span>
+                    <ul class="test1">
+                        <li>React/Redux</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>4학년</span>
+                    <ul class="test1">
+                        <li>Type Script/Next.js</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <div>
+            <li>백엔드 언어</li>
+            <ol type="I">
+                <li>java</li>
+                <li>jsp</li>
+                <li>servlet</li>
+                <li>spring</li>
+                <li>spring Boot</li>
+            </ol>
+        </div>
+    </ul>
+</body>
+
+</html>

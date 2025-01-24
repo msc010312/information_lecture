@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        iframe{
+            border: 1px solid #333;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: #333;
+            max-width: 80px;
+            height: 40px;
+            border-radius: 15px;
+            margin: 30px 30px;
+            box-shadow: 3px 3px 3px #333;
+        }
+
+        .btn:hover{
+            background-color: #64d847;
+            color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 3px #333 inset;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="/01-html/05-basic.html">link</a>
+    <a href="http://naver.com" class="btn" target="_blank">naver</a>
+    <hr>
+    <div>
+        <a href="./02-basic.html" target="frm1">이동</a>
+        <a href="http://google.com" target="frm1">구글</a>
+    </div>
+    <iframe name="frm1" frameborder="0" width="400px" height="400px"></iframe>
+</body>
+</html>
