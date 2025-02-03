@@ -1,0 +1,108 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline-style: none;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+
+        html {
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 250px;
+            height: 700px;
+            background: red;
+        }
+
+        .wrapper>header {
+            width: 250px;
+            height: 200px;
+            background: yellow;
+        }
+
+        .wrapper>header>.topHeader {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        .wrapper>header>nav {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+
+        .wrapper>main {
+            width: 100%;
+            height: 400px;
+            background: green;
+        }
+
+        .wrapper>main>section:nth-child(1) {
+            width: 100%;
+            height: 100px;
+            background: purple;
+        }
+
+        .wrapper>main>section:nth-child(2) {
+            width: 100%;
+            height: 100px;
+            background: cyan;
+        }
+
+        .wrapper>main>section:nth-child(3) {
+            width: 100%;
+            height: 100px;
+            background: crimson;
+        }
+
+        .wrapper>footer{
+            width: 100%;
+            height: 50px;
+            background: navy;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="topHeader">header</div>
+            <nav>nav</nav>
+        </header>
+        <main>
+            <section>sec1</section>
+            <section>sec2</section>
+            <section>sec3</section>
+        </main>
+        <footer>footer</footer>
+    </div>
+</body>
+
+</html>

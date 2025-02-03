@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent>div{
+            border: 1px solid red;
+            margin: 10px;
+        }
+        .parent>p{
+            background: orange;
+        }
+        .child {
+            background: green;
+        }
+        .parent p{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+            <div>hello world 1</div>
+            <div>hello world 2</div>
+            <div>hello world 3</div>
+            <p>hello world 4</p>
+        </div>
+        <div>hello world 5</div>
+        <p>hello world 6</p>
+    </div>
+</body>
+</html>

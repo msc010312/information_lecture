@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input[type="checkbox"]{
+            display: none;
+        }
+
+        input[type="checkbox"]+label{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            margin-right: 5px;
+        }
+        input[type="checkbox"]:checked+label{
+            background-color: grey;
+            background-image: url(/asset/check.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .chkBlock{
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="chkBlock">
+        <input type="checkbox" id="chk">
+        <label class="chkLabel" for="chk"></label>
+        <span>체크박스</span>
+    </div>
+</body>
+</html>

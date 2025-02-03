@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline-style: none;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+
+        html {
+            /*font-size: 10px;*/
+            user-select: none;
+        }
+
+        body {
+            /*font-family: 'IBM Plex Serif', serif;*/
+            overflow-x: hidden;
+        }
+
+        header{
+            position: relative;
+            display: flex;
+            max-width: 1280px;
+        }
+
+        header>ul {
+            position: relative;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            width: 100vw;
+            height: 50px;
+            padding-right: 15px;
+        }
+
+        header>ul>li{
+            position: relative;
+            padding: 0 15;
+        }
+
+        header>ul>li::after {
+            position: absolute;
+            content: "";
+            left: 100%;
+            top: 3px;
+            width: 1px;
+            height: 20px;
+            background: gray;
+        }
+
+        header>ul>li:last-child::after{
+            display: none;
+        }
+
+        header>ul>li>a{
+            font-size: 10px;
+            color: gray;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li><a href="">회원가입</a></li>
+                <li><a href="">장바구니</a></li>
+                <li><a href="">마이옥션</a></li>
+                <li><a href="">고객센터</a></li>
+                <li><a href="">판매하기</a></li>
+            </ul>
+        </header>
+        <main>
+            <section></section>
+            <section></section>
+            <section></section>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+
+</html>
