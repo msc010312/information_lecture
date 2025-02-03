@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .html{
+            box-sizing: border-box;
+        }
+
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 25px;
+            border: 1px solid #333;
+        }
+        .d1{
+            border-top: 2px solid red;
+            border-left: 2px dotted purple;
+            border-bottom: 2px dashed blue;
+            border-right:  2px inset green;
+        }
+        .d2{
+            border-radius: 10px;
+        }
+        .d3{
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-bottom: 5px solid blue;
+            border-right:  5px solid green;
+        }
+
+        .d4{
+            position: relative;
+        }
+
+        .d4::before {
+            content: "" ;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 1px solid red;
+
+            border-top: 25px solid #fff;
+            border-left: 25px solid #fff;
+            border-bottom: 25px solid blue;
+            border-right: 25px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+</body>
+</html>

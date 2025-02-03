@@ -1,0 +1,96 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline-style: none;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+
+        html {
+            /*font-size: 10px;*/
+            user-select: none;
+        }
+
+        body {
+            /*font-family: 'IBM Plex Serif', serif;*/
+            overflow-x: hidden;
+        }
+
+        .c1,
+        .c2,
+        .c3 {
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .c1 {
+            border: 1px solid red;
+        }
+
+        .c2 {
+            border: 1px solid blue;
+        }
+
+        .c3 {
+            border: 1px solid green;
+        }
+
+        .c1>p {
+            color: blueviolet;
+        }
+
+        .c2~p {
+            border-bottom: 1px solid #333;
+        }
+
+        .c2+p {
+            background-color: crimson;
+        }
+
+        .c2 p {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">
+        <p>hello world</p>
+        <div class="c2">
+            <p>hello world</p>
+            <div class="c3">
+                <p>hello world</p>
+                <p>hello world</p>
+                <p>hello world</p>
+            </div>
+            <p>hello world</p>
+            <p>hello world</p>
+        </div>
+        <p>hello world</p>
+        <p>hello world</p>
+    </div>
+</body>
+
+</html>
