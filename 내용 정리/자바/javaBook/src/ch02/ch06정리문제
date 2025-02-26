@@ -26,12 +26,12 @@
 	
 	맞는 코드인지 틀린 코드인지 확인 
 	byte var = 200;							( X	)
-	char var='AB';							( O )
+	char var='AB';							( O ) // X | 문자하나만 가능
 	char var=65;							( O )
 	long var=50000000000;					( X )	
 	float var = 3.14						( X	)
 	double var = 100.0						( O	)
-	String var = "나의직업은 "개발자" 입니다.";	( O )
+	String var = "나의직업은 "개발자" 입니다.";	( O ) // X | ""안에 ""는 \를 붙여야함
 	boolean var = 0;						( X )
-	int v2 = 1e2;							( O	)
-	float =1e2f;							( O )
+	int v2 = 1e2;							( O	) // X | double형임
+	float =1e2f;							( O ) // X | 변수지정 안함
