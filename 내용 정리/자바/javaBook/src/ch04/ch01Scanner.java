@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class ch01Scanner {
 
 	public static void main(String[] args) {
+//		System.in : 표준입력 스트림 생성(요청)
+//		System.out : 표준출력 스트림 생성(요청)
+		
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("num1 입력 : ");
