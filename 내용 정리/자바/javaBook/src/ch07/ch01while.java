@@ -1,5 +1,6 @@
 package ch07;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ch01while {
@@ -64,19 +65,19 @@ public class ch01while {
 //		}
 //		System.out.println(sum);
 
-		System.out.println("n의 값을 입력하세요");
-
-		int n = sc.nextInt();
-		while (!(2 <= n && n <= 9)) {
-			System.out.println("구구단의 범위는 2-9사이입니다");
-			System.out.println("n의 값을 입력하세요");
-			n = sc.nextInt();
-		}
-		int i = 1;
-		while (i <= 9) {
-			System.out.printf("%d x %d = %d\n", n, i, n * i);
-			i++;
-		}
+//		System.out.println("n의 값을 입력하세요");
+//
+//		int n = sc.nextInt();
+//		while (!(2 <= n && n <= 9)) {
+//			System.out.println("구구단의 범위는 2-9사이입니다");
+//			System.out.println("n의 값을 입력하세요");
+//			n = sc.nextInt();
+//		}
+//		int i = 1;
+//		while (i <= 9) {
+//			System.out.printf("%d x %d = %d\n", n, i, n * i);
+//			i++;
+//		}
 
 	}
 }
