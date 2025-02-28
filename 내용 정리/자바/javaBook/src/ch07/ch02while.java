@@ -246,36 +246,36 @@ public class ch02while {
 		// *****		
 		//*******
 //		== while 버전 ==
-		int i = 1;
-		while (i <= h) {
-			int j = 1;
-			while (j <= i-1) {
-				System.out.print(" ");
-				j++;
-			}
-			int k = 2*h-1;
-			while (k >= 2 * i - 1) {
-				System.out.print("*");
-				k--;
-			}
-			System.out.println();
-			i++;
-		}
-		i=1;
-		while (i <= h) {
-			int j = h-1;
-			while (j >= i) {
-				System.out.print(" ");
-				j--;
-			}
-			int k = 1;
-			while (k <= 2 * i - 1) {
-				System.out.print("*");
-				k++;
-			}
-			System.out.println();
-			i++;
-		}
+//		int i = 1;
+//		while (i <= h) {
+//			int j = 1;
+//			while (j <= i-1) {
+//				System.out.print(" ");
+//				j++;
+//			}
+//			int k = 2*h-1;
+//			while (k >= 2 * i - 1) {
+//				System.out.print("*");
+//				k--;
+//			}
+//			System.out.println();
+//			i++;
+//		}
+//		i=1;
+//		while (i <= h) {
+//			int j = h-1;
+//			while (j >= i) {
+//				System.out.print(" ");
+//				j--;
+//			}
+//			int k = 1;
+//			while (k <= 2 * i - 1) {
+//				System.out.print("*");
+//				k++;
+//			}
+//			System.out.println();
+//			i++;
+//		}
 		
 //		== for 버전 ==
 //		for (int i = 1; i <= h; i++) {
@@ -341,7 +341,6 @@ public class ch02while {
 //				System.out.print("*");
 //				j++;
 //			}
-//			System.out.println();
 //			int k = 5;
 //			while(k>=2*i-1) {
 //				System.out.print("*");
