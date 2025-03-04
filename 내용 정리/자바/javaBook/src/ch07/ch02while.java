@@ -247,7 +247,7 @@ public class ch02while {
 		//*******
 //		== while 버전 ==
 //		int i = 1;
-//		while (i <= h) {
+//		while (i <= h-1) {
 //			int j = 1;
 //			while (j <= i-1) {
 //				System.out.print(" ");
