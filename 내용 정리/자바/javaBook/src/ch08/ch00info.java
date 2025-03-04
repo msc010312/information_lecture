@@ -27,5 +27,6 @@ public class ch00info {
 	// 6. 코드해석
 	// Scanner sc = new Scanner(System.in);
 	// 힙 메모리영역에 Scanner에 필요한 초기값이 담긴 객체를 생성하고
-	// 현위치(main stack)에 Scanner 자료형으로 만든 sc 참조변수에 생성된 Scanner객체의 시작위치 주소를 저장
+	// 현위치(main stack)에 Scanner 자료형으로 만든 sc 참조변수에 생성된 Scanner객체의 시작메모리 주소를 저장
+	
 }
