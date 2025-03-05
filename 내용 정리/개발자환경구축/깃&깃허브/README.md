@@ -2,24 +2,21 @@
 
 
 ### git 명령어
-git 전역설정
+> git 전역설정
 
-git config --global user.email : 유저이메일
-
-git config --global user.name : 닉네임
-
-git config --global --list : 확인
++ git config --global user.email : 유저이메일
++ git config --global user.name : 닉네임
++ git config --global --list : 확인
 - - -
-git 명령어
-git init			: 초기파일 생성
+> git 명령어
 
-git add 			: 파일 스테이징
-
-git commit 		: 파일 커밋
++ git init			: 초기파일 생성
++ git add 			: 파일 스테이징
++ git commit 		: 파일 커밋
 
 -m 			: 메세지
 
-git reset 			: 되돌리기
++ git reset 			: 되돌리기
 
 --hard			: 돌아간 커밋 이후의 변경 이력을 전부 삭제
 
@@ -27,19 +24,19 @@ git reset 			: 되돌리기
 
 --mixed			: 변경 이력 삭제, 변경 내용은 남이있음, 인덱스도 유지(git add까지 되어 있음)
 
-git status 		: git의 현재상태
++ git status : git의 현재상태
 
-git log --oneline 		: 확인 명령어
++ git log --oneline : 확인 명령어
 
-git reflog			: 로그확인
++ git reflog : 로그확인
 
-git branch 브랜치명	: 브랜치 생성
++ git branch 브랜치명	: 브랜치 생성
 
-git checkout 브랜치명	: 브랜치 이동
++ git checkout 브랜치명	: 브랜치 이동
 
-git switch 브랜치명
++ git switch 브랜치명
 
-git merge		: 병합 (병합시 병합하는 브랜치에서 작업)
++ git merge		: 병합 (병합시 병합하는 브랜치에서 작업)
 
 --continue		: 병합 이어하기
 
