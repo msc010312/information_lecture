@@ -91,3 +91,11 @@ grant all privileges on test1.* to '유저명'@'%';
 **권한 확인**
 -----------
 show grants for '유저명'@'%';
+
+# ER다이어그램 연습
+
+![Image](https://github.com/user-attachments/assets/d720c8eb-8286-4665-94fc-5fde4aba24c8)
+**도서대여서비스 ER다이어그램**
+
+![Image](https://github.com/user-attachments/assets/b6911845-67d7-41b7-b6d4-60596cc4a53b)
+**학교 홈페이지 ER다이어그램**
