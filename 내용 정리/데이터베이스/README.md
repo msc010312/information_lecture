@@ -94,7 +94,7 @@ show grants for '유저명'@'%';
 
 # ER다이어그램 연습
 
-![Image](https://github.com/user-attachments/assets/d720c8eb-8286-4665-94fc-5fde4aba24c8)
+![Image](https://github.com/user-attachments/assets/1f9597a0-1392-43b5-ac62-f1871a16b6ef)
 **도서대여서비스 ER다이어그램**
 
 ![Image](https://github.com/user-attachments/assets/b6911845-67d7-41b7-b6d4-60596cc4a53b)
