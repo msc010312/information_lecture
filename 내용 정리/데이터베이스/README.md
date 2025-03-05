@@ -31,17 +31,17 @@
 
 
 > qurry 명령어
-  >> show databases : 데이터베이스 확인
-  >> show tables : 테이블 확인
-  >> desc 테이블명 : 테이블 구조 확인
+  + show databases : 데이터베이스 확인
+  + show tables : 테이블 확인
+  + desc 테이블명 : 테이블 구조 확인
 
-  >> create databases 'db명'; : 데이터베이스 생성
-  >> create table '테이블명'(열이름,자료형,제약조건); : 테이블 생성
-  >> alter table '테이블명' add column '열이름' 자료형 (제약조건) : 테이블 추가 
-  >> alter table '테이블명' change column '기존열이름' '바꿀이름' 자료형 (제약조건) : 테이블 변경
-  >> alter table '테이블명' drop column '열이름' : 테이블 삭제
+  + create databases 'db명'; : 데이터베이스 생성
+  + create table '테이블명'(열이름,자료형,제약조건); : 테이블 생성
+  + alter table '테이블명' add column '열이름' 자료형 (제약조건) : 테이블 추가 
+  + alter table '테이블명' change column '기존열이름' '바꿀이름' 자료형 (제약조건) : 테이블 변경
+  + alter table '테이블명' drop column '열이름' : 테이블 삭제
 
-  >> insert into '테이블명'(열1,열2...) values(값1,값2...);  : 삽입
-  >> update '테이블명' set '열이름'=값,'열이름'=값 where '열이름'=값;  : 수정
-  >> delete from '테이블명' where '열이름'=값; : 삭제
-  >> select * from '테이블명'; : 조회
+  + insert into '테이블명'(열1,열2...) values(값1,값2...);  : 삽입
+  + update '테이블명' set '열이름'=값,'열이름'=값 where '열이름'=값;  : 수정
+  + delete from '테이블명' where '열이름'=값; : 삭제
+  + select * from '테이블명'; : 조회
