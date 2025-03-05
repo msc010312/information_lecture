@@ -14,7 +14,13 @@
 1. 요구사항 분석 및 유스케이스 [[바로가기]](https://github.com/msc010312/information_lecture/tree/main/%EB%82%B4%EC%9A%A9%20%EC%A0%95%EB%A6%AC/%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%20%EB%B0%8F%20%EC%9C%A0%EC%8A%A4%EC%BC%80%EC%9D%B4%EC%8A%A4)
 2. 플로우차트 [[바로가기]](https://github.com/msc010312/information_lecture/tree/main/%EB%82%B4%EC%9A%A9%20%EC%A0%95%EB%A6%AC/%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84/%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%B0%A8%ED%8A%B8)
 - - -
-+ 화면구축[[바로가기]]()
++ 화면구축
+1. HTML [[바로가기]](https://github.com/msc010312/frontTest/tree/main/01-html)
+2. CSS [[바로가기]](https://github.com/msc010312/frontTest/tree/main/02-css)
+3. Slider [[바로가기]](https://github.com/msc010312/frontTest/tree/main/03-slider)
+4. javascript [[바로가기]](https://github.com/msc010312/frontTest/tree/main/04-js)
+5. js Library [[바로가기]](https://github.com/msc010312/frontTest/tree/main/05-js%20library)
+6. BootStrap [[바로가기]](https://github.com/msc010312/frontTest/tree/main/06-BootStrap)
 - - -
 + 자바 [[바로가기]](https://github.com/msc010312/information_lecture/tree/main/%EB%82%B4%EC%9A%A9%20%EC%A0%95%EB%A6%AC/%EC%9E%90%EB%B0%94/javaBook/src)
 - - -
