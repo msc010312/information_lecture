@@ -45,3 +45,52 @@
   + update '테이블명' set '열이름'=값,'열이름'=값 where '열이름'=값;  : 수정
   + delete from '테이블명' where '열이름'=값; : 삭제
   + select * from '테이블명'; : 조회
+
+# 인증및권한부여
+
+**사용자 계정 확인**
+-----------------------
+use mysql;
+
+show tables;
+
+select user,host from user;
+
+flush privileges;	// 새로고침
+
+-----------------------
+**사용자 계정 추가**
+-----------------------
+-----------
+**로컬전용계정**
+-----------
+create user '유저명'@localhost identified by '비밀번호'; // 로컬접속 유저
+
+
+**외부접속허용**
+-----------
+create user '유저명'@'%' identified by '비밀번호';	// 외부접근 허용 유저
+
+**계정 추가**
+-----------
+create user '유저명'@'%' identified by '비밀번호';
+
+**읽기**
+-----------
+grant select on test1.* to '유저명'@'%';
+
+**쓰기**
+-----------
+grant select,insert on test1.* to '유저명'@'%';
+
+**수정**
+-----------
+grant select,insert,update on test.% to '유저명'@'%';
+
+**모든권한**
+-----------
+grant all privileges on test1.* to '유저명'@'%';
+
+**권한 확인**
+-----------
+show grants for '유저명'@'%';
