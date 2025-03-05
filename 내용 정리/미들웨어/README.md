@@ -1,1 +1,9 @@
 # 미들웨어 내용 정리
+
+`hardware : cpu,ram,disk 등의 물리적인 부품`
+
+`software : 하드웨어를 이용하는 컴퓨터 프로그램`
+
+`System Software(OS) : 여러 자원들을 관리 `
+
+`Application : 사용자의 요구사항을 만족하는 프로그램 `
