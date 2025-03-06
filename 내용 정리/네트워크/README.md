@@ -53,4 +53,5 @@
 4. 전송 : 송수신간에 결함(신뢰성)을 확인
 - - -
 > OSI 7계층
+
 > ![Image](https://github.com/user-attachments/assets/e3a20cb2-f92e-4eb4-aa44-0578a6f8ae94)
