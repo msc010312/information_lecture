@@ -32,11 +32,11 @@
 
 **예시**
 
-```public class ch00HelloWorld {
+``` public class ch00HelloWorld {
 	public static void main(String[] args) { // 메인메서드
 		System.out.println("hello world"); // 라이브러리 메서드
 	}
-}```
+} ```
 
 - - -
 
