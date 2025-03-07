@@ -12,7 +12,6 @@ package ch12;
 //32인치 1024컬러
 class TV {
 	int size;
-
 	TV(int size) {
 		this.size = size;
 	}
