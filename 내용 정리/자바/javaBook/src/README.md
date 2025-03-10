@@ -138,7 +138,6 @@ System.out.println("a*b="+ (a * b)); // 200
 System.out.println("b/a="+ (b / a)); // 2(나누기 - 몫)
 System.out.println("a%b="+ (a & b)); // 10(나누기 - 나머지)
 ```
-
 > 대입 연산자
 + 공간 = 값(우선처리)
 
@@ -149,7 +148,6 @@ a += 10; //a = a + 10;
 a -= 5; // a = a-5;
 a *= 3; // a = a*3;
 ```
-
 > 비교 연산자
 ```
 int a =10;
@@ -161,7 +159,6 @@ System.out.println("A >= B : "+ (a >= b)); // false
 System.out.println("A <= B : "+ (a <= b)); // true
 System.out.println("A != B : "+ (a != b)); // true
 ```
-
 > 논리 연산자
 + AND연산자 && : &&기호를 기준으로 왼/오른쪽 둘다 true여야 true값 배출
 + OR연산자 || : ||기호를 기준으로 왼/오른쪽 중 하나만 true여도 ture값 배출
