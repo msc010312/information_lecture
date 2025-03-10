@@ -52,6 +52,8 @@ public class ch00HelloWorld {
 > System.out.printf()
 + %d : 10진수 정수 서식문자
 + %f : 10진수 실수 서식문자
++ %o : 8진수 서식문자
++ %x : 16진수 서식문자
 + %c : 한문자 서식문자
 + %s : 문자열 서식문자
 
@@ -62,15 +64,115 @@ public class ch00HelloWorld {
 
 ## 2. 자료형
 - 기본 자료형과 참조 자료형이 있습니다.
+> 변수
++ 개발자의 유지보수 측면에서 바뀔 예정이 큰 수
 
+> 변수명
++ 저장되어있는 변수 공간에 접근하기위한 문자 형태의 주소
+
+> 기본자료형
++ 정수 부호
+1. byte : 1byte
+2. short : 2byte | char - 2byte(양수만)
+3. int : 4byte
+4. long : 8byte
+
++ 실수 부호
+1. float : 4byte(6~9자리)
+2. double : 8byte(15~18자리), 기본자료형
+
+> 클래스자료형
+
+`클래스자료형으로 만든 변수를 '참조변수'라고 하고 메모리주소값이 저장된다`
+
++ String : 문자열
+
++ boolean : 논리형(true/false 저장)
+
+> 상수
++ 리터럴 상수 : 이름부여 X, 상수 Pool에 저장, 단순한 값
+   + 리터럴 접미사 : 리터럴 상수가 저장되는 자료형을 지정
+    + L,l : long 자료형
+    + F,f : float 자료형
++ 심볼릭 상수 : 이름부여 O, final 예약어 사용
+
+  
 ## 3. 형변환
 - 자료형 간의 변환 방법에 대해 설명합니다.
+
+`형변환 : 연산시 일치하지않는 자료를 일치시키는 작업`
+
++ 자동형변환 : 컴파일러에 의해 자동 형변환
+
+```
+범위가 넓은 공간에 작은값이 대입되는 경우 자동형변환이 일어난다
+ex ) byte a = 10;
+     int b = a;
+```
++ 강제형변환 : 프로그래머에 의해 강제 형변환
+```
+ex ) int intVal = 44032;
+     char charVal = (char)intVal; // 강제형변환
+     System.out.println((int)charVal); //44032
 
 ## 4. Scanner
 - 사용자 입력을 받는 방법을 설명합니다.
 
++ Scanner : 데이터 입력 클래스
++ System.in : 표준입력 스트림 생성(요청)
++ System.out : 표준출력 스트림 생성(요청)
+```
+Scanner "변수명" = new Scanner(System.in);
+sc.close(); // 불필요한 데이터 누수 차단
+```
+
 ## 5. 연산자
 - 산술 연산자, 비교 연산자 등을 다룹니다.
+
+> 기본 산술 연산자
+```
+int a = 10, b = 20
+System.out.println("a+b="+ (a + b)); // 30
+System.out.println("a-b="+ (a + b)); // -10
+System.out.println("a*b="+ (a * b)); // 200
+System.out.println("b/a="+ (b / a)); // 2(나누기 - 몫)
+System.out.println("a%b="+ (a & b)); // 10(나누기 - 나머지)
+```
+
+> 대입 연산자
++ 공간 = 값(우선처리)
+
+> 복합 대입 연산자
+```
+int a = 10;
+a += 10; //a = a + 10;
+a -= 5; // a = a-5;
+a *= 3; // a = a*3;
+```
+
+> 비교 연산자
+```
+int a =10;
+int b=20;
+System.out.println("A == B : "+ (a == b)); // false
+System.out.println("A > B : "+ (a > b)); // false 
+System.out.println("A < B : "+ (a < b)); // true
+System.out.println("A >= B : "+ (a >= b)); // false
+System.out.println("A <= B : "+ (a <= b)); // true
+System.out.println("A != B : "+ (a != b)); // true
+```
+
+> 논리 연산자
++ AND연산자 && : &&기호를 기준으로 왼/오른쪽 둘다 true여야 true값 배출
++ OR연산자 || : ||기호를 기준으로 왼/오른쪽 중 하나만 true여도 ture값 배출
++ !연산자 : ture이면 false, false이면 true 값 배출
+
+> 증감 연산자
++ 전치연산자 ++a : 먼저 값을 1증가시킨후 다른 연산자 처리
++ 후치연산자 a++ : 다른 연산자 처리후 값1증가
+
+> 삼항연산자
++ (조건식)? 참인경우의 실행코드 : 거짓인 경우의 실행코드;
 
 ## 6. 분기문
 - `if`, `else`, `switch` 등을 설명합니다.
