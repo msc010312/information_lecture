@@ -177,8 +177,89 @@ System.out.println("A != B : "+ (a != b)); // true
 ## 6. 분기문
 - `if`, `else`, `switch` 등을 설명합니다.
 
+> if
++ 조건식을 걸어 조건이 참이면 실행 아니라면 실행을 하지않게하는 문법
+  
+> else
++ 조건식이 참이 아닌 예외경우에 실행시킬 코드를 작성하는 곳
+
+> else if
++ 조건식에 추가 분기를 넣는 문법
+
+```
+ex) System.out.println("나이 : ");
+    int age = sc.nextInt();
+    if(age >= 8) {
+      System.out.println("초등학교에 다닙니다");
+    } // age의 값이 8이상이라면 문장출력
+    else if(age >=14) {
+      System.out.println("중학교에 다닙니다");
+    } // age의 값이 14이상이라면 문장출력
+    else {
+      System.out.println("학교에 다니지 않습니다");
+    } // 예외경우에 문장출력
+    System.out.println("프로그램을 종료합니다");
+```
+> switch
++ case별로 실행될코드를 따로 지정하는 문법
+
+```
+ex) Scanner sc = new Scanner(System.in);
+    int ranking = sc.nextInt();
+    char medalColor;
+    switch (ranking) {
+    case 1:
+      medalColor = 'g';
+      System.out.println("매달색상 : g");
+      break; // 멈춤역할
+    case 2:
+       medalColor = 's';
+       System.out.println("매달색상 : s");
+       break;
+    case 3:
+       medalColor = 'b';
+       System.out.println("매달색상 : b");
+       break;
+     default: // 기본값
+       medalColor = 'c';
+       System.out.println("매달색상 : c");
+      }
+      System.out.println(ranking + "등 매달 색은 " + medalColor + "입니다");
+```
+
 ## 7. 반복문
-- `for`, `while`, `do-while` 반복문을 설명합니다.
+- `for`, `while` 반복문을 설명합니다.
+
+> for : 반복 횟수가 정해져 있을 때 사용, 반복할 횟수나 범위를 미리 알고 있을 때 주로 사용
+
+```
+for(int i=0, i<=5, i++){ //초기화, 조건, 증감
+  System.out.printf("hello wolrd %d",i) 
+};
+```
+
+> 개량 for문 : 컬렉션이나 배열을 반복하고싶을때 사용함
+
+```
+List<String> lists = new ArrayList(); // 배열생성
+list.add("java");
+~~~
+list.add("oracle");
+
+for(String subject : lists) { //타입 변수명 : 컬렉션이나 배열
+   System.out.println(subject)
+}
+``` 
+
+> while : 반복 횟수가 정해져 있지 않거나 반복 조건을 먼저 확인하고 실행할 때 사용
+
+```
+int i = 0;
+while(true) { // 무한반복
+  System.out.printf("hello wolrd %d",i)
+  i++
+};
+```
 
 ## 8. 객체지향
 - 객체지향 프로그래밍의 기본 개념을 설명합니다.
