@@ -109,11 +109,14 @@ public class ch00HelloWorld {
 ex ) byte a = 10;
      int b = a;
 ```
+
 + 강제형변환 : 프로그래머에 의해 강제 형변환
+  
 ```
 ex ) int intVal = 44032;
      char charVal = (char)intVal; // 강제형변환
      System.out.println((int)charVal); //44032
+```
 
 ## 4. Scanner
 - 사용자 입력을 받는 방법을 설명합니다.
