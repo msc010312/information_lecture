@@ -403,7 +403,86 @@ int[] arr = {1, 2, 3, 4, 5};  // 배열 선언과 초기값을 동시에 할당
 - `static` 키워드의 사용에 대해 설명합니다.
 
 ## 12. 상속
-- 상속 개념과 활용 방법을 설명합니다.
+> 상속이란?
++ 상위클래스의 속성과 기능을 하위 클래스에서 그대로 물려받는 문법
++ 상속을 받은 하위클래스는 상속받으 기능 및 속성을 고쳐쓰거나 그 외의 것들을 추가할수있다
++ 확장성이 뛰어나고 유지보수가 편하며 코드의 중복이 적어지기에 가독성이 좋아진다
+```
+ex) class point2D {
+	int x;
+	int y;
+	point2D(){
+		System.out.println("point2d default");
+	}
+  }
+    class point3D extends point2D { // extends "상위클래스"
+	int z;
+	point3D(){
+		super(); // 상위클래스 point2D() 생성자 호출
+		System.out.println("point3d default");
+	}
+	@Override // toString 재정의
+	public String toString() {
+		return "point3D [z=" + z + ", x=" + x + ", y=" + y + "]";
+	}
+}
+```
+> 오버라이딩
++ 상속관계를 전제하에 상위클래스의 메서드를 하위클래스가 재정의 하는 것
++ 하위클래스에서 다른 기능 구현이 가능함
++ 오버로딩과의 차이점은 상속관계일때만 가능하고 함수의 로직(기능)만을 변경한다
+
+```
+ex) class Animal{
+	void sound() {
+		System.out.println("소리낸다");
+	}
+}
+    class Dog extends Animal {
+	@Override // 함수의 기능만을 재정의
+	void sound() {
+		System.out.println("멍멍");
+	}
+}
+```
+> UpCasting
++ 상위클래스 참조변수 = 하위클래스형 객체(자동형변환)
++ 상위클래스가 이해하는 범위내에서 사용가능
++ 상속관계로 연결된 모든 하위객체를 연결할 수 있다
+
+> DownCasting
++ 하위클래스 참조변수 = 상위클래스형 객체(강제형변환)
++ UpCasting이 되어있는 객체만 사용가능
+
+```
+ex)
+class Super {
+	int n1;
+}
+class Sub extends Super{
+	int n2;
+}
+public class ch06upDownCasting {
+	public static void main(String[] args) {
+		// NoCasting (자료형의 일치)
+		Super ob1 = new Super();
+		ob1.n1 = 10;
+		Sub ob2 = new Sub();
+		ob2.n1 = 10;
+		ob2.n2 = 20;
+		
+		// UpCasting
+		Super ob3 = new Sub();
+		ob3.n1 = 100;
+		Super ob4 = ob2;
+		ob4.n1 = 110;
+		
+		// DownCasting
+	        //Sub ob5 = (Sub)ob1; // ob1은 Super만을 가르키기 때문에 Sub클래스로 DownCasting이 불가능하다
+		Sub ob6 = (Sub)ob3; // ob3의 자료형은 Super지만 Sub클래스를 가르키기때문에 DownCasting이 가능하다		
+	}
+}
+```
 
 ## 13. 추상화-인터페이스
 - 추상화와 인터페이스를 설명합니다
