@@ -29,11 +29,22 @@
   + 사용자정의 메서드 : 개발자에 의해 만들어지는 메서드
   + main 메서드 : 최초 실행 메서드
 
+> 메서드의 반환타입
++ 메서드의 반환타입은 반환할 데이터의 유형을 지정하며, 반환값이 필요하지 않으면 void를 사용
+
 **예시**
 ```
 public class ch00HelloWorld {
 	public static void main(String[] args) { // 메인메서드
 		System.out.println("hello world"); // 라이브러리 메서드
+	}
+
+	public int add(int a, int b) {  // 반환값이 int인 메서드
+    		return a + b;
+	}
+
+	public void printMessage(String message) {  // 반환값이 없는 메서드
+    		System.out.println(message);
 	}
 }
 ```
@@ -280,8 +291,26 @@ Scanner sc = new Scanner(System.in)
 2. static변수 : 동일 클래스로부터 만든 여러객체간을 공유하는 변수
 3. 지역변수 : 메서드 영역 내(파라미터 포함)에서 혹은 {}(중괄호)범위에 생성되는 변수
 
+```
+ex) public class Test {
+    int instanceVar = 10;  // 클래스 변수 (인스턴스 변수)
+
+    public void method1() {
+        int localVar = 5;  // 지역 변수
+        System.out.println(instanceVar);
+    }
+
+    public void method2() {
+        System.out.println(instanceVar);  // instanceVar 사용 가능
+        // System.out.println(localVar); // 컴파일 에러, localVar는 method1에서만 유효
+    }
+}
+
+```
+
 > 오버로딩
 + 메서드의 이름은 같지만 파라미터가 다른(갯수,자료형) 메서드를 만드는것
++ 리턴타입만 다르고 파라미터가 같으면 오버로딩이 아님
 
 > 가변인자
 + 자바에서 ...을 사용하면 메소드가 임의의 수의 인자를 받을 수 있게 된다(배열처럼 값을 받음)
@@ -299,13 +328,16 @@ sum("n개의 숫자들");
 + 겍체 생성시에 필요한 메모리공간 형성과 초기값 부여에 사용
 + 생성자 메서드 이름은 클래스 이름과 동일하며 반환자료형은 가지지 않는다
 
+> this
++ 현재객체를 참조하는 키워드로 맴버변수와 지역변수를 구분한다
+
 ```
 ex) class consturct {
 	int n1;
 	double n2;
 	construct(){} // 기본생성자(없을경우 컴파일러가 생성)
 	construct(int n1, double n2) {
-		this.n1 = n1;
+		this.n1 = n1; // 맴버변수 n1과 지역변수 n1을 구분
 		this.n2 = n2;
 	}
 }
@@ -335,7 +367,7 @@ ex) class Person {
 	Person(){} // 기본생성자
 	public person(String name, int age, String addr) { // 초기값 부여
 		super();
-		this.name = name; // this = 현재클래스의 맴버변수
+		this.name = name;
 		this.age = age;
 		this.addr = addr;
 	}
