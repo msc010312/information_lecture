@@ -312,7 +312,43 @@ ex) class consturct {
 ```
 
 ## 9. 정보은닉-캡슐화
-- 정보은닉과 캡슐화의 중요성을 설명합니다.
+> 접근한정자
++ private - 현재 클래스에서만 사용가능
++ default - 같은 패키지에서만 사용가능
++ protected - 상속관계에 있거나 같은 패키지에서만 사용가능
++ public - 모든 객체에서 사용가능
+
+> 캡슐화
++ 특정 목적을 가지는 기능을 구현하는데 필요한 세부 기능들을 묶어서 처리하는 방법
++ 각 과정의 일부나 전부가 외부로 노출되는 문제를 막기 위해 정보은닉(Private)을 수반한다
+
+> getter, setter
++ getter: 객체의 필드 값을 반환하는 메서드
++ setter: 객체의 필드 값을 수정하는 메서드
+
+```
+ex) class Person {
+	Private String name;
+	Private int age;
+	Private String addr;
+
+	Person(){} // 기본생성자
+	public person(String name, int age, String addr) { // 초기값 부여
+		super();
+		this.name = name; // this = 현재클래스의 맴버변수
+		this.age = age;
+		this.addr = addr;
+	}
+	//getter 함수(데이터를 외부로 반환)
+	public String getName() {
+		return name;
+	}
+	//setter 함수 (기존데이터를 수정)
+	public void setAge(int age) {
+		this.age = age;
+	}
+}
+```
 
 ## 10. 배열
 - 배열의 선언과 사용 방법을 다룹니다.
