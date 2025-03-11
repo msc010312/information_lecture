@@ -38,6 +38,11 @@ class Buyer extends Person {
 		super(mymoney, applecnt);
 	}
 
+	@Override
+	public String toString() {
+		return "Buyer [mymoney=" + getMymoney() + ", Applecnt=" + getApplecnt() + "]";
+	}
+
 	public void payment(Seller seller, int money) {
 		// 내 보유금액에서 차감
 		// seller에 money를 전달하고 리턴되는 사과 개수를 누적
@@ -45,31 +50,45 @@ class Buyer extends Person {
 		gm -= money;
 		setMymoney(gm);
 		
+		int ab = money / seller.getPrice();
 		int ac = getApplecnt();
-		ac = money/1000;	
+		ac += ab;	
 		setApplecnt(ac);
 		
-		seller.receive(gm);
+		seller.receive(money);
 	}
 }
 
 class Seller extends Person {
-	int price;
+	public int price;
 
 	public Seller(int mymoney, int applecnt, int price) {
 		super(mymoney, applecnt);
 		this.price = price;
 	}
 	
+	public int getPrice() {
+		return price;
+	}
+
+	@Override
+	public String toString() {
+		return "Seller [price=" + price + ", mymoney=" + getMymoney() + ", Applecnt=" + getApplecnt() + "]";
+	}
+
 	public int receive(int money) {
 		// 구매자로부터 전달받은 money를 내보유금액에 누적
 		// 전달받은금액/사과개수 를 리턴
 		int gm = getMymoney();
-		gm += money;
-		
-		int ac = getApplecnt();	
-		 
-		return money;
+        gm += money;
+        setMymoney(gm);
+        
+        int as = money / price;
+        int ac = getApplecnt();
+        ac -= as;
+        setApplecnt(ac);
+
+        return money;
 	}
 }
 
