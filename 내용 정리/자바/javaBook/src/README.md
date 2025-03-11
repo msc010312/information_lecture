@@ -454,6 +454,7 @@ ex) class Animal{
 + 하위클래스 참조변수 = 상위클래스형 객체(강제형변환)
 + UpCasting이 되어있는 객체만 사용가능
 
+> Up,DownCasting 예시
 ```
 ex)
 class Super {
