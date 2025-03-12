@@ -17,7 +17,7 @@
 13. [추상화 / 인터페이스](#13-추상화-인터페이스)
 15. [예외처리](#15-예외처리)
 16. [제네릭](#16-제네릭)
-17. [List / Set / Map](#17-List-Set-Map)
+17. [컬렉션](#17-컬렉션)
 18. [Swing](#18-Swing)
 
  - - -
@@ -656,8 +656,65 @@ catch(NullPointerException e) { // 해당 예외 클래스
 ## 16. 제네릭
 > 제네릭
 
-## 17. List-Set-Map
-> List,Set,Map
+## 17. 컬렉션
+> List
++ 자료를 일렬로 나열하여 저장하는 방식
++ 배열과 유사하나 데이터 저장시 필요한만큼 공간이 자동 증가
+>> ArrayList
+```
+List<String> list = new ArrayList();
+
+//추가
+list.add("HTML/CSS/JS");
+list.add("JQUERY");
+list.add("NODEJS");
+
+//조회
+System.out.println("갯수 확인 : " + list.size());
+System.out.println("idx로 조회 : " + list.get(2));
+System.out.println("value로 idx확인 : " + list.indexOf("JQUERY"));
+list.forEach(System.out::println);
+
+//삭제
+list.remove(1);
+list.remove("NODEJS");
+
+//전체 삭제
+list.clear();
+```
+> Set
++ 저장 순서가 유지되지 않는 형태의 저장
++ 순서와 상관없고 중복이 허용되지않는다
+
+```
+Set<Generic> set = new HashSet();
+```
+
+> Map
++ key값과 value값으로 구성
++ key는 중복 저장될 수 없지만 value는 중복저장 가능
++ 기존의 key와 동일한 key로 값을 저장하면 기존의 값은 없어지고 새로운 값으로 대체
+
+```
+Map<String,Integer> map = new HashMap();
+	// 추가
+	map.put("aaa", 123);
+	map.put("bbb", 456);
+	map.put("ccc", 789);
+	map.put("ccc", 999); // 중복key(나중에 put된 값을 덮어씀)
+		
+	//삭제
+	map.remove("bbb");
+		
+	// 확인
+	System.out.println(map.size());
+	System.out.println(map.get("bbb"));
+	System.out.println("---------------");
+	for(String key : map.keySet()) {
+		System.out.println(key + " : " + map.get(key));
+	}
+}
+``` 
 
 ## 18. Swing
 > Swing
