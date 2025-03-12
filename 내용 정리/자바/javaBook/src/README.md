@@ -656,8 +656,8 @@ catch(NullPointerException e) { // 해당 예외 클래스
 ## 16. 제네릭
 > 제네릭
 
-## 17.List,Set,Map
+## 17. List,Set,Map
 > List,Set,Map
 
-## 18.Swing
+## 18. Swing
 > Swing
