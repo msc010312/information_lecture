@@ -15,7 +15,10 @@
 11. [static](#11-static)
 12. [상속](#12-상속)
 13. [추상화 / 인터페이스](#13-추상화-인터페이스)
-
+15. [예외처리](#예외처리)
+16. [제네릭](#제네릭)
+17. [List,Set,Map](#List,Set,Map)
+18. [Swing](#Swing)
 
  - - -
 
@@ -400,7 +403,49 @@ int[] arr = {1, 2, 3, 4, 5};  // 배열 선언과 초기값을 동시에 할당
 `int[][] arr = new int[2][5]`
 
 ## 11. static
-- `static` 키워드의 사용에 대해 설명합니다.
+> static
++ static을 사용하게 되면 변수나 메소드를 객체생성 없이 사용이 가능하다
++ 클래스 이름으로만 static 맴버에 접근이 가능하다
+
+> static 변수
++ 클래스의 모든 인스턴스가 공유하는 변수
+
+```
+class MyClass {
+    static int count = 0;  // 클래스 변수
+
+    MyClass() {
+        count++;  // 객체 생성 시마다 count 증가
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj1 = new MyClass();
+        MyClass obj2 = new MyClass();
+        System.out.println(MyClass.count);  // 2
+    }
+}
+
+```
+
+> static 메서드
++ 클래스의 static 변수와만 상호작용할 수 있고, 인스턴스 변수나 인스턴스 메소드를 사용할 수 없음
+
+```
+ex)
+class MyClass {
+    static int add(int a, int b) {
+        return a + b;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        int result = MyClass.add(5, 3);  // 객체 생성 없이 클래스 이름으로 호출
+        System.out.println(result);  // 8
+    }
+}
+```
 
 ## 12. 상속
 > 상속이란?
@@ -578,3 +623,41 @@ class TV implements Remote {
 	}
 }
 ```
+
+## 15. 예외처리
+> 에러
++ Compile time 에러 : 컴파일시에 발생하는 에러
++ Run time 에러 : 작동시에 발생하는 에러
+
+> 예외 클래스
++ Throwable : 에러와 예외를 모두 나타내기위한 클래스
++ exception : 예외의 최상위 클래스
++ error : 에러의 최상위 클래스
+
+> try,catch
++ 컴파일러가 try구문에서 예외가 발생하는지 검사하고 만약 있다면 catch구문에서 예외발생시 작동하는 코드를 실행한다
+
+```
+ex)
+try {
+	String str = null; //NullPointException 발생
+	Syetem.out.println(str.toString());
+}
+catch(NullPointerException e) { // 해당 예외 클래스
+	System.out.println("예외 발생 : " + e);
+	System.out.println(e.getCause()); // 예외 이유 출력
+	System.out.println(e.toString()); // 예외 메시지 출력
+	e.printStackTrace(); // 예외 정보 출력
+} finally{
+	System.out.println("Hello wolrd") // 무조건 실행
+}
+```
+
+## 16. 제네릭
+> 제네릭
+
+## 17.List,Set,Map
+> List,Set,Map
+
+## 18.Swing
+> Swing
