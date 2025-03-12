@@ -17,7 +17,7 @@
 13. [추상화 / 인터페이스](#13-추상화-인터페이스)
 15. [예외처리](#15-예외처리)
 16. [제네릭](#16-제네릭)
-17. [List,Set,Map](#17-List-Set-Map)
+17. [List / Set / Map](#17-List-Set-Map)
 18. [Swing](#18-Swing)
 
  - - -
@@ -656,7 +656,7 @@ catch(NullPointerException e) { // 해당 예외 클래스
 ## 16. 제네릭
 > 제네릭
 
-## 17. List,Set,Map
+## 17. List-Set-Map
 > List,Set,Map
 
 ## 18. Swing
