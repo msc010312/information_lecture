@@ -667,8 +667,16 @@ class TV implements Remote {
    + 기본 데이터 타입을 객체타입으로 처리 할 수 있게 해주는 클래스
      
    | 기본데이터 타입 | Wrapper 클래스 |
-   |---------------|----------------|
+   |---|---|
    | byte | Byte |
+   | short | Short |
+   | int | Integer |
+   | long | Long |
+   | float | Float |
+   | double | Double |
+   | char | Character |
+   | boolean | Boolean |
+   
     
 ## 15. 예외처리
 > 에러
