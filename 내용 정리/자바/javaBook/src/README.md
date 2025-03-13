@@ -20,7 +20,7 @@
 16. [제네릭](#16-제네릭)
 17. [컬렉션](#17-컬렉션)
 18. [Swing](#18-Swing)
-19. [JAVA I/O](#19-JAVA-I/O)
+19. [Java I/O](#19-Java-I/O)
 
  - - -
 
@@ -938,5 +938,5 @@ Map<String,Integer> map = new HashMap();
 ## 18. Swing
 > Swing
 
-## 19. JAVA I/O
+## 19. Java I/O
 >JAVA I/O
