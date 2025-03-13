@@ -86,18 +86,19 @@ class C07GUI extends JFrame implements ActionListener, KeyListener, MouseListene
 		} else if (e.getSource() == btn3) {
 			System.out.println("대화기록보기");
 		} else if (e.getSource() == input) {
-			System.out.println("입력");
+			String chat = txt1.getText();
+			area1.append(chat + "\n");
+			txt1.setText("");
 		}
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-//		System.out.println("keytype" + e.getKeyCode() + e.getKeyChar());	
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-//		System.out.println("keyPressed" + e.getKeyCode() + e.getKeyChar());
 		if (e.getSource() == txt1) {
 			if (e.getKeyCode() == 10) {
 				String message = txt1.getText();
@@ -110,22 +111,17 @@ class C07GUI extends JFrame implements ActionListener, KeyListener, MouseListene
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-//		System.out.println("keyReleased");
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		try {
-//			System.out.println("click" + e.getPoint());
 			int offset = area1.viewToModel(e.getPoint());
-//			System.out.println(offset);
 			int row = area1.getLineOfOffset(offset);
-//			System.out.println(row);
 			int startOffset = area1.getLineStartOffset(row);
 			int endOffset = area1.getLineEndOffset(row);
-//			System.out.printf("%d %d\n", startOffset, endOffset);
-			
-			String str = area1.getText(startOffset,endOffset-startOffset);
+
+			String str = area1.getText(startOffset, endOffset - startOffset);
 			System.out.println(str);
 		} catch (BadLocationException e1) {
 			e1.printStackTrace();
