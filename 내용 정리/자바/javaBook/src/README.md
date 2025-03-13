@@ -666,6 +666,7 @@ class TV implements Remote {
 3. Wrapper
    + 기본 데이터 타입을 객체타입으로 처리 할 수 있게 해주는 클래스
      
+     
    | 기본데이터 타입 | Wrapper 클래스 |
    |---|---|
    | byte | Byte |
@@ -676,6 +677,21 @@ class TV implements Remote {
    | double | Double |
    | char | Character |
    | boolean | Boolean |
+
+   + Autoboxing과 Unboxing 기능을 제공하는데 자동 박싱은 기본 타입을 자동으로 해당 Wrapper 객체로 변환하고, 자동 언박싱은 Wrapper 
+     객체를 기본 타입으로 자동으로 변환함
+
+   + 사용법
+   ```
+   int num1 = 10;
+   Integer numWrapper = Integer.valueOf(num1);  // int를 Integer로 감쌈
+
+   Integer num = 10;  // int가 자동으로 Integer 객체로 변환됨
+   Integer numWrapper = 10;  // Integer 객체가 자동으로 기본 int로 변환됨
+   int num = numWrapper;  // 자동으로 int로 변환됨
+   
+   ```
+
    
     
 ## 15. 예외처리
