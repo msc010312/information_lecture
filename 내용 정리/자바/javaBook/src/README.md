@@ -692,6 +692,16 @@ class TV implements Remote {
    
    ```
 
+   + Integer 클래스의 주요 필드/메서드
+   
+     | 필드/메서드 | 설명 |
+     |---|---|
+     | static int MAX_VALUE | int로 표현가능한 최대 크기의 수 |
+     | static int MIN_VALUE | int로 표현가능한 최소 크기의 수 |
+     | static SIZE | 2의 보수 형태로 표현된 정수형의 비트 수 |
+     | double doubleValue() | int를 double로 변환 |
+     | static int parseInt(String s) | 문자열 숫자를 int로 리턴 |
+     | static Integer valueOf(String s) | 문자열값을 Integer로 변환 |
    
     
 ## 15. 예외처리
