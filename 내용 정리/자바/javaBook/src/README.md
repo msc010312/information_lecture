@@ -628,10 +628,12 @@ class TV implements Remote {
 ## 14. 자바 기본 API
 
 > 자바 API
-자바 API(Java API)는 자바 플랫폼에서 제공하는 다양한 클래스, 인터페이스, 메서드의 모음이다
++ 자바 API(Java API)는 자바 플랫폼에서 제공하는 다양한 클래스, 인터페이스, 메서드의 모음이다
++ 자바 API는 매우 방대하기 때문에 자바 공식 문서 사이트에서 최신 자바 API 문서를 찾아봐야한다
++ [자바 공식 사이트](https://docs.oracle.com/javase/8/docs/api/)
 
 > 자바 API의 구조
-자바 API는 **패키지(package)**로 구성되며 각 패키지는 관련된 클래스와 인터페이스의 집합이다
+자바 API는 패키지(package)로 구성되며 각 패키지는 관련된 클래스와 인터페이스의 집합이다
 
 1. java.lang : 자바 프로그램의 기본적인 클래스들이 포함되어 있는 패키지, 이 패키지에는 자바의 가장 중요한 클래스들이 포함됨
 2. java.util : 유틸리티 클래스를 제공하는 패키지, 컬렉션 프레임워크, 날짜와 시간, 랜덤 숫자 생성 등을 다룸
@@ -702,8 +704,68 @@ class TV implements Remote {
      | double doubleValue() | int를 double로 변환 |
      | static int parseInt(String s) | 문자열 숫자를 int로 리턴 |
      | static Integer valueOf(String s) | 문자열값을 Integer로 변환 |
-   
-    
+
+> java.util
+1. 날짜 관련 클래스
+   + Date : 인스턴스 생성 후 메서드를 호출하여 원하는 기능을 사용하는 방식으로 사용
+   + Calendar : 특정 날짜 설정, 날짜 연산, 타임존이 필요한 경우 사용
+2. Scanner 클래스
+   + 입력 스트림으로 부터 데이터를 입력받는 클래스
+   + 객체를 생성할 때 입력 스트림을 변경하면 키보드외에 파일, 네트워크 등에서도 데이터를 입력 받을 수 있다.
+
+> java.text
+1. SimpleDateFormat
++ 날짜와 시간을 포맷팅하고 파싱하는 데 사용됨
++ 주로 문자열을 날짜 객체로 변환하거나 날짜 객체를 문자열로 변환할 때 사용됨
+
+2. LocalDateTime
++ Java 8에서 새롭게 도입된 Java 8 날짜/시간 API다
++ java.time 패키지에 속하는 클래스다
++ 날짜와 시간을 모두 포함하는 불변 객체이다
+
+> 사용법
+
+```
+// SimpleDateFormat
+public static void main(String[] args) throws ParseException {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("YYYY/MM/DD 입력 : ");
+	String ymd = sc.next();
+		
+	//포매터 객체 생성(입력용)
+	SimpleDateFormat fmtin = new SimpleDateFormat("yyyy/MM/dd");
+	System.out.println(ymd);
+	Date date = fmtin.parse(ymd);
+	System.out.println(date);
+		
+	//포매터 객체 생성(출력용)
+	SimpleDateFormat fmtout = new SimpleDateFormat("yyyy~MM~dd");
+	System.out.println(fmtout.format(date));
+}
+
+// LocalDateTimeFormat
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("YYYY/MM/DD 입력 : ");
+	String ymd = sc.next();
+		
+	// 입력용 포매터
+	DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		
+	// 문자열을 LocalDate로 변환
+	LocalDate date = LocalDate.parse(ymd, inputFormatter);
+	System.out.println("입력된 날짜" + date);
+		
+	// 출력용 포매터
+	DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy~MM~dd");
+		
+	// 포맷 변경 후 출력
+	System.out.println("변환된 날짜" + date.format(outputFormatter));
+		
+	sc.close();
+}
+```
+
 ## 15. 예외처리
 > 에러
 + Compile time 에러 : 컴파일시에 발생하는 에러
