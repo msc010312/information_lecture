@@ -797,6 +797,82 @@ catch(NullPointerException e) { // 해당 예외 클래스
 
 ## 16. 제네릭
 > 제네릭
++ 클래스 내부에서 데이터타입을 외부에서 지정하는 방법
++ 미지정된 데이터타입이기에 여러 데이터타입의 자료형을 적용가능하다
+```
+ex)
+class Person<T> {
+	public T info;
+}
+Person<String> p1 = new Person(); // 같은 제네릭 타입이면 생략이 가능하다
+```
+
+> 메서드 제네릭
++ 리턴 타입 앞에 <> 기호를 추가한다
+
+> 제한
++ 상속을 사용하여 데이터타입을 특정 클래스의 자식으로 제한이 가능하다
+```
+ex)
+class 호빵<T extends 호빵재료> {
+	private T meterial;
+
+	호빵(T meterial) {
+		this.meterial = meterial;
+	}
+
+	@Override
+	public String toString() {
+		return "호빵 [meterial=" + meterial + "]";
+	};
+}
+
+class 호빵재료 {
+	
+}
+
+class 팥 extends 호빵재료{
+	@Override
+	public String toString() {
+		return "팥";
+	}
+}
+
+class 슈크림 extends 호빵재료{
+	@Override
+	public String toString() {
+		return "슈크림";
+	}
+}
+
+class 야채 extends 호빵재료{
+	@Override
+	public String toString() {
+		return "야채";
+	}
+}
+
+class 민트초코 { // 현재 민트초코는 호빵재료 클래스를 상속받지 않기때문에 사용할 수 없다
+	@Override
+	public String toString() {
+		return "민트초코";
+	}
+}
+
+public class ch01Generic {
+
+	public static void main(String[] args) {
+		호빵<팥> ob1 = new 호빵<팥>(new 팥());
+		System.out.println(ob1);
+		호빵<슈크림> ob2 = new 호빵<슈크림>(new 슈크림());
+		System.out.println(ob2);
+		호빵<야채> ob3 = new 호빵<야채>(new 야채());
+		System.out.println(ob3);
+//		호빵<민트초코> ob4 = new 호빵<민트초코>(new 민트초코());
+//		System.out.println(ob4);
+	}
+}
+```
 
 ## 17. 컬렉션
 > List
