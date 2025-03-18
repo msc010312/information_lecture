@@ -957,7 +957,74 @@ Map<String,Integer> map = new HashMap();
 
 
 ## 19. Java I/O
->JAVA I/O
+> JAVA I/O
++ 데이터를 읽고 쓰는 행위를 추상화시킨것
+
+> Stream
++ 스트림은 데이터의 흐름을 나타내는 추상적인 개념
++ 데이터를 읽거나 쓸 때 발생하는 연속적인 바이트나 문자의 흐름을 나타냄
++ 스트림은 크게 바이트 스트림과 문자 스트림으로 나뉨
+
+> Input
++ 바이트 단위로 데이터를 읽어들이는 클래스
+```
+InputStream fin = new FileInputStream("C:\\IOtest\\data.xlsx");
+		StringBuffer stringBuffer = new StringBuffer(); // 버퍼 추가
+		
+		// read([])
+		byte[] buf = new byte[4096];
+		long sTime = System.currentTimeMillis();
+		while(true) {
+			int data = fin.read(buf);
+			if(data == -1) break;
+		}
+		long eTime = System.currentTimeMillis();
+		System.out.println("소요시간 : " + (eTime-sTime) + "ms");
+		fin.close();
+```
+
+> Output
++ 바이트 단위로 데이터를 출력하는 클래스
+```
+OutputStream out = new FileOutputStream("C:\\IOtest\\test4.txt");
+	out.write("가".getBytes(StandardCharsets.UTF_8));
+	out.write('a');
+	out.write('b');
+	out.write('c');
+	out.flush(); // 저장된내용 출력
+	out.close(); // 리소스 해제
+```
+
+> Writer
++ 문자 단위로 데이터를 출력하는 클래스
+```
+import java.io.FileWriter;
+
+Writer fout = new FileWriter("C:\\IOtest\\test1.txt",true); 
+	fout.write("test1\n");
+	fout.write("test2\n");
+	fout.write("test3\n");
+	fout.write("test4\n");
+	fout.flush(); // 저장된내용 출력
+	fout.close(); // 리소스해제
+```
+
+> Reader
++ 문자 단위로 데이터를 읽는 클래스
+```
+import java.io.FileReader;
+
+Reader rd = new FileReader("C:\\IOtest\\test1.txt");
+	int data = 0;
+	StringBuffer buffer = new StringBuffer();
+	while((data = rd.read())!=-1) {
+		buffer.append(data);
+	}
+	System.out.println();
+	System.out.println(buffer);
+	rd.close();
+	}
+```
 
 ## 20. 보조입출력
 > 보조입출력
