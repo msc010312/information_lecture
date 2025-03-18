@@ -940,7 +940,7 @@ Map<String,Integer> map = new HashMap();
 
 ## 18. Swing
 > Swing
-Java에서 GUI 를 구축하기 위한 라이브러리
++ Java에서 GUI 를 구축하기 위한 라이브러리
 
 > 주요 특징
 1. 플랫폼 독립성 : Swing은 완전히 Java로 작성되어 있기 때문에, 특정 운영 체제에 종속되지 않음 이를 통해, 작성한 GUI는 어떤 OS에서도 동일한 방식으로 동작가능
@@ -964,6 +964,52 @@ Java에서 GUI 를 구축하기 위한 라이브러리
 
 ## 21. JDBC
 > JDBC
++ 자바와 데이터베이스간 연동을 해주는 API
+
+> 사용법
+```
+String id = "root"; // 사용자 id
+String pw = "1234"; // 사용자 pw
+String url = "jdbc:mysql://포트번호/db명" // url
+
+
+//JDBC참조변수
+Connection conn = null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+
+try {
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	System.out.println("Driver Loading Success...");
+	conn = DriverManager.getConnection(url,id,pw);
+	System.out.println("DB CONNECTED...");
+	}catch(Exception e) {
+	e.printStackTrace();
+	}finally {	
+		try { conn.close();} catch (SQLException e) {e.printStackTrace(); }
+	}
+```
+
+> 트랜잭션
++ 데이터베이스에서의 연산을 하나의 단위로 묶어서 처리하는 것을 의미함
++ 트랜잭션은 여러 연산을 포함할 수 있지만, 모든 연산이 성공적으로 완료되거나, 어떤 문제가 생기면 모든 연산을 되돌리는 방식으로 관리됨
+
+> 트랜잭션 ACID
+1. 원자성
++ 트랜잭션은 "모두 또는 전혀 없음"의 원칙을 따름
++ 트랜잭션 내의 모든 작업이 성공적으로 수행되거나, 하나라도 실패하면 모든 작업이 롤백되어 초기 상태로 돌아감.
+
+2. 일관성
++ 트랜잭션이 시작되기 전과 끝난 후 데이터베이스가 일관된 상태를 유지해야 함
++ 트랜잭션이 실행되기 전의 상태와 트랜잭션 후의 상태 모두 유효해야 함
+
+3. 격리성
++ 트랜잭션은 다른 트랜잭션의 중간 결과를 볼 수 없음
++ 각 트랜잭션은 다른 트랜잭션과 독립적으로 실행되어야 하며, 여러 트랜잭션이 동시에 실행될 때도 서로 영향을 주지 않음
+
+4. 지속성
++ 트랜잭션이 성공적으로 완료되면 그 결과는 영구적으로 저장됨
++ 시스템 장애가 발생하더라도, 이미 커밋된 트랜잭션의 변경 사항은 손실되지 않음
 
 ## 22. 소켓
 > 소켓
