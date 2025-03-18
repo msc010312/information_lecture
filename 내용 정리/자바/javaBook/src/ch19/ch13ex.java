@@ -16,7 +16,7 @@ public class ch13ex {
 		String url = "https://api.openweathermap.org/data/2.5/weather";
 //		String lat = "lat";
 //		String lon = "lon";
-		String q = "bangkok";
+		String q = "chicago";
 		String api_key = "dfa13e079c939a4c716799ec18517b75";
 		url = url + "?q=" + q + "&appid=" + api_key;
 
