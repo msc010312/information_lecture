@@ -1341,3 +1341,75 @@ public class ch02Worker2 implements Runnable {
 	 + 알고리즘을 캡슐화하여 각각의 전략을 독립적으로 변경할 수 있으며, 클라이언트는 전략을 선택하여 사용
 
 ## 26. 람다스트림
+> 람다스트림
++ 함수를 단순하게 표현하는 기법
+
+```
+interface Calculator {
+	int calculate(int num1, int num2);
+}
+
+public class ch03Lambda {
+
+	public static void main(String[] args) {
+		Calculator add = (num1, num2) -> num1 + num2;
+		System.out.println(add.calculate(10, 20)); // 덧셈
+	}
+}
+
+```
+> 자바스트림의 함수
++ 중개 연산(Intermediate operations)
+1. filter : 주어진 조건에 맞는 요소를 선택
+2. map : 요소를 다른 형태로 변환
+3. flatMap : 각 요소를 변환하고, 이를 하나의 스트림으로 평면화시킴
+4. distinct : 중복된 요소를 제거
+5. sorted : 요소를 정렬
+6. limit : 주어진 개수만큼 요소를 제한
+7. skip : 처음 몇 개의 요소를 제외하고 반환
+
++ 최종 연산(Terminal operations):
+1. forEach : 각 요소를 반복적으로 처리
+2. collect : 요소를 수집하여 새로운 컬렉션을 생성
+3. reduce : 요소를 하나로 줄여서 결과를 반환
+4. min : 최소값을 반환
+5. max : 최대값을 반환
+6. count : 요소의 개수를 반환
+7. anyMatch : 하나 이상의 요소가 주어진 조건과 일치하는지 검사
+8. allMatch : 모든 요소가 주어진 조건과 일치하는지 검사
+9. noneMatch : 모든 요소가 주어진 조건과 일치하지 않는지 검사
+10. findFirst : 첫 번째 요소를 반환
+11. findAny : 임의의 요소를 반환
+
+### 예시코드
+```
+		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+		System.out.println(list);
+
+		// filter
+		List<Integer> list2 = list.stream().filter((item) -> { // item의 요소 필터링
+			return item % 2 == 0;
+		}).collect(Collectors.toList()); // 결과 수집
+		System.out.println(list2);
+
+		List<Integer> list3 = list.stream().filter((item) -> {
+			return item % 2 == 0;
+		}).map((item) -> { // item 재구성
+			return item * item;
+		}).collect(Collectors.toList()); // 결과 수집
+		System.out.println(list3);
+
+		List<Person> list4 = Arrays.asList(
+				new Person("홍길동", 11), 
+				new Person("박혁거세", 21), 
+				new Person("이근", 31),
+				new Person("유재석", 41)
+			);
+		List<Integer> list5 =
+		list4.stream()
+//			 .map(person->person.getAge())
+			 .map(Person::getAge) // 메서드 참조
+			 .sorted((a,b)->b-a)
+			 .collect(Collectors.toList());
+		System.out.println(list5);
+```
