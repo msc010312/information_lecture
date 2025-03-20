@@ -1090,9 +1090,187 @@ try {
 
 ## 22. 소켓
 > 소켓
++ 네트워크 통신을 위한 인터페이스
++ 두 시스템 간에 데이터를 주고받을 수 있도록 연결을 설정하는 역할
+
+### 서버
+```
+public class ch02SocketServer {
+
+	public static void main(String[] args) throws IOException {
+		// 서버소켓 생성
+		ServerSocket server = new ServerSocket(7000); // 서버 소켓생성 (포트번호)
+		System.out.println("[INFO] SERVER SOCKET LISTENING");
+		
+		Socket client = server.accept();
+		
+		System.out.println("server start");
+		
+		System.out.println(client.getInetAddress());
+		
+		OutputStream out = client.getOutputStream(); // 출력 스트림 생성
+		DataOutputStream dout = new DataOutputStream(out);
+		InputStream in = client.getInputStream(); // 입력 스트림 생성
+		DataInputStream din = new DataInputStream(in);
+		
+		// 내용교환(q:종료)
+		Scanner sc = new Scanner(System.in);
+		String recv = null;
+		String send = null;
+		
+		while(true) {
+			// 서버 -> 클라이언트 송신
+			System.out.print("[Server(q:종료)] : ");
+			send = sc.nextLine();
+			if(send.equals("q")) {
+				break;
+			}
+			dout.writeUTF(send);
+			dout.flush();
+			
+			// 클라이언트 -> 서버 수신
+			recv = din.readUTF();
+			if(recv.equals("q")) {
+				break;
+			}
+			System.out.println("[Client ] : " + recv);
+		}
+		// 자원해제
+		din.close();
+		dout.close();
+		in.close();
+		out.close();
+		client.close();
+		server.close();
+		System.out.println("[Server] 연결 종료 합니다");
+	}
+```
+
+### 클라이언트
+```
+public class ch02SocketClient {
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		Socket client = new Socket("192.168.16.50", 7000); // 서버주소에 접속 ("주소",포트번호)
+
+		System.out.println("client start");
+		
+		OutputStream out = client.getOutputStream(); // 출력스트림 생성
+		DataOutputStream dout = new DataOutputStream(out);
+		InputStream in = client.getInputStream(); // 입력 스트림 생성
+		DataInputStream din = new DataInputStream(in); 
+
+		// 내용교환(q:종료)
+		Scanner sc = new Scanner(System.in);
+		String recv = null;
+		String send = null;
+
+		while (true) {
+			// 클라이언트 -> 서버 수신
+			recv = din.readUTF();
+			if (recv.equals("q")) {
+				break;
+			}
+			System.out.println("[Server ] : " + recv);
+
+			// 서버 -> 클라이언트 송신
+			System.out.print("[Client(q:종료)] : ");
+			send = sc.nextLine();
+			if (send.equals("q")) {
+				break;
+			}
+			dout.writeUTF(send);
+			dout.flush();
+		}
+		// 자원 해제
+		din.close();
+		dout.close();
+		in.close();
+		out.close();
+		client.close();
+		System.out.println("[Client] 연결 종료 합니다");
+	}
+```
 
 ## 23. 쓰레드
 > 쓰레드
++ 하나의 프로세스 내에서 독립적으로 실행되는 실행 흐름
++ 멀티스레딩을 통해 여러 작업을 동시에 처리가능
++ 소켓으로 네트워크를 연결 후 각 클라이언트의 별도 쓰레드를 생성해서 클라이언트들의 요청들을 처리 가능
+
+### 메인쓰레드
+```
+public static void main(String[] args) {
+		// Runnable Interface 스레드 분할
+		
+		// 객체 생성
+		ch02Worker1 w1 = new ch02Worker1();
+		ch02Worker2 w2 = new ch02Worker2();
+		
+		// 메인 스레드에서 분리
+		Thread th1 = new Thread(w1);
+		Thread th2 = new Thread(w2);
+		
+		// 스레드 실행
+		th1.start();
+		th2.start();
+		
+		// Thread class 스레드 분할
+		
+		new Thread() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("task 3");
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}.start();
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.println("main task");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+```
+
+### 쓰레드 분할
+```
+public class ch02Worker1 implements Runnable {
+	@Override
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("task 1");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}	
+	}
+}
+public class ch02Worker2 implements Runnable {
+	@Override
+	public void run() {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("task 2");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+```
 
 ## 24. Reflect
 > Reflect
