@@ -28,6 +28,7 @@
 24. [Reflect](#24-Reflect)
 25. [디자인패턴](#25-디자인패턴)
 26. [람다스트림](#26-람다스트림)
+27. [함수형 인터페이스](#27-함수형-인터페이스)
 
  - - -
 
@@ -1413,3 +1414,5 @@ public class ch03Lambda {
 			 .collect(Collectors.toList());
 		System.out.println(list5);
 ```
+
+## 27. 함수형 인터페이스
