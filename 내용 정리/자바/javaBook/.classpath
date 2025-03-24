@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="Gun/ch35/" kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/jsoup-1.19.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/selenium-server-4.29.0.jar"/>
 	<classpathentry kind="lib" path="src/ch19/jackson-annotations-2.18.3.jar"/>
