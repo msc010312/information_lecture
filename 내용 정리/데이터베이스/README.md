@@ -46,6 +46,18 @@
   + delete from '테이블명' where '열이름'=값; : 삭제
   + select * from '테이블명'; : 조회
 
+> select 구문
++ select * from '테이블명' where '칼럼명' = '값'; : where / 조건생성
++ select * from '테이블명' where '칼럼명' = '값' and '칼럼명' = '값' : and 연산자
++ select * from '테이블명' where '칼럼명' = '값' or '칼럼명' = '값' : or 연산자
++ select * from '테이블명' where '칼럼명' IN('값','값'); : IN / 그룹생성
++ select * from '테이블명' where '칼럼명' like '값%'; : like / % : 모든문자,길이제한X
++ select * from '테이블명' where '칼럼명' like '값__'; : like / _ : 모든문자, _만큼의 길이
++ select * from '테이블명' where '칼럼명' IS NULL; : NULL값 체크
++ select * from '테이블명' where '칼럼명' IS NOT NULL; : NULL이 아닌 값 체크
++ select DISTINCT '칼럼명' from '테이블명'; : DISTINCT / 중복열 제거
++ select '칼럼명' as '별명' from '테이블명'; : ALIAS / 별명부여
+
 # 인증 및 권한부여
 
 **사용자 계정 확인**
