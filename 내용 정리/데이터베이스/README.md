@@ -117,6 +117,36 @@ select '칼럼명', ,sum('칼럼명'+'칼럼명') from '테이블명' group by '
 + 조건형 함수
   + DECODE: 조건에 따른 값 선택 (Oracle)
   + CASE: 조건에 따른 값 선택 (표준 SQL)
+ 
+> join
++ 두개이상의 테이블을 결합하여 데이터를 출력하는 것
+
+> inner join
++ 테이블간에 조건을 만족하는 데이터만 출력
+  ```
+  
+  -- usertbl과 buytbl중 prodName이라는 컬럼의 밸류값이 "책"인 컬럼만 출력
+  select * from usertbl u join buytbl b on u.userid = b.userid where b.prodName='책';
+  
+  ```
+> left /right outer join
++ 테이블간에 왼쪽 혹은 오른쪽의 데이터중 조건에 만족하지 않는 데이터를 출력
+  ```
+  -- 왼쪽 테이블인 studenttbl의 데이터가 없는 경우도 출력
+  select * from studenttbl s left outer join examtbl e on s.studentid = e.studentid;
+
+  -- 오른쪽 테이블인 examtbl의 데이터가 없는 경우도 출력
+  select * from studenttbl s right outer join examtbl e on s.studentid = e.studentid;
+  
+  ```
+> full outer join
++ 테이블간에 조건을 만족하지 않는 데이터를 출력
+  ```
+  
+  -- studenttbl과 examtbl중 데이터가 없는 컬럼을 출력
+  select * from studenttbl s full outer join examtbl e on s.studentid = e.studentid;
+  
+  ```
 # 인증 및 권한부여
 
 **사용자 계정 확인**
