@@ -58,6 +58,65 @@
 + select DISTINCT '칼럼명' from '테이블명'; : DISTINCT / 중복열 제거
 + select '칼럼명' as '별명' from '테이블명'; : ALIAS / 별명부여
 
+> GROUP BY
++ GROUP BY 절은 데이터를 그룹화하여 집계 함수(SUM, AVG, COUNT, MAX, MIN 등)와 함께 사용함
+```
+select '칼럼명' ,sum('칼럼명'+'칼럼명') from '테이블명' group by '칼럼명';
+```
+
+> ORDER BY
++ ORDER BY 절은 그룹화된 데이터를 정렬할때 사용함
+```
+select birthyear, COUNT(*) as 인원수 from usertbl GROUP BY birthyear ORDER BY birthyear; -- 내림차순
+select birthyear, COUNT(*) as 인원수 from usertbl GROUP BY birthyear ORDER BY birthyear desc; -- 오름차순
+select birthyear,height,COUNT(*) as 인원수 from usertbl GROUP BY birthyear, height ORDER BY height asc, birthyear desc; -- 내림차순,오름차순
+```
+
+> HAVING
++ HAVING 절은 그룹화된 데이터에 조건을 걸 때 사용함
++ where 절과의 차이점은 그룹화의 여부임
+```
+select '칼럼명', ,sum('칼럼명'+'칼럼명') from '테이블명' group by '칼럼명' having sum('칼럼명'+'칼럼명')>=1000;
+```
+
+> 단일행 함수
++ 문자형 함수
+  + LOWER, UPPER, INITCAP : 대소문자 변환
+  + LENGTH, LENGTHB : 문자열 길이 반환
+  + SUBSTR : 문자열 일부 추출
+  + INSTR : 특정 문자 위치 찾기
+  + LPAD, RPAD : 문자열 채우기
+  + TRIM, LTRIM, RTRIM : 공백 제거
+  + REPLACE : 문자열 치환
+  + CONCAT : 문자열 연결
++ 숫자형 함수
+  + ROUND : 반올림
+  + TRUNC : 절삭
+  + CEIL, FLOOR : 올림, 내림
+  + MOD : 나머지 구하기
+  + ABS : 절대값
+  + SIGN : 부호 확인
+  + POWER : 제곱
+  + SQRT : 제곱근
++ 날짜형 함수
+  + SYSDATE, CURRENT_DATE : 현재 날짜
+  + ADD_MONTHS : 월 더하기
+  + MONTHS_BETWEEN : 월 차이 계산
+  + NEXT_DAY : 다음 요일 날짜
+  + LAST_DAY : 월의 마지막 날짜
+  + EXTRACT : 날짜 요소 추출
++ 변환형 함수
+  + TO_CHAR  : 숫자 또는 날짜를 문자로 변환
+  + TO_NUMBER  : 문자를 숫자로 변환
+  + TO_DATE  : 문자를 날짜로 변환
++ NULL 관련 함수
+  + NVL : NULL 값을 다른 값으로 대체
+  + NVL2 : NULL 여부에 따라 값 반환
+  + NULLIF : 두 표현식이 같으면 NULL 반환
+  + COALESCE : 최초의 NULL이 아닌 값 반환
++ 조건형 함수
+  + DECODE: 조건에 따른 값 선택 (Oracle)
+  + CASE: 조건에 따른 값 선택 (표준 SQL)
 # 인증 및 권한부여
 
 **사용자 계정 확인**
