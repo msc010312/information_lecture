@@ -79,7 +79,7 @@ select birthyear,height,COUNT(*) as 인원수 from usertbl GROUP BY birthyear, h
 select '칼럼명', ,sum('칼럼명'+'칼럼명') from '테이블명' group by '칼럼명' having sum('칼럼명'+'칼럼명')>=1000;
 ```
 
-> 단일행 함수
+> 단일행 함수 : 행별로 하나의 결과를 반환
 + 문자형 함수
   + LOWER, UPPER, INITCAP : 대소문자 변환
   + LENGTH, LENGTHB : 문자열 길이 반환
