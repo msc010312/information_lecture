@@ -1910,7 +1910,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="KWp_z89U3oQrJYB-Ly3k" name="06 API문서화">
-    <mxGraphModel dx="542" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1674" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2067,8 +2067,11 @@
         <mxCell id="aYd7G1YD6tsrE7wOVI23-12" value="/user" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="250" y="1279" width="60" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="aYd7G1YD6tsrE7wOVI23-13" value="ServiceNum" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="1268" width="60" height="30" as="geometry" />
+        </mxCell>
         <mxCell id="aYd7G1YD6tsrE7wOVI23-14" value="Map&amp;lt;String.Object&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="420" y="1268" width="60" height="30" as="geometry" />
+          <mxGeometry x="420" y="1309" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="aYd7G1YD6tsrE7wOVI23-15" value="Map&amp;lt;String,Ojbect&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="605" y="1268" width="60" height="30" as="geometry" />
@@ -3186,7 +3189,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="09 [예제] Interface설계" id="MkpzhBojoCI1pJq9PrSm">
-    <mxGraphModel dx="1418" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+    <mxGraphModel dx="1674" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
         <mxCell id="_MwTiqirPnZSgTEtE5iA-0" />
         <mxCell id="_MwTiqirPnZSgTEtE5iA-1" parent="_MwTiqirPnZSgTEtE5iA-0" />
