@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello
+
+<script type="text/javascript">
+</script>
 </body>
 </html>
