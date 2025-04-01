@@ -43,6 +43,13 @@ body {
 	width: 100%;
 	height: 100px;
 }
+
+.nav>ul {
+	/* position: relative;
+	display: flex;
+	justify-content: space-around;
+	line-height: 100px; */
+}
 </style>
 </head>
 <body>
