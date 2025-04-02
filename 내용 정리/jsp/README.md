@@ -52,25 +52,24 @@ ${param.expression} //html에서 form으로 보낸값을 받는 형태
   ```
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   ```
+> Forward,Redirect
++ 클라이언트의 요청을 다른 리소스로 전달할때 사용하는 방식
 
-  > Forward,Redirect
-  + 클라이언트의 요청을 다른 리소스로 전달할때 사용하는 방식
+## Forward
++ Request내용은 유지한채 또 다른 Page경로로 이동
++ 클라이언트의 URL경로는 최초요청시의 URL로 유지가 됨
++ Request객체의 내용은 최초요청내용이 유지됨(Forward 되는 동안만)
 
-  ## Forward
-  + Request내용은 유지한채 또 다른 Page경로로 이동
-	+ 클라이언트의 URL경로는 최초요청시의 URL로 유지가 됨
-	+ Request객체의 내용은 최초요청내용이 유지됨(Forward 되는 동안만)
+```
+request.getRequestDispatcher("./03Page.jsp").forward(request, response);
+```
 
-  ```
-  request.getRequestDispatcher("./03Page.jsp").forward(request, response);
-  ```
+## Redirect
++ 서버가 클라이언트에게 새로운 요청 URL 경로를 전달
++ 클라이언트는 서버가 제시간 URL 경로로 새롭게 페이지요청
++ Request객체와 Response객체는 Redirect 횟수만큼 새로운 값으로 대체
 
-  ## Redirect
-  + 서버가 클라이언트에게 새로운 요청 URL 경로를 전달
-  + 클라이언트는 서버가 제시간 URL 경로로 새롭게 페이지요청
-	+ Request객체와 Response객체는 Redirect 횟수만큼 새로운 값으로 대체
-
-  ```
-  response.sendRedirect("03Page.jsp?hobby="+URLEncoder.encode("등산","UTF-8")); // ?부턴 파라미터값을 직접 전달하기 위해 사용했음
-  ```
+```
+response.sendRedirect("03Page.jsp?hobby="+URLEncoder.encode("등산","UTF-8")); // ?부턴 파라미터값을 직접 전달하기 위해 사용했음
+ ```
 
