@@ -50,7 +50,8 @@ ${param.expression} //html에서 form으로 보낸값을 받는 형태
   + 커스텀 태그 라이브러리를 사용할때 필요함, JSTL을 사용 할 때 자주 등장
 
   ```
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  ```
 
   > Forward,Redirect
   + 클라이언트의 요청을 다른 리소스로 전달할때 사용하는 방식
