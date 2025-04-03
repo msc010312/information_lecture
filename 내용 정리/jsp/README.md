@@ -83,3 +83,9 @@ response.sendRedirect("03Page.jsp?hobby="+URLEncoder.encode("등산","UTF-8")); 
 > 세션
 + 사용자가 웹사이트에 접속해서 일정시간동안 상태(정보)를 서버에 저장하는 방식
 + jsp 실행 시 자동 생성 `<%@ page session="true" %>`
+
+> 쿠키
++ 사용자의 웹브라우저에 저장이 됨
++ Key-Value쌍으로 구성되어 있는 데이터 파일이다.
++ 도메인 당 20개의 쿠키를 가질 수 있다.
++ 하나의 쿠키는 4KB(= 4096 byte)까지 저장이 가능하다.
