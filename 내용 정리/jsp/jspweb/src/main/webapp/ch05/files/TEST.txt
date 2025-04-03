@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /
+Allow : /$
+Allow : /.well-known/privacy-sandbox-attestations.json
+.wef
+we
+f
+wef
+w
+ef
+w
+ef
+we
+f
