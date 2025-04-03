@@ -26,6 +26,12 @@ ${param.expression} //html에서 form으로 보낸값을 받는 형태
 + request : 클라이언트의 요청 정보를 담고 있는 객체
 + response : 클라이언트에게 응답을 받는 객체
 
+> 내장객체의 영역
++ page : 동일한 페이지에서만 공유, 페이지를 벗어나면  소멸
++ request : 하나의 요청에 의해 호출된 페이지와 forwarding된 페이지까지 공유 새로운 페이지를 요청하면 소멸
++ session : 클라이언트가 처음 접속한 후 웹 브라우저를 닫을 때까지 공유
++ application : 한번 저장되면 웹 애플리케이션이 종료될 때까지 유지
+
 > 지시자의 종류
 
 |지시자 종류|형식|설명|
@@ -72,4 +78,6 @@ request.getRequestDispatcher("./03Page.jsp").forward(request, response);
 ```
 response.sendRedirect("03Page.jsp?hobby="+URLEncoder.encode("등산","UTF-8")); // ?부턴 파라미터값을 직접 전달하기 위해 사용했음
  ```
-
+> 세션
++ 사용자가 웹사이트에 접속해서 일정시간동안 상태(정보)를 서버에 저장하는 방식
++ jsp 실행 시 자동 생성 `<%@ page session="true" %>`
