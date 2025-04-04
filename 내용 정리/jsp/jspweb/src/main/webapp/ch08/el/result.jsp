@@ -49,8 +49,8 @@ request.setAttribute("ud", ud);
 <div>EL :  ${ud.userid}</div>
 <hr>
 <!-- EL : 연산자 -->
-<div>표현식 : <%=1+1 %></div>
-<div>EL : ${1+1 }</div> <!-- 문자열을 자동으로 int변환 해줌 -->
+<div>표현식 : <%=1+"1" %></div>
+<div>EL : ${1+"1" }</div> <!-- 문자열을 자동으로 int변환 해줌 -->
 <hr>
 <!-- Null Check -->
 <div>Null : ${null }</div>
