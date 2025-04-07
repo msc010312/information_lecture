@@ -17,6 +17,12 @@ List<UserDto> list = dbutils.selectAllUser();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: #333;
+}
+</style>
 </head>
 <body>
 <div>총인원 <%=list.size() %></div>
@@ -41,6 +47,7 @@ List<UserDto> list = dbutils.selectAllUser();
 %>
 	
 </table>
-	
+	<a href="joinForm.jsp">가입창 연결</a>
+	<a href="../order/selectAll.jsp">상품</a>
 </body>
 </html>

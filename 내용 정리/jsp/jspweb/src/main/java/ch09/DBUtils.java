@@ -37,15 +37,17 @@ public class DBUtils {
 	}
 	
 	public int insertUser(UserDto userdto) throws Exception {
-		pstmt = conn.prepareStatement("insert into tbl_user values(?,?)");
+		pstmt = conn.prepareStatement("insert into tbl_user values(?,?,?)");
 		pstmt.setString(1, userdto.getUserid());
 		pstmt.setString(2, userdto.getPassword());
+		pstmt.setString(3, "");
 		int result = pstmt.executeUpdate();
 		conn.commit();
 		pstmt.close();
 		return result;                                                                                                        
 	}
 	
+	//user
 	public List<UserDto> selectAllUser() throws Exception {
 		pstmt = conn.prepareStatement("select * from tbl_user");
 		rs = pstmt.executeQuery();
@@ -79,6 +81,76 @@ public class DBUtils {
 		return userDto;
 	}
 	
+	// order(총 구매금액)
+	public List<OrderDTO> selectAllOrder() throws Exception{
+		String sql = "select category,sum(price*quantity) from tbl_order"
+				+ " group by category"
+				+ " having sum(price*quantity) >=50000"
+				+ " order by sum(price*quantity) desc";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		List<OrderDTO> list = new ArrayList();
+		OrderDTO orderDto = null;
+		if(rs != null) {
+			while(rs.next()) {
+				orderDto = new OrderDTO();
+				orderDto.setCategory(rs.getString(1));
+				orderDto.setSum(rs.getInt(2));
+				list.add(orderDto);
+			}
+		}
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+	
+	// order(날짜별 구매 총 평균)
+	public List<OrderDTO2> selectDateOrder() throws Exception {
+		String sql = "select order_date,round(avg(price*quantity),2)from tbl_order"
+				+ " group by order_date"
+				+ " order by order_date desc";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		List<OrderDTO2> list = new ArrayList();
+		OrderDTO2 orderDto = null;
+		if(rs != null) {
+			while(rs.next()) {
+				orderDto = new OrderDTO2();
+				orderDto.setOrderDate(rs.getDate(1));
+				orderDto.setSum(rs.getInt(2));
+				list.add(orderDto);
+			}
+		}
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+	
+	// order(지역 + 날짜별 구매총액)
+	public List<OrderDTO3> selectAddrOrder() throws Exception{
+		String sql = "SELECT u.addr, o.order_date, SUM(o.price * o.quantity)"
+				+ " FROM tbl_user u"
+				+ " JOIN tbl_order o ON u.userid = o.userid"
+				+ " GROUP BY u.addr, o.order_date"
+				+ " order by u.addr, o.order_date";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		List<OrderDTO3> list = new ArrayList();
+		OrderDTO3 orderDto = null;
+		if(rs != null) {
+			while(rs.next()) {
+				orderDto = new OrderDTO3();
+				orderDto.setAddr(rs.getString(1));
+				orderDto.setOrderDate(rs.getDate(2));
+				orderDto.setTotalAmount(rs.getInt(3));
+				list.add(orderDto);
+			}
+		}
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+	
 	public int updateUser(UserDto userdto) throws Exception{
 		pstmt = conn.prepareStatement("update tbl_user set password=? where userid=? ");
 		pstmt.setString(1, userdto.getPassword());
@@ -90,9 +162,9 @@ public class DBUtils {
 		return result;
 	}
 	
-	public int deleteUser(UserDto userDto) throws Exception{
+	public int deleteUser(String userid) throws Exception{
 		pstmt = conn.prepareStatement("delete from tbl_user where userid=?");
-		pstmt.setString(1, userDto.getUserid());
+		pstmt.setString(1, userid);
 		int result = pstmt.executeUpdate();
 		conn.commit();
 		pstmt.close();
