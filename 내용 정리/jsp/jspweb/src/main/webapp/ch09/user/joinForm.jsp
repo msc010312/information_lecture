@@ -12,5 +12,6 @@
 		<input type="text" name="password" />
 		<button>가입</button>
 	</form>
+	<a href="selectAll.jsp">게시판보기</a>
 </body>
 </html>
