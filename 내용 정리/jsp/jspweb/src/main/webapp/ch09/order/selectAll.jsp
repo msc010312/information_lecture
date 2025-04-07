@@ -1,3 +1,4 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="ch09.OrderDTO2"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,6 +27,7 @@ List<OrderDTO2> list2 = DBUtils.getInstance().selectDateOrder();
 	</tr>
 	<%
 	for (OrderDTO orderDto : list) {
+		
 	%>
 
 	<tr>
