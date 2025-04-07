@@ -5,7 +5,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="ch06.*" %>
-<%
+<%-- <%
 String url = "jdbc:oracle:thin:@localhost:1521:xe";
 String id = "system";
 String password = "1234";
@@ -55,4 +55,4 @@ private int select(UserDTO userdto) throws Exception{
 		request.getRequestDispatcher("join_form.jsp").forward(request, response);
 		return;
 	};
-%>
+%> --%>

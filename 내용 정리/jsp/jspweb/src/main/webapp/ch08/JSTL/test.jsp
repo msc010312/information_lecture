@@ -19,9 +19,9 @@
 <hr>
 
 <!-- 배열지정 -->
-<c:set var="arr" value="${[10,20,30,40,50]}" />
+<%-- <c:set var="arr" value="${[10,20,30,40,50]}" />
 <c:out value="${arr}" />
-<c:out value="${arr[1]}" />
+<c:out value="${arr[1]}" /> --%>
 
 <!-- IF -->
 <c:set var="flag" value="true" />
@@ -70,7 +70,7 @@
 	request.setAttribute("listTest", listTest);
 %>
 <c:set var="str1" value="TEST1234" />
-FN:LENGTH : ${fn:length(listTest)} <br>
+<%-- FN:LENGTH : ${fn:length(listTest)} <br> --%>
 	
 </body>
 </html>
