@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath }/style.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/style.css?after" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/1/member.css?after" rel="stylesheet" />
 </head>
 <body>
 	<div clss="wrapper">

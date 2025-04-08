@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+h2 {
+	margin-bottom: 20px;
+}
+
+.vote-form {
+	position: relative;
+	min-width: 50%;
+	height: 50%;
+	margin: 0 auto;
+}
