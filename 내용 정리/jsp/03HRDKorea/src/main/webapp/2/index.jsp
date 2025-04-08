@@ -17,31 +17,36 @@ section {
 	height: 100%;
 }
 
-h2 {
+table {
+	position: relative;
+	width: 50vw;
+	height: 50%;
+	border-collapse: collapse;
+}
+
+caption {
+	font-size: 1.5rem;
+	font-weight: 900;
 	margin-bottom: 20px;
 }
 
-.vote-div{
-	display: flex;
-	justify-content:center;
-	align-items: center;
-	flex-direction: column;
-	width:100%;
-	height:100%;
-}
-.vote-form {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	width : 50%;
-	height: 50%;
-	padding: 25px 25px;
+th,td{
+	border: 1px solid #333;
+	padding: 20px 10px;
 }
 
-.vote-form>div>input {
-	margin-left: 10px;
+.tbl-input {
+	position: relative;
 }
+
+.tbl-btn {
+	text-align: center;
+}
+
+.tbl-btn>button: {
+	margin: 0 20px;
+}
+
 </style>
 </head>
 <body>
@@ -50,50 +55,56 @@ h2 {
 		<%@include file="/layout/nav.jsp" %>
 		<main>
 			<section>
-			
-			<div class="vote-div">
-			<h2>투표하기</h2>
-			<form class="vote-form" action="create.jsp" method="post" onsubmit="return false" name="voteForm">
-				<div>
-					<label>주민번호</label>
-					<input type="text" name="v_jumin"/>
-					<span>예 : 8906153154726</span>
-				</div>
-				<div>
-					<label>성명</label>
-					<input type="text" name="v_name"/>
-				</div>
-				<div>
-					<label>후보번호</label>
-					<select name="m_num">
-						<option hidden></option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-					</select>
-				</div>
-				<div>
-					<label>투표시간</label>
-					<input type="text" name="v_time"/>
-				</div>
-				<div>
-					<label>투표장소</label>
-					<input type="text" name="v_area"/>
-				</div>
-				<div>
-					<label>유권자확인</label>
-					<input type="radio" name="v_confirm" value="Y">
-       				<label>확인</label>
-					<input type="radio" name="v_confirm" value="N">
-       				<label>미확인</label>
-				</div>
-				<div class="btn">
-					<button type="submit" onclick="isValid()">투표하기</button>
-					<button type="reset">다시하기</button>
-				</div>
-			</form>
-			</div>
+				<form class="class-form" action="create.jsp" method="post" onsubmit="return false" name="classForm">
+					<table>
+						<caption>수강신청</caption>
+						<tr>
+							<td>수강월</td>
+							<td class="tbl-input">
+								<input type="text" />
+								<span>예) 2022년 03월 → 202203</span>
+							</td>
+						</tr>
+						<tr>
+							<td>회원명</td>
+							<td class="tbl-input">
+								<input type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>회원번호</td>
+							<td class="tbl-input">
+								<input type="text" />
+								<span>예) 10001</span>
+							</td>
+						</tr>
+						<tr>
+							<td>강의장소</td>
+							<td class="tbl-input">
+								<input type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>강의명</td>
+							<td class="tbl-input">
+								<input type="text" />
+							</td>
+						</tr>
+						<tr>
+							<td>수강료</td>
+							<td class="tbl-input">
+								<input type="text" />
+								<span>원</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="tbl-btn">
+								<button type="submit" onclick="isValid()">수강신청</button>
+								<button type="reset">다시쓰기</button>
+							</td>
+						</tr>
+					</table>
+				</form>
 			</section>
 		</main>
 		<%@include file="/layout/footer.jsp" %>

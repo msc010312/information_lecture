@@ -50,6 +50,29 @@ public class DBUtils {
 	}
 	
 	//select all
+		public List<TeacherDTO> selectAllTeacher() throws Exception {
+			String sql = "select * from tbl_teacher_202201";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<TeacherDTO> list = new ArrayList();
+			TeacherDTO teacherDto = null;
+			if(rs != null) {
+				while(rs.next()) {
+					teacherDto = new TeacherDTO();
+					teacherDto.setTeacher_code(rs.getString(1));
+					teacherDto.setTeacher_name(rs.getString(2));
+					teacherDto.setClass_name(rs.getString(3));
+					teacherDto.setClass_price(rs.getInt(4));
+					teacherDto.setTeacher_regist_date(rs.getString(5));
+					list.add(teacherDto);
+				}
+			}
+			rs.close();
+			pstmt.close();
+			return list;
+		}
+	
+	//select all
 	public List<MemberDTO> selectAllMember() throws Exception {
 		String sql = "select m.m_no,m_name,p_name,p_school,m.m_jumin,m_city,p_tel1,p_tel2,p_tel3"
 				+ "	from tbl_member_202005 m"
