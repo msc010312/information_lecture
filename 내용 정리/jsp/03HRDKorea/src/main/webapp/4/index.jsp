@@ -1,7 +1,8 @@
+<%@page import="java.text.NumberFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="utils.*,java.util.*" %>
-<% List<RankDTO> list = DBUtils.getInstance().selectAllRank(); %>
+<% List<CostDTO> list = DBUtils.getInstance().selectAllcost(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +18,19 @@
 		<main>
 			<section>
 				<table>
-					<caption>후보자 등수</caption>
+					<caption>강사매출 현황</caption>
 					<tr>
-						<th>후보번호</th>
-						<th>성명</th>
-						<th>총투표건수</th>
+						<th>강사코드</th>
+						<th>강의명</th>
+						<th>강사명</th>
+						<th>총매출</th>
 					</tr>
-					<%for(RankDTO rd : list){ %>
-					<tr>
-						<th><%=rd.getM_no() %></th>
-						<th><%=rd.getM_name() %></th>
-						<th><%=rd.getCount() %></th>
+					<%for(CostDTO cd : list){ %>
+					<tr class="c-list">
+						<td><%=cd.getTeacher_code() %></td>
+						<td><%=cd.getClass_name() %></td>
+						<td><%=cd.getTeacher_name() %></td>
+						<td><%=NumberFormat.getCurrencyInstance(Locale.KOREA).format(cd.getSum())%></td>
 					</tr>
 					<%} %>
 				</table>

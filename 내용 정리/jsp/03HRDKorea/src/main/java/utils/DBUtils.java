@@ -34,15 +34,14 @@ public class DBUtils {
 		return instance;
 	}
 	
-	public int insertVote(VoteDTO voteDto) throws Exception {
-		String sql = "insert into tbl_vote_202005 values(?,?,?,?,?,?)";
+	public int insertClass(ClassDTO classDto) throws Exception {
+		String sql = "insert into tbl_class_202201 values(?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, voteDto.getV_jumin());
-		pstmt.setString(2, voteDto.getV_name());
-		pstmt.setString(3, voteDto.getM_num());
-		pstmt.setString(4, voteDto.getV_time());
-		pstmt.setString(5, voteDto.getV_area());
-		pstmt.setString(6, voteDto.getV_confirm());
+		pstmt.setString(1, classDto.getRegist_month());
+		pstmt.setString(2, classDto.getC_no());
+		pstmt.setString(3, classDto.getClass_area());
+		pstmt.setInt(4, classDto.getTuituon());
+		pstmt.setString(5, classDto.getTeacher_code());
 		int result = pstmt.executeUpdate();
 		conn.commit();
 		pstmt.close();
@@ -74,10 +73,7 @@ public class DBUtils {
 	
 	//select all
 	public List<MemberDTO> selectAllMember() throws Exception {
-		String sql = "select m.m_no,m_name,p_name,p_school,m.m_jumin,m_city,p_tel1,p_tel2,p_tel3"
-				+ "	from tbl_member_202005 m"
-				+ "	join tbl_party_202005 p"
-				+ "	on m.p_code = p.p_code";
+		String sql = "select * from tbl_member_202201";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		List<MemberDTO> list = new ArrayList();
@@ -85,15 +81,11 @@ public class DBUtils {
 		if(rs != null) {
 			while(rs.next()) {
 				memberDto = new MemberDTO();
-				memberDto.setM_no(rs.getString(1));
-				memberDto.setM_name(rs.getString(2));
-				memberDto.setP_name(rs.getString(3));
-				memberDto.setP_school(rs.getString(4));
-				memberDto.setM_jumin(rs.getString(5));
-				memberDto.setM_city(rs.getString(6));
-				memberDto.setP_tel1(rs.getString(7));
-				memberDto.setP_tel2(rs.getString(8));
-				memberDto.setP_tel3(rs.getString(9));
+				memberDto.setC_no(rs.getString(1));
+				memberDto.setC_name(rs.getString(2));
+				memberDto.setPhone(rs.getString(3));
+				memberDto.setAddress(rs.getString(4));
+				memberDto.setGrade(rs.getString(5));				
 				list.add(memberDto);
 			}
 		}
@@ -101,49 +93,77 @@ public class DBUtils {
 		pstmt.close();
 		return list;
 	}
-
-	//select all
-	public List<VoteDTO> selectAllVote() throws Exception {
-		String sql = "select * from tbl_vote_202005 where v_area='제1투표장'";
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		List<VoteDTO> list = new ArrayList();
-		VoteDTO voteDto = null;
-		if(rs != null) {
-			while(rs.next()) {
-				voteDto = new VoteDTO();
-				voteDto.setV_jumin(rs.getString(1));
-				voteDto.setV_name(rs.getString(2));
-				voteDto.setM_num(rs.getString(3));
-				voteDto.setV_time(rs.getString(4));
-				voteDto.setV_area(rs.getString(5));
-				voteDto.setV_confirm(rs.getString(6));
-				list.add(voteDto);
-			}
-		}
-		rs.close();
-		pstmt.close();
-		return list;
-	}
 	
-	public List<RankDTO> selectAllRank() throws Exception {
-		String sql = "select m.m_no,m_name,count(m.m_no) from tbl_member_202005 m"
-				+ " join  tbl_vote_202005 v"
-				+ " on m.m_no = v.m_no"
-				+ " where v.v_confirm='Y'"
-				+ " group by m.m_no, m_name"
-				+ " order by count(*) desc";
+	//select all
+		public List<ClassDTO> selectAllClass() throws Exception {
+			String sql = "select * from tbl_class_202201";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<ClassDTO> list = new ArrayList();
+			ClassDTO classDto = null;
+			if(rs != null) {
+				while(rs.next()) {
+					classDto = new ClassDTO();
+					classDto.setRegist_month(rs.getString(1));
+					classDto.setC_no(rs.getString(2));
+					classDto.setClass_area(rs.getString(3));
+					classDto.setTuituon(rs.getInt(4));
+					classDto.setTeacher_code(rs.getString(5));				
+					list.add(classDto);
+				}
+			}
+			rs.close();
+			pstmt.close();
+			return list;
+		}
+	
+	//select all
+		public List<GmemberDTO> selectAllGmember() throws Exception {
+			String sql = "select c.regist_month,m.c_no,m.c_name,t.class_name,c.class_area,t.class_price,m.grade"
+					+ " from tbl_class_202201 c, tbl_teacher_202201 t, tbl_member_202201 m"
+					+ " where c.teacher_code = t.teacher_code"
+					+ " and c.c_no = m.c_no";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<GmemberDTO> list = new ArrayList();
+			GmemberDTO gmemberDto = null;
+			if(rs != null) {
+				while(rs.next()) {
+					gmemberDto = new GmemberDTO();
+					gmemberDto.setRegist_month(rs.getString(1));
+					gmemberDto.setC_no(rs.getString(2));
+					gmemberDto.setC_name(rs.getString(3));
+					gmemberDto.setClass_name(rs.getString(4));
+					gmemberDto.setClass_area(rs.getString(5));
+					gmemberDto.setClass_price(rs.getInt(6));
+					gmemberDto.setGrade(rs.getString(7));
+					list.add(gmemberDto);
+				}
+			}
+			rs.close();
+			pstmt.close();
+			return list;
+		}
+	
+	public List<CostDTO> selectAllcost() throws Exception {
+		String sql = "select t.teacher_code,t.class_name,t.teacher_name,sum(c.tuition)"
+				+ " from tbl_teacher_202201 t"
+				+ " join tbl_class_202201 c"
+				+ " on t.teacher_code=c.teacher_code"
+				+ " group by t.teacher_code, t.class_name, t.teacher_name"
+				+ " order by t.teacher_code asc";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
-		List<RankDTO> list = new ArrayList();
-		RankDTO rankDto = null;
+		List<CostDTO> list = new ArrayList();
+		CostDTO costDto = null;
 		if(rs != null) {
 			while(rs.next()) {
-				rankDto = new RankDTO();
-				rankDto.setM_no(rs.getString(1));
-				rankDto.setM_name(rs.getString(2));
-				rankDto.setCount(rs.getString(3));
-				list.add(rankDto);
+				costDto = new CostDTO();
+				costDto.setTeacher_code(rs.getString(1));
+				costDto.setClass_name(rs.getString(2));
+				costDto.setTeacher_name(rs.getString(3));
+				costDto.setSum(rs.getInt(4));
+				list.add(costDto);
 			}
 		}
 		rs.close();
