@@ -29,3 +29,12 @@ th,td{
 td {
 	text-align: center;
 }
+
+.c-list {
+	position:relative;
+}
+
+.c-list>td:nth-child(n+3) {
+	text-align: right;
+	padding-right: 20px;
+}

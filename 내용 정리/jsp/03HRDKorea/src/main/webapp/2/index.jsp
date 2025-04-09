@@ -1,11 +1,18 @@
+<%@page import="utils.*"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+List<MemberDTO> list = DBUtils.getInstance().selectAllMember();
+List<TeacherDTO> list2 = DBUtils.getInstance().selectAllTeacher();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath }/style.css?after" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/style.css?after"
+	rel="stylesheet" />
 <%-- <link href="${pageContext.request.contextPath }/2/vote.css?after" rel="stylesheet" /> --%>
 <style type="text/css">
 section {
@@ -30,13 +37,21 @@ caption {
 	margin-bottom: 20px;
 }
 
-th,td{
+tr>td:first-child {
+	text-align: center;
+}
+
+th, td {
 	border: 1px solid #333;
 	padding: 20px 10px;
 }
 
 .tbl-input {
 	position: relative;
+}
+
+.tbl-input>input {
+	height: 25px;
 }
 
 .tbl-btn {
@@ -46,55 +61,63 @@ th,td{
 .tbl-btn>button: {
 	margin: 0 20px;
 }
-
 </style>
 </head>
 <body>
+
 	<div class="wrapper">
-		<%@include file="/layout/header.jsp" %>
-		<%@include file="/layout/nav.jsp" %>
+		<%@include file="/layout/header.jsp"%>
+		<%@include file="/layout/nav.jsp"%>
 		<main>
 			<section>
-				<form class="class-form" action="create.jsp" method="post" onsubmit="return false" name="classForm">
+				<form class="class-form" action="create.jsp" method="post"
+					onsubmit="return false" name="classForm">
 					<table>
 						<caption>수강신청</caption>
 						<tr>
 							<td>수강월</td>
-							<td class="tbl-input">
-								<input type="text" />
-								<span>예) 2022년 03월 → 202203</span>
-							</td>
+							<td class="tbl-input"><input type="text" name="c_reg" /> <span>예)
+									2022년 03월 → 202203</span></td>
 						</tr>
 						<tr>
 							<td>회원명</td>
-							<td class="tbl-input">
-								<input type="text" />
-							</td>
+							<td class="tbl-input"><select name="c_name">
+									<option hidden>회원명</option>
+									<%
+									for (MemberDTO md : list) {
+									%>
+									<option data-no=<%=md.getC_no()%> value=<%=md.getC_name()%>><%=md.getC_name()%></option>
+									<%
+									}
+									%>
+							</select></td>
 						</tr>
 						<tr>
 							<td>회원번호</td>
-							<td class="tbl-input">
-								<input type="text" />
-								<span>예) 10001</span>
-							</td>
+							<td class="tbl-input"><input type="text" name="c_no" /> <span>예)
+									10001</span></td>
 						</tr>
 						<tr>
 							<td>강의장소</td>
-							<td class="tbl-input">
-								<input type="text" />
-							</td>
+							<td class="tbl-input"><input type="text" name="c_area" /></td>
 						</tr>
 						<tr>
 							<td>강의명</td>
-							<td class="tbl-input">
-								<input type="text" />
-							</td>
+							<td class="tbl-input"><select name="class_name">
+									<option hidden>강의신청</option>
+									<%
+									for (TeacherDTO td : list2) {
+									%>
+									<option data-price=<%=td.getClass_price()%>
+										value=<%=td.getClass_name()%>><%=td.getClass_name()%></option>
+									<%
+									}
+									%>
+							</select></td>
 						</tr>
 						<tr>
 							<td>수강료</td>
-							<td class="tbl-input">
-								<input type="text" />
-								<span>원</span>
+							<td class="tbl-input"><input type="text" name="cost" /> <span>원</span>
 							</td>
 						</tr>
 						<tr>
@@ -107,45 +130,69 @@ th,td{
 				</form>
 			</section>
 		</main>
-		<%@include file="/layout/footer.jsp" %>
+		<%@include file="/layout/footer.jsp"%>
 	</div>
 	<script type="text/javascript">
+		const form = document.classForm;
+		let cno;
+		let price;
+		form.c_name.addEventListener('change', function(e) {
+			const selectEl = e.target;
+			const seletedOption = selectEl.options[selectEl.selectedIndex];
+			cno = seletedOption.getAttribute("data-no");
+			form.c_no.value = cno;
+			if (price != null || price != undefined) {
+				if (cno < 20000)
+					form.cost.value = price;
+				else
+					form.cost.value = (price / 2);
+			}
+		});
+
+		form.class_name.addEventListener('change', function(e) {
+			const selectEl = e.target;
+			const seletedOption = selectEl.options[selectEl.selectedIndex];
+			price = seletedOption.getAttribute("data-price");
+
+			if (cno < 20000)
+				form.cost.value = price;
+			else
+				form.cost.value = (price / 2);
+		});
 		function isValid() {
-			//form 요소 찾기
-			const voteForm = document.voteForm;
 			//유효성 검사
-			if(voteForm.v_jumin.value === ""){
-				alert("주민번호가 입력되지 않았습니다");
-				voteForm.v_jumin.focus();
+			if (form.c_reg.value === "") {
+				alert("수강월이 입력되지 않았습니다");
+				form.c_reg.focus();
 				return;
 			}
-			if(voteForm.v_name.value === ""){
-				alert("성명이 입력되지 않았습니다");
-				voteForm.v_name.focus();
+			if (form.c_name.value === "") {
+				alert("회원명이 선택되지 않았습니다");
+				form.c_name.focus();
 				return;
 			}
-			if(voteForm.m_num.value === ""){
-				alert("후보번호가 선택되지 않았습니다");
-				voteForm.m_num.focus();
+			if (form.c_no.value === "") {
+				alert("회원번호가 입력되지 않았습니다");
+				form.c_no.focus();
 				return;
 			}
-			if(voteForm.v_time.value === ""){
-				alert("투표시간이 입력되지 않았습니다");
-				voteForm.v_time.focus();
+			if (form.c_area.value === "") {
+				alert("강의장소가 입력되지 않았습니다");
+				form.c_area.focus();
 				return;
 			}
-			if(voteForm.v_area.value === ""){
-				alert("투표장소가 입력되지 않았습니다");
-				voteForm.v_area.focus();
+			if (form.teacher_code.value === "") {
+				alert("강의명이 입력되지 않았습니다");
+				form.teacher_code.focus();
 				return;
 			}
-			if(voteForm.v_confirm.value === ""){
-				alert("유권자확인이 선택되지않았습니다");
-				voteForm.v_confirm.focus();
+			if (form.cost.value === "") {
+				alert("수강료가 입력되지 않았습니다");
+				form.cost.focus();
 				return;
 			}
 			//submit처리
-			voteForm.submit();
+			form.submit();
 		}
 	</script>
 </body>
