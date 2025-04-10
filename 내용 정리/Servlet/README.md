@@ -73,7 +73,7 @@ public class ServletTest4 extends HttpServlet{
 
 ## Servlet mapping
 + \<servlet> : 브라우저에서 요청하는 매핑 이름에 대해 실제로 실행하는 서블릿 클래스를 설정하는 태그
-+ \<sevlet-name> : <servlet>과 <servlet-mapping>을 연결 시켜주는 태그
++ \<sevlet-name> : \<servlet>과 \<servlet-mapping>을 연결 시켜주는 태그
 + \<servlet-class> : 브라우저에 요청하는 매핑 이름에 대해 실제로 기능을 수행하는 서블릿 클래스
 + \<servlet-mapping> : 브라우저에서 요청하는 논리적인 서블릿을 설정
 + \<url-pattern> : 클라이언트가 요청하는 논리적인 서블릿 이름
