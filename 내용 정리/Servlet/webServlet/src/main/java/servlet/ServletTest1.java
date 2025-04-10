@@ -28,7 +28,4 @@ public class ServletTest1 extends HttpServlet {
 		// destroy() 메소드를 호출하여 Servlet을 제거
 		System.out.println("destroy() invoke");
 	}
-
-	
-	
 }
