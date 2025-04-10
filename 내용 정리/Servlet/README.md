@@ -106,3 +106,32 @@ public class ServletTest4 extends HttpServlet{
 		<url-pattern>/main.do</url-pattern>
 	</servlet-mapping>
 ```
+
+## Filter
++ 서블릿으로 전달되는 request 혹은 클라이언트로 전달되는 response를 중간에서 필터링 해주는 인터페이스 (정수기 필터 같은 원리)
+
+![Image](https://github.com/user-attachments/assets/dfcf39a4-4c59-4663-97e3-41da5fd5c8f9)
+
+```
+public class EncodingFilter implements Filter{
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// 전
+		request.setCharacterEncoding("UTF-8"); // 인코딩셋을 UTF-8로 서블릿에 요청
+		chain.doFilter(request, response); // 필터체인
+		// 후
+		response.setContentType("text/html; charset=UTF-8"); // UTF-8로 변환된 데이터를 클라이언트에 표시
+	}
+}
+
+// filter mapping
+web.xml 
+<filter>
+	<filter-name>Encoding</filter-name>
+	<filter-class>filter.EncodingFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>Encoding</filter-name>
+	<url-pattern>*.do</url-pattern> // .do가 들어가는 모든 url에 EncodingFilter class의 기능을 적용
+</filter-mapping>
+```
