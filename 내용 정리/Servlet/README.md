@@ -40,6 +40,7 @@ public class ServletTest1 extends HttpServlet {
 ## doGet, doPost
 
 ![Image](https://github.com/user-attachments/assets/1ecf47aa-0eff-4962-93f2-2fec64e3fec2)
+![Image](https://github.com/user-attachments/assets/0ac8cb77-10d5-4b55-9986-38c081b37df8)
 
 ```
 public class ServletTest4 extends HttpServlet{
