@@ -135,3 +135,11 @@ web.xml
 	<url-pattern>*.do</url-pattern> // .do가 들어가는 모든 url에 EncodingFilter class의 기능을 적용
 </filter-mapping>
 ```
+
+## Listener
++ 이벤트 - 발생한 특정 사건(마우스 클릭, 키보드 입력, 클라이언트로부터의 HTTP 요청, 웹어플리케이션 시작, 웹어플리케이션 종료 등)
++ 이벤트 소스 - 이벤트가 발생한 대상(근원지)으로 마우스, 키보드, 웹어플리케이션(ServletContext) 등
++ 리스너, 핸들러 - 이벤트가 발생되기를 기다렸다가 발생시 실행되는 메서드나 함수. 또는 메서드를 가진 객체
+
+> 리스너의 종류
+![Image](https://github.com/user-attachments/assets/a22e6783-5f78-4f18-bd92-d38d9f34b171)
