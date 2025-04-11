@@ -1,4 +1,4 @@
-package servlet;
+package Servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import Utils.OracleDBUtils;
 import dto.UserDTO;
 
-//@WebServlet("/login.do")
+@WebServlet("/login.do")
 public class Login extends HttpServlet{
 
 	//GET - 	/login.do - /WEB-INF/user/login.jsp 연결
@@ -33,8 +33,7 @@ public class Login extends HttpServlet{
 			if(user!= null && user.getPassword().equals(pw)) {
 				HttpSession session = req.getSession();
 				session.setAttribute("id", id);
-				session.setAttribute("role", user.getUser_role());
-				// resp.sendRedirect(req.getContextPath() + "/login.do");
+				resp.sendRedirect(req.getContextPath() + "/main.do");
 			}
 			else {
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
