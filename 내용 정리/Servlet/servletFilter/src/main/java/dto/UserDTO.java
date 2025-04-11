@@ -3,13 +3,15 @@ package dto;
 public class UserDTO {
 	private String username;
 	private String password;
+	private String user_role;
 	
 	public UserDTO() {}
 
-	public UserDTO(String username, String password) {
+	public UserDTO(String username, String password,String user_role) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.user_role = user_role;
 	}
 
 	public String getUsername() {
@@ -27,10 +29,12 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@Override
-	public String toString() {
-		return "UserDTO [username=" + username + ", password=" + password + "]";
-	}
 	
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
+	}
 }

@@ -33,10 +33,11 @@ public class OracleDBUtils {
 	
 	
 	public int insertUser(UserDTO userdto) throws Exception {
-		String sql = "insert into tbl_user values(?,?)";
+		String sql = "insert into tbl_user values(?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, userdto.getUsername());
 		pstmt.setString(2, userdto.getPassword());
+		pstmt.setString(3, userdto.getUser_role());
 		int result = pstmt.executeUpdate();
 		conn.commit();
 		pstmt.close();
@@ -54,6 +55,7 @@ public class OracleDBUtils {
 			userdto = new UserDTO();
 			userdto.setUsername(rs.getString(1));
 			userdto.setPassword(rs.getString(2));
+			userdto.setUser_role(rs.getString(3));
 		}
 		
 		rs.close();
