@@ -33,7 +33,8 @@ public class Login extends HttpServlet{
 			if(user!= null && user.getPassword().equals(pw)) {
 				HttpSession session = req.getSession();
 				session.setAttribute("id", id);
-				resp.sendRedirect(req.getContextPath() + "/main.do");
+				session.setAttribute("role", user.getUser_role());
+				resp.sendRedirect(req.getContextPath() + "/login.do");
 			}
 			else {
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);

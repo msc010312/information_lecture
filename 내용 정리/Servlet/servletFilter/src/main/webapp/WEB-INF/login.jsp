@@ -13,7 +13,10 @@
 		<input type="text" name="password"/>
 		<button>회원가입</button>
 	</form>
-		<a href="join.do">회원가입으로 이동</a>
+	<a href="join.do">회원가입으로 이동</a>
 	<a href="${pageContext.request.contextPath }">홈으로 이동</a>
+	<div>
+		<span>${param.msg }</span>
+	</div>
 </body>
 </html>

@@ -28,8 +28,8 @@ public class Join extends HttpServlet{
 		System.out.println("post /join.do id : " + id);
 		
 		try {
-//			int result = OracleDBUtils.getInstance().insertUser(new UserDTO(id,pw));
-			if(/*result > 0*/true) {
+		int result = OracleDBUtils.getInstance().insertUser(new UserDTO(id,pw,""));
+			if(result > 0) {
 				resp.sendRedirect(req.getContextPath() + "/login.do");
 				return;
 			}

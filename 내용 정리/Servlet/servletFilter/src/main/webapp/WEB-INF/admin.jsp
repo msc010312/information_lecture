@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>MAIN PAGE</h1>
-	${role }
+	<h1>admin</h1>
 </body>
 </html>
