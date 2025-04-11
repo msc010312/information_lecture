@@ -19,13 +19,14 @@ public class LoginRedirectFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-
+		chain.doFilter(req, resp);
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
+		String method = request.getMethod();
 		HttpSession session = request.getSession();
 		String myRole = (String) session.getAttribute("role");
 		System.out.println(myRole);
-		if (myRole != null) {
+		if (method.equals("POST") && myRole != null) {
 			if (myRole.equals("ROLE_ADMIN")) {
 				response.sendRedirect(request.getContextPath() + "/admin.do");
 				return;
@@ -39,7 +40,7 @@ public class LoginRedirectFilter implements Filter {
 				return;
 			}
 		}
-		chain.doFilter(req, resp);
+		
 	}
 
 }
