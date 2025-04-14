@@ -26,6 +26,8 @@
 
 # Servlet,jsp에서의 MVC
 
+![Image](https://github.com/user-attachments/assets/089b294e-0d16-417b-b7a6-560ccf7b73d6)
+
 ## 구성
 + Model : Biz, DAO
 + View : JSP
