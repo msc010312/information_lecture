@@ -32,10 +32,10 @@
 + Controller : Servlet
 
 ## 동작방식
-1.JSP : 사용자에게 화면을 보여준다.
-2.JSP ↔ Controller : DTO로 데이터가 전달된다.
-3.Controller : 요청의 유효성을 검증하고, 전체 흐름을 제어한다.
-4.Contorller ↔ Biz : DTO로 데이터가 전달된다.
+1. JSP : 사용자에게 화면을 보여준다.
+2. JSP ↔ Controller : DTO로 데이터가 전달된다.
+3. Controller : 요청의 유효성을 검증하고, 전체 흐름을 제어한다.
+4. Contorller ↔ Biz : DTO로 데이터가 전달된다.
 5. Biz
  + DB 관련 로직을 제외한 비즈니스 로직을 구현한다.
  + Connection을 생성/반납하고 commit, rollback 등 transcation을 관리한다.
