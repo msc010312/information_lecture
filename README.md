@@ -18,8 +18,6 @@
 1. HTML [[바로가기]](https://github.com/msc010312/frontTest/tree/main/01-html)
 2. CSS [[바로가기]](https://github.com/msc010312/frontTest/tree/main/02-css)
 3. javascript [[바로가기]](https://github.com/msc010312/frontTest/tree/main/04-js)
-4. js Library [[바로가기]](https://github.com/msc010312/frontTest/tree/main/05-js%20library)
-5. BootStrap [[바로가기]](https://github.com/msc010312/frontTest/tree/main/06-BootStrap)
 - - -
 + 자바 [[바로가기]](https://github.com/msc010312/information_lecture/tree/main/%EB%82%B4%EC%9A%A9%20%EC%A0%95%EB%A6%AC/%EC%9E%90%EB%B0%94/javaBook/src)
 - - -
