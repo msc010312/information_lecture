@@ -142,4 +142,5 @@ web.xml
 + 리스너, 핸들러 - 이벤트가 발생되기를 기다렸다가 발생시 실행되는 메서드나 함수. 또는 메서드를 가진 객체
 
 > 리스너의 종류
+
 ![Image](https://github.com/user-attachments/assets/a22e6783-5f78-4f18-bd92-d38d9f34b171)
