@@ -37,11 +37,11 @@
 3.Controller : 요청의 유효성을 검증하고, 전체 흐름을 제어한다.
 4.Contorller ↔ Biz : DTO로 데이터가 전달된다.
 5. Biz
- 1. DB 관련 로직을 제외한 비즈니스 로직을 구현한다.
- 2. Connection을 생성/반납하고 commit, rollback 등 transcation을 관리한다.
- 3. 상황에 적합한 DAO을 호출함으로써 transaction 단위로 connection을 관리할 수 있다.
- 4. Biz ↔ DAO : Entity로 데이터가 전달된다.
+ + DB 관련 로직을 제외한 비즈니스 로직을 구현한다.
+ + Connection을 생성/반납하고 commit, rollback 등 transcation을 관리한다.
+ + 상황에 적합한 DAO을 호출함으로써 transaction 단위로 connection을 관리할 수 있다.
+ + Biz ↔ DAO : Entity로 데이터가 전달된다.
 6. DAO
- 1. DB 관리 로직을 구현한다.
- 2. 테이블의 CRUD 기능을 제공한다.
- 3. 보통 1개의 테이블 당 1개의 DAO가 존재한다.
+ + DB 관리 로직을 구현한다.
+ + 테이블의 CRUD 기능을 제공한다.
+ + 보통 1개의 테이블 당 1개의 DAO가 존재한다.
