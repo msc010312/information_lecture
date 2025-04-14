@@ -15,7 +15,4 @@ public class ServletListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		System.out.println("Listener end");
 	}
-
-	
-
 }
