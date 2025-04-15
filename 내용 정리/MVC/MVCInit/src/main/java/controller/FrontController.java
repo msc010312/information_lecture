@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.user.UserCreateController;
+import controller.user.UserLoginController;
+import controller.user.UserLogoutController;
 
 @WebServlet("/")
 public class FrontController extends HttpServlet {
@@ -26,6 +27,8 @@ public class FrontController extends HttpServlet {
 			map.put("/", new HomeController());
 			map.put("/index.do", new HomeController());
 			map.put("/user/create", new UserCreateController());
+			map.put("/user/login", new UserLoginController());
+			map.put("/user/logout", new UserLogoutController());
 		} catch (Exception e) {
 			e.printStackTrace();
 //			throw new ServletException("서브컨트롤러 동작오류");
@@ -54,6 +57,5 @@ public class FrontController extends HttpServlet {
 		req.setAttribute("message", e.getMessage());
 		req.setAttribute("exception", e);
 	}
-	
-	
+
 }
