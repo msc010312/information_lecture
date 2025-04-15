@@ -18,23 +18,15 @@
 			<!-- nav -->
 			<%@include file="/resources/layouts/nav.jsp" %>
 		</header>
-		<main class="layout">
-				<h1>HOME</h1>
+		<main  class="layout">
+				TEMPLATE
 		</main>
-
+		
+		
 		<!-- footer -->
 		<%@include file="/resources/layouts/footer.jsp" %>
 	</div>
-	<%
-		String msg = request.getParameter("message");
-		if(msg!=null)
-			out.print("<script> alert("+msg+"); </script>");
-	%>
 
-	<script>
-		const message = '<%=request.getParameter("message")!=null ? request.getParameter("message") : "" %>';
-		if(message != "");
-		alert(message);
-	</script>
+	
 </body>
 </html>
