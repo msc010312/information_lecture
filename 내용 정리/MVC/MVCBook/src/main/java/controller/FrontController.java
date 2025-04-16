@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.book.BookCreateController;
+import controller.book.BookDeleteController;
+import controller.book.BookListController;
+import controller.book.BookReadController;
+import controller.book.BookUpdateController;
 import controller.user.AdminMainController;
 import controller.user.ManagerMainController;
 import controller.user.UserCreateController;
@@ -35,6 +40,7 @@ public class FrontController extends HttpServlet {
 			map.put("/user/manager", new ManagerMainController());
 			map.put("/user/admin", new AdminMainController());
 			
+			// 유저 로그인
 			map.put("/user/create", new UserCreateController());
 			map.put("/user/login", new UserLoginController());
 			map.put("/user/logout", new UserLogoutController());
@@ -43,6 +49,16 @@ public class FrontController extends HttpServlet {
 			throw new ServletException("서브컨트롤러 동작오류");
 		}
 		// 도서(/book/*)
+		try {
+		map.put("/book/list", new BookListController());
+		map.put("/book/create", new BookCreateController());
+		map.put("/book/read", new BookReadController());
+		map.put("/book/update", new BookUpdateController());
+		map.put("/book/delete", new BookDeleteController());
+		} catch (Exception e) {
+			e.printStackTrace();
+//			throw new ServletException("서브컨트롤러 동작오류");
+		}
 	}
 	
 	@Override
