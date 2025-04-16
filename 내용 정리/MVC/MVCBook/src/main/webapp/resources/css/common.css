@@ -37,9 +37,7 @@ body{
 	padding : 0;
 	width:35px;
 	height:100%;
-	background-color:orange;
-	
-	
+
 	display:flex;
 	justify-content : center;
 	align-items : center;
@@ -52,27 +50,8 @@ body{
 	display:flex;
 	justify-content : center;
 	align-items : center
-	position:relative;
+
 	
-}
-.wrapper>header>.top-header>.user-block>li::after{
-	content : 'TEST';
-	font-size : .6rem;
-	color:white;
-	display:block;
-	width:35px;
-	hegiht : 100%;
-	
-	position:absolute;
-	bottom : 0px;
-	left:0;
-	height:20px;
-	border :1px solid white;
-	
-	display:flex;
-	justify-content : center;
-	align-items : center;
-		
 }
 
 
@@ -115,11 +94,3 @@ body{
 	height : 150px;
 
 }
-
-
-
-
-
-
-
-
