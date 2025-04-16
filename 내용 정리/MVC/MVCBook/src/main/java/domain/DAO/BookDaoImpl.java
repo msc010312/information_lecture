@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import domain.DAO.connectionPool.ConnectionItem;
@@ -72,27 +73,113 @@ public class BookDaoImpl implements BookDao {
 	
  
 	@Override
-	public int update(UserDTO userDto) throws SQLException {
+	public int update(BookDTO bookDto) throws SQLException {
 		return 0;
 	}
  
 	@Override
-	public int delete(UserDTO userDto) throws SQLException {
+	public int delete(BookDTO bookDto) throws SQLException {
 		return 0;
 	}
 	//단건조회
  
 	@Override
-	public UserDTO select(UserDTO userDto) {	
+	public UserDTO select(BookDTO bookDto) throws SQLException{	
 		return null;
 	}
 	//다건조회
  
 	@Override
-	public List<UserDTO> selectAll() {	
-		return null;
-	}	
+	public List<BookDTO> selectAll() throws Exception{
+		try {
+		//connection  get
+		connectionItem = connectionPool.getConnection();
+		Connection conn = connectionItem.getConn();
+		String sql = "select * from tbl_book";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		List<BookDTO> list = new ArrayList();
+		BookDTO bookdto = null;
+		if(rs != null) {
+			while(rs.next()) {
+				bookdto = new BookDTO();
+				bookdto.setBookCode(rs.getString(1));
+				bookdto.setBookName(rs.getString(2));
+				bookdto.setPublisher(rs.getString(3));
+				bookdto.setIsbn(rs.getString(4));
+				list.add(bookdto);
+			}
+		}
+		return list;
 
+		} catch(SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("BOOKDAO's SELECT SQL EXCEPTION!!");
+		}finally {
+			try {rs.close(); pstmt.close();}catch(Exception e2) {}
+			//connection release
+			connectionPool.releaseConnection(connectionItem);
+		}
+	}
+	@Override
+	public List<BookDTO> selectAll(int offset, int amount) throws Exception {
+		try {
+			//connection  get
+			connectionItem = connectionPool.getConnection();
+			Connection conn = connectionItem.getConn();
+			String sql = "SELECT * FROM TBL_BOOK order by bookcode desc limit ?,?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, offset);
+			pstmt.setInt(2, amount);
+			rs = pstmt.executeQuery();
+			List<BookDTO> list = new ArrayList();
+			BookDTO bookdto = null;
+			if(rs != null) {
+				while(rs.next()) {
+					bookdto = new BookDTO();
+					bookdto.setBookCode(rs.getString(1));
+					bookdto.setBookName(rs.getString(2));
+					bookdto.setPublisher(rs.getString(3));
+					bookdto.setIsbn(rs.getString(4));
+					list.add(bookdto);
+				}
+			}
+			return list;
+
+			} catch(SQLException e) {
+				e.printStackTrace();
+				throw new SQLException("BOOKDAO's SELECT SQL EXCEPTION!!");
+			}finally {
+				try {rs.close(); pstmt.close();}catch(Exception e2) {}
+				//connection release
+				connectionPool.releaseConnection(connectionItem);
+			}
+		}
+	
+		@Override
+		public long count() throws Exception{
+			long count=0;
+			try {
+				//connection  get
+				connectionItem = connectionPool.getConnection();
+				Connection conn = connectionItem.getConn();
+				String sql = "SELECT COUNT(*) FROM TBL_BOOK";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs != null && rs.next()) {
+					count = rs.getLong(1);
+				}
+				return count;
+
+				} catch(SQLException e) {
+					e.printStackTrace();
+					throw new SQLException("BOOKDAO's SELECT SQL EXCEPTION!!");
+				}finally {
+					try {rs.close(); pstmt.close();}catch(Exception e2) {}
+					//connection release
+					connectionPool.releaseConnection(connectionItem);
+				}
+		}
 }
 
 

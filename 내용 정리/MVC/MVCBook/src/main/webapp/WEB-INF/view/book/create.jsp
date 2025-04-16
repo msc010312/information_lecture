@@ -18,11 +18,30 @@
 			<!-- nav -->
 			<%@include file="/resources/layouts/nav.jsp" %>
 		</header>
-		<main  class="layout">
-				<h1>create</h1>
+		<main class="layout">
+			<h1>create</h1>
+			<form action="${pageContext.request.contextPath }/book/create" method="post">
+				<div>
+					<label for="">book code : </label><span>${bookCode }</span><br>
+					<input type="text" name="bookCode" placeholder=bookCode />
+				</div>
+				<div>
+					<label for="">book name : </label><span>${bookName }</span><br>
+					<input type="text" name="bookName" placeholder=bookName />
+				</div>
+				<div>
+					<label for="">publisher : </label> <span>${publisher }</span><br>
+					<input type="text" name="publisher" placeholder=publisher />
+				</div>
+				<div>
+					<label for="">isbn : </label><span>${isbn }</span><br>
+					<input type="text" name="isbn" placeholder=isbn />
+				</div>
+				<div>
+					<button>도서등록</button>
+				</div>
+			</form>
 		</main>
-		
-		
 		<!-- footer -->
 		<%@include file="/resources/layouts/footer.jsp" %>
 	</div>
