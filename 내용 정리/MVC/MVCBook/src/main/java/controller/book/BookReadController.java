@@ -29,6 +29,9 @@ public class BookReadController implements SubController{
 			}
 		} catch (Exception e) {
 			exceptionHandler(e);
+			try {
+				req.getRequestDispatcher("/WEB-INF/view/book/errro.jsp").forward(req, resp);
+			} catch(Exception e2) {}
 		}
 	}
 
