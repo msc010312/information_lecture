@@ -31,10 +31,10 @@
 			out.print("<script> alert("+msg+"); </script>");
 	%>
 
-	<script>
+	<%-- <script>
 		const message = '<%=request.getParameter("message")!=null ? request.getParameter("message") : "" %>';
 		if(message != "");
 		alert(message);
-	</script>
+	</script> --%>
 </body>
 </html>

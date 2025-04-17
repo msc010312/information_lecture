@@ -88,9 +88,13 @@ body{
 }	
 .wrapper>main{
 	min-height:calc(100vh - 100px - 150px);
-	
 }
+
+.active{
+	background: #0d6efd;
+	color: #fff;
+}
+
 .wrapper>footer{
 	height : 150px;
-
 }

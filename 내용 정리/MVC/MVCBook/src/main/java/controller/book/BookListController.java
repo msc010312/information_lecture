@@ -40,7 +40,7 @@ public class BookListController implements SubController {
 			if(pageno==null) {
 				criteria = new Criteria();
 			} else {
-				
+				criteria = new Criteria(pageno,10,type,keyword);
 			}
 			
 			// 서비스
