@@ -11,9 +11,9 @@ public interface BookDao {
 
 	int insert(BookDTO bookDto) throws Exception;
 
-	int update(BookDTO bookDto) throws SQLException;
+	public int update(BookDTO bookDto) throws Exception;
 
-	int delete(BookDTO bookDto) throws SQLException;
+	public int delete(String bookCode) throws Exception;
 	//단건조회
 
 	UserDTO select(BookDTO bookDto) throws SQLException;
@@ -24,4 +24,10 @@ public interface BookDao {
 	public List<BookDTO> selectAll(int offset, int amount) throws Exception;
 
 	public long count() throws Exception;
+
+	public BookDTO select(String bookCode) throws Exception;
+
+	public List<BookDTO> selectAll(int offset, int amount, String type, String keyword) throws Exception;
+
+	public long count(Criteria criteria) throws Exception; 
 }
