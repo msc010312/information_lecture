@@ -47,6 +47,13 @@ class DaoTest {
 	@Test
 	void test5() throws Exception{	
 		BookReplyDaoImpl brd = BookReplyDaoImpl.getInstance();
-		brd.insert(new ReplyDTO(-1,"222","admin","asdbv",LocalDateTime.now()));
+		brd.insert(new ReplyDTO(-1,"222","admin","sfasfasf",LocalDateTime.now()));
+	}
+	
+	@Test
+	@Disabled
+	void test6() throws Exception{	
+		BookReplyDaoImpl brd = BookReplyDaoImpl.getInstance();
+		brd.selectAll("222").forEach(System.out::println);
 	}
 }
