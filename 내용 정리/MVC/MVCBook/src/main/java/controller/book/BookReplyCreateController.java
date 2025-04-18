@@ -1,12 +1,16 @@
 package controller.book;
 
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialException;
 
 import controller.SubController;
 import domain.DTO.BookDTO;
+import domain.DTO.ReplyDTO;
 import domain.service.BookServiceImpl;
 
 public class BookReplyCreateController implements SubController{
@@ -26,15 +30,33 @@ public class BookReplyCreateController implements SubController{
 		this.resp = resp;
 		try {
 			// 파라미터
-		
-			// 유효성
-		
-			// 서비스
+			String bookCode = req.getParameter("bookCode");
+			String username = null;
+			String content = req.getParameter("content");
+			LocalDateTime createAt = LocalDateTime.now();
 			
+			HttpSession session = req.getSession();
+			username = (String) session.getAttribute("username");
+			if(username == null) {
+				throw new SerialException("로그인이 필요합니다");
+			}
+			ReplyDTO replyDto = new ReplyDTO(-1,bookCode,username,content,createAt);
+			// 유효성
+			if(!isValid(replyDto)) {
+				
+			}
+			// 서비스
+			boolean isAdded = bookService.bookReplyAdd(replyDto);
 						
 			// 뷰(json 데이터 전달)
-			PrintWriter out = resp.getWriter();
-			out.println("{\"message\":\"success\"}");
+			if(isAdded) {
+				PrintWriter out = resp.getWriter();
+				out.println("{\"message\":\"success\"}");
+			} else {
+				PrintWriter out = resp.getWriter();
+				out.println("{\"message\":\"fail\"}");
+			}
+			
 			
 		} catch (Exception e) {
 			exceptionHandler(e);
@@ -45,22 +67,7 @@ public class BookReplyCreateController implements SubController{
 		}
 	}
 
-	private boolean isValid(BookDTO bookdto) {
-		if (bookdto.getBookCode().isEmpty()) {
-			req.setAttribute("bookCode", "책 코드를 입력하세요");
-		}
-		if (bookdto.getBookName().isEmpty()) {
-			req.setAttribute("bookName", "책 이름을 입력하세요");
-		}
-		if (bookdto.getPublisher().isEmpty()) {
-			req.setAttribute("publisher", "출판사 명을 입력하세요");
-		}
-		if (bookdto.getIsbn().isEmpty()) {
-			req.setAttribute("isbn", "분류 코드를 입력하세요");
-		}
-		if (bookdto.getBookCode().isEmpty() || bookdto.getBookName().isEmpty() || bookdto.getPublisher().isEmpty() || bookdto.getIsbn().isEmpty())
-			return false;
-
+	private boolean isValid(ReplyDTO reDto) {
 		return true;
 	}
 

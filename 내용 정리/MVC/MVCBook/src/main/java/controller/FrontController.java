@@ -15,6 +15,7 @@ import controller.book.BookDeleteController;
 import controller.book.BookListController;
 import controller.book.BookReadController;
 import controller.book.BookReplyCreateController;
+import controller.book.BookReplyListController;
 import controller.book.BookUpdateController;
 import controller.user.AdminMainController;
 import controller.user.ManagerMainController;
@@ -59,6 +60,8 @@ public class FrontController extends HttpServlet {
 		
 		// 댓글
 		map.put("/book/reply/create", new BookReplyCreateController());
+		map.put("/book/reply/list", new BookReplyListController());
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServletException("서브컨트롤러 동작오류");

@@ -6,6 +6,7 @@
 <head>
 	<script>
 	 	const path = '${pageContext.request.contextPath}';
+	 	const bookCode = '${bookDto.bookCode}';
 	</script>
 
 	<!-- link -->
@@ -53,7 +54,7 @@
 			<div>
 				<div class="reply-header">
 					<div>
-						댓글 수 : <span>00</span>
+						댓글 수 : <span class="reCnt"></span>
 					</div>
 					<div>
 						<textarea rows="5" cols="30"></textarea>
@@ -62,7 +63,7 @@
 				</div>
 				<div class="reply-body">
 					<div class="items">
-						<div class="item">
+						<!-- <div class="item">
 							<div class="left">
 								<div>profileImage</div>
 								<div>username</div>
@@ -74,7 +75,7 @@
 								</div>
 								<div class="button-group"></div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
