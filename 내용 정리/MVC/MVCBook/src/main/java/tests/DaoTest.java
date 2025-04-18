@@ -1,13 +1,17 @@
 package tests;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import domain.DAO.BookDao;
 import domain.DAO.BookDaoImpl;
+import domain.DAO.BookReplyDaoImpl;
 import domain.DAO.UserDao;
 import domain.DAO.UserDaoImpl;
 import domain.DTO.BookDTO;
+import domain.DTO.ReplyDTO;
 import domain.DTO.UserDTO;
 
 class DaoTest {
@@ -34,8 +38,15 @@ class DaoTest {
 	}
 	
 	@Test
+	@Disabled
 	void test4() throws Exception{
 		BookDao bookDao = BookDaoImpl.getInstance();
 		bookDao.selectAll().forEach(System.out::println);
+	}
+	
+	@Test
+	void test5() throws Exception{	
+		BookReplyDaoImpl brd = BookReplyDaoImpl.getInstance();
+		brd.insert(new ReplyDTO(-1,"222","admin","asdbv",LocalDateTime.now()));
 	}
 }

@@ -52,6 +52,8 @@ public class PermissionFilter implements Filter{
 		pageGradeMap.put(projectPath+"/book/create", Role.ROLE_MANAGER); //2
 		pageGradeMap.put(projectPath+"/book/update", Role.ROLE_MANAGER); //2
 		pageGradeMap.put(projectPath+"/book/delete", Role.ROLE_MANAGER); //2
+		
+		pageGradeMap.put(projectPath+"/book/reply/create", Role.ROLE_ANONYMOUS); //0
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public class BookDaoImpl implements BookDao {
 			connectionItem = connectionPool.getConnection();
 			Connection conn = connectionItem.getConn();
 			
-			pstmt = conn.prepareStatement("insert into tbl_book values(?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into tbl_reply values(null,?,?,?,?)");
 			pstmt.setString(1, bookDto.getBookCode());
 			pstmt.setString(2, bookDto.getBookName());
 			pstmt.setString(3, bookDto.getPublisher());

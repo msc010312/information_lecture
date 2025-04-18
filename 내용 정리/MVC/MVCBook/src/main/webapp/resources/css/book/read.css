@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+textarea {
+	height: 50px;
+	resize: none;
+}
+
+.item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	border-top: 1px solid #333;
+	margin: 10px 0;
+}
