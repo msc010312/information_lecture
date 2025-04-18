@@ -76,7 +76,7 @@ public class UserServiceImpl {
 					session.setMaxInactiveInterval(60 * 10);
 
 					res.put("isLogin", true);
-					res.put("message", "로그인성공");
+					res.put("message", "login sucsess");
 				}
 			}
 

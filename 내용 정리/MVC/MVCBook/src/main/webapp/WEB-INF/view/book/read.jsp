@@ -4,8 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script>
+	 	const path = '${pageContext.request.contextPath}';
+	</script>
+
 	<!-- link -->
 	<%@include file="/resources/layouts/link.jsp" %>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/book/read.css" />
+	<script src="${pageContext.request.contextPath }/resources/js/book/read.js" defer></script>
 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -42,6 +48,36 @@
 					<a href="${pageContext.request.contextPath }/book/delete?bookCode=${bookDto.bookCode}&pageno=${pageno}">도서삭제</a>
 				</div>
 			</form>
+			
+			<!--  -->
+			<div>
+				<div class="reply-header">
+					<div>
+						댓글 수 : <span>00</span>
+					</div>
+					<div>
+						<textarea rows="5" cols="30"></textarea>
+						<a class="reply-add" href="javascript:void(0)">입력</a>
+					</div>
+				</div>
+				<div class="reply-body">
+					<div class="items">
+						<div class="item">
+							<div class="left">
+								<div>profileImage</div>
+								<div>username</div>
+							</div>
+							<div class="right">
+								<div class="date">2025-01-01</div>
+								<div class="content">
+									<textarea name="" id="" cols="30" rows="10"></textarea>
+								</div>
+								<div class="button-group"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 		
 		
