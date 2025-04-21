@@ -1,0 +1,39 @@
+package controller.file;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.SubController;
+import domain.service.FileServiceImpl;
+
+public class UploadController implements SubController{
+
+	private FileServiceImpl fileService;
+	
+	public UploadController() throws Exception {
+		fileService = FileServiceImpl.getInstance();
+	}
+	
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			if(req.getMethod().equals("GET")) {
+				req.getRequestDispatcher("/WEB-INF/view/file/fileUpload.jsp").forward(req, resp);
+				return;
+			}
+			
+			// 파라미터
+			
+			// 유효성
+			
+			// 서비스
+			boolean isUpload = fileService.upload(req, resp);
+			// 뷰
+			if(isUpload) {
+				resp.sendRedirect(req.getContextPath()+"/file/upload");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
