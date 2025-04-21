@@ -1,6 +1,8 @@
 package domain.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -76,5 +79,27 @@ public class FileServiceImpl {
 			}
 		}
 		return map;
+	}
+
+	public boolean download(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		String folder = req.getParameter("folder");
+		String filename = req.getParameter("filename");
+		System.out.println("[fs] : " + filename + "[fs] : " + folder);
+		String downloadPath = Properties.ROOT+File.separator+Properties.UPLOAD_PATH+File.separator+folder+File.separator+filename;
+		resp.setHeader("Content-Type","application/octet-stream;charset-utf-8");
+		resp.setHeader("Content-Disposition","attachment; filename="+URLEncoder.encode(filename,"UTF-8").replaceAll("\\+",""));
+		
+		FileInputStream fin = new FileInputStream(downloadPath);
+		ServletOutputStream bout = resp.getOutputStream();byte[] buff = new byte[4096];
+		while(true){
+			int data = fin.read(buff);
+			if(data==-1)
+				break;
+			bout.write(buff,0,data);
+			bout.flush();
+		}
+		bout.close();
+		fin.close();
+		return true;
 	}
 }

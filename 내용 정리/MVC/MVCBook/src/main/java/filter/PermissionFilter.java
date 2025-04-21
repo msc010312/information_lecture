@@ -59,6 +59,7 @@ public class PermissionFilter implements Filter{
 		// upload
 		pageGradeMap.put(projectPath+"/file/upload",Role.ROLE_ANONYMOUS); //0
 		pageGradeMap.put(projectPath+"/file/list",Role.ROLE_ANONYMOUS); //0
+		pageGradeMap.put(projectPath+"/file/download",Role.ROLE_ANONYMOUS); //0
 	}
 
 	@Override

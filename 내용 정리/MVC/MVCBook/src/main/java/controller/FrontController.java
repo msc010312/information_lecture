@@ -18,6 +18,7 @@ import controller.book.BookReadController;
 import controller.book.BookReplyCreateController;
 import controller.book.BookReplyListController;
 import controller.book.BookUpdateController;
+import controller.file.DownloadController;
 import controller.file.ListController;
 import controller.file.UploadController;
 import controller.user.AdminMainController;
@@ -79,6 +80,7 @@ public class FrontController extends HttpServlet {
 		try {
 			map.put("/file/upload", new UploadController());
 			map.put("/file/list", new ListController());
+			map.put("/file/download", new DownloadController());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServletException("서브컨트롤러 동작오류");
