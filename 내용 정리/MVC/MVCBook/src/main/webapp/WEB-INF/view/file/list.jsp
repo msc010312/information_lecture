@@ -32,7 +32,7 @@
 							List<File> list = map.get(folder);
 							for(File file : list) {
 								%>
-								<a href="javascript:void(0)"><%=file.getName() %></a>
+								<a href="${pageContext.request.contextPath }/file/download?folder=<%=folder %>&filename=<%=file.getName()%>"><%=file.getName() %></a>
 								<%
 							}
 							out.println("<hr>");
