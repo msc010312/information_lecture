@@ -52,6 +52,7 @@ public class PersonDTOBeanConfig {
     return new PersonDTO("name",age,"addr");
   }
 }
+```
 
 3. 클래스를 Context에 bean등록
 ```
