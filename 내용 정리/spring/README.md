@@ -22,3 +22,64 @@
 |스프링 데이터 (Spring Data)|Spring은 데이터 액세스를 위한 다양한 기능을 제공함
 |스프링 시큐리티 (Spring Security)|Spring은 보안을 위한 스프링 시큐리티 프레임워크를 제공함 스프링 시큐리티를 사용하면 인증, 권한 부여, 보안 설정 등을 쉽게 구현할 수 있음
 |스프링 배치 (Spring Batch)|Spring은 대용량 데이터 처리를 위한 스프링 배치 프레임워크를 제공함 스프링 배치는 일괄 처리 작업을 생성하고 구성할 수 있으며, 작업을 스케줄링하고 청크 기반 처리를 통해 대용량 데이터를 효율적으로 처리할 수 있음
+
+## Bean 등록
+1. Context 파일에서 직접 객체 등록
+```
+<!-- root-context.xml -->
+<bean id="personDTO1" class="com.example.app.domain.DTO.PersonDTO">
+		<constructor-arg name="name" value="kevin"></constructor-arg>
+		<constructor-arg name="age" value="11"></constructor-arg>
+		<constructor-arg name="addr" value="deagu"></constructor-arg>
+</bean>
+```
+
+2. Context에 객체 등록
+```
+@Configuration // Context에 인식
+public class PersonDTOBeanConfig {
+  @Bean // Context에 Bean 등록
+  public PersonDTO person3() {
+		return PersonDTO.builder() // 빌더 활용
+				.age(999)
+				.name("ggg")
+				.addr("addr2")
+				.build();
+	}
+
+  @Bean(name="personBean) // 이름 설정(미 설정시 생성자의 이름을 씀 ex: PersonBean -> personBean)
+  public PersonDTO person4() {
+    return new PersonDTO("name",age,"addr");
+  }
+}
+
+3. 클래스를 Context에 bean등록
+```
+@Data // getter,setter,toString 생성
+@Component // Context에 class 인식
+public class PersonComponent {
+	private String name;
+	private int age;
+	private String addr;
+	
+	PersonComponent(){
+		this.name = "qqq";
+		this.age = 1;
+		this.addr = "wwww";
+	}
+}
+```
+
+4. Autowired
++ @Autowired 어노테이션의 경우 형(타입)을 통해 해당 자리에 들어올 객체를 판별하여 주입해줌
++ 다형성을 띄고있는 객체타입에 @Autowired를 사용한 경우에는 @Qualifier("Bean이름") 을 이용하여 해당 자리에 주입될 Bean을 명시해야함
+
+```
+@Autowired
+	private PersonDTO personDTO1; // 현재 Context에 저장되어있는 Bean을 명시
+
+@Qualifier("name")
+@Autowired
+  private PersonInterface personIn; // PersonInterface를 name과 age가 구현하고 있을 경우 @Qualifier로 명시할 Bean이름을 명시
+```
+
