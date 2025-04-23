@@ -23,7 +23,7 @@
 |스프링 시큐리티 (Spring Security)|Spring은 보안을 위한 스프링 시큐리티 프레임워크를 제공함 스프링 시큐리티를 사용하면 인증, 권한 부여, 보안 설정 등을 쉽게 구현할 수 있음
 |스프링 배치 (Spring Batch)|Spring은 대용량 데이터 처리를 위한 스프링 배치 프레임워크를 제공함 스프링 배치는 일괄 처리 작업을 생성하고 구성할 수 있으며, 작업을 스케줄링하고 청크 기반 처리를 통해 대용량 데이터를 효율적으로 처리할 수 있음
 
-## Bean 등록
+## Bean 등록(의존주입)
 1. Context 파일에서 직접 객체 등록
 ```
 <!-- root-context.xml -->
@@ -84,3 +84,6 @@ public class PersonComponent {
   private PersonInterface personIn; // PersonInterface를 name과 age가 구현하고 있을 경우 @Qualifier로 명시할 Bean이름을 명시
 ```
 
+## 파라미터 요청
+
+## 유효성체크
