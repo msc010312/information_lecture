@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,38 +17,37 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.app.domain.DTO.MemoDTO;
+import com.example.app.domain.DTO.UserDto;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/memo")
-public class MemoController {
-
+public class UserContoller {
+	
 	@InitBinder
 	public void dataBinder(WebDataBinder webDataBinder) {
 		log.info("memoController databinder" + webDataBinder);
-		webDataBinder.registerCustomEditor(LocalDate.class, "dateTest", new DateTestEditor());
+		webDataBinder.registerCustomEditor(LocalDate.class, "birthday", new DateTestEditor());
+		webDataBinder.registerCustomEditor(String.class, "phone", new phoneEditor());
+	}
+	
+	
+	@GetMapping("/join")
+	public void joinGet() {
+		log.info("get /join");
 	}
 
-	@GetMapping("/add")
-	public void addGet() {
-		log.info("get /memo/add");
-	}
-
-	@PostMapping("/add")
-	public void addPost(@Valid MemoDTO md, BindingResult br, Model model) {
-		log.info("post /memo/add" + md);
+	@PostMapping("/join")
+	public void joinPost(@Valid UserDto ud, BindingResult br,Model model) {
+		log.info("post /join" + ud);
 		if (br.hasErrors()) {
-			// log.info("error : " + br.getFieldError("id").getDefaultMessage());
 			for (FieldError error : br.getFieldErrors()) {
 				log.info("error field : " + error.getField() + "error message : " + error.getDefaultMessage());
-				model.addAttribute(error.getField(), error.getDefaultMessage());
+				model.addAttribute(error.getField(),error.getDefaultMessage());
 			}
 		}
 	}
-
 	private static class DateTestEditor extends PropertyEditorSupport {
 
 		@Override
@@ -58,10 +58,20 @@ public class MemoController {
 				date = LocalDate.now();
 			} else {
 				//yyyy#MM#dd
-				text = text.replaceAll("#","-");
+				text = text.replaceAll("~","-");
 				date = LocalDate.parse(text,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			}
 			setValue(date);
+		}
+	}
+	
+	private static class phoneEditor extends PropertyEditorSupport {
+
+		@Override
+		public void setAsText(String text) throws IllegalArgumentException {
+			log.info("dataText invoke : " + text);
+			text = text.replaceAll("-", "");
+			setValue(text);
 		}
 	}
 }
