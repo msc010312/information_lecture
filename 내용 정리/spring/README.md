@@ -85,5 +85,34 @@ public class PersonComponent {
 ```
 
 ## 파라미터 요청
++ @RequestParam = HTTP 요청의 파라미터를 메소드의 파라미터와 바인딩 "URL 쿼리 문자열이나 POST 요청의 form 데이터" 와 매핑
++ @RequestBody =  HTTP 요청의 본문(body)을 메소드의 파라미터에 바인딩 주로 "JSON 또는 XML" 형식의 데이터를 객체로 변환할 때 사용
+
+```
+// GET 요청의 URL 파라미터를 메소드의 파라미터로 받는 예시
+@RequestMapping(value="/p01", method=RequestMethod.GET)
+public void p01(@RequestParam(value="name", required=true) String name) {
+    // 로그에 요청된 name 값을 출력
+    log.info("GET /param/p01 " + name);
+    /*
+     * @RequestParam은 HTTP 요청의 쿼리 파라미터를 자바 메소드의 파라미터로 바인딩
+     * /p01?name=홍길동 과 같은 요청이 들어오면 name 파라미터에 "홍길동"이 전달
+     * required=true는 해당 파라미터가 반드시 포함되어야 함을 의미
+     */
+}
+
+// POST 요청의 본문(body)에 담긴 데이터를 문자열로 받는 예시
+@PostMapping(value="/p04")
+public void p04(@RequestBody String name) {
+    // 로그에 요청 본문에 담긴 name 데이터를 출력
+    log.info("/param/p04 " + name);
+    /*
+     * @RequestBody는 HTTP 요청의 본문을 메소드의 파라미터로 바인딩
+     * 일반적으로 JSON 또는 XML 형식의 데이터를 처리할 때 사용
+     * 요청 본문이 "홍길동" 이면, name 파라미터는 "홍길동" 값을 가짐
+     * JSON 예시: { "name": "홍길동" }
+     */
+```
 
 ## 유효성체크
++
