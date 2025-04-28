@@ -116,3 +116,115 @@ public void p04(@RequestBody String name) {
 
 ## 유효성체크
 +
+
+## 트랜젝션
++ DB의 상태를 변경시키는 작업의 단위
+
+```
+pom.xml 의존주입
+<!-- Spring - Tx -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-tx</artifactId>
+	<version>5.0.7.RELEASE</version>
+</dependency>
+
+TxConfig.java
+
+@Configuration
+@EnableTransactionManagement
+public class TxConfig {
+	
+	@Autowired
+	private DataSource dataSource3;
+	
+    @Bean
+    public DataSourceTransactionManager transactionManager() {
+        return new DataSourceTransactionManager(dataSource3);
+    }
+}
+
+
+//@EnableTransactionManagement
+트랜잭션 관리를 활성화
+이 어노테이션을 사용하면 스프링은 @Transactional 어노테이션이 붙은 메서드나 클래스의 트랜잭션을 자동으로 관리
+ @EnableTransactionManagement는 내부적으로 AOP(Aspect-Oriented Programming)을 사용하여 트랜잭션 관련 기능을 구현
+
+```
+
+## RestController
++ RESTful 웹 서비스를 제공하는 컨트롤러
+
+REST : REpresentative State Transfer의 약자로 분산 시스템을 위한 아키텍처
+
+네트워크를 경유해서 외부 서버에 접속하거나 필요한 정보를 불러오기 위한 구조
+
+그리고 이 REST 개념을 바탕으로 설계된 시스템을 'RESTFul'이라고 표현
+
+메서드의 반환 값이 JSON, XML 등과 같은 데이터로 처리
+
+```
+pom.xml 의존주입
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-xml</artifactId>
+	<version>2.19.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+<dependency>
+	<groupId>com.fasterxml.jackson.datatype</groupId>
+	<artifactId>jackson-datatype-jsr310</artifactId>
+	<version>2.19.0</version>
+</dependency>
+```
+
+```
+	// text
+	@GetMapping(value="/getText", produces=MediaType.TEXT_PLAIN_VALUE)
+	public String f1() {
+		log.info("Get /rest/getText");
+		return "hello world";
+	}
+	
+	// json
+	@GetMapping(value="/getJson", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public MemoDto f2() {
+		log.info("Get /rest/getJson");
+		return new MemoDto(11,"abcd","eeee",LocalDateTime.now());
+	}
+	
+	//XML
+	@GetMapping(value="getXml", produces=MediaType.APPLICATION_XML_VALUE)
+	public MemoDto f3() {
+		log.info("Get /rest/getXml");
+		return new MemoDto(11,"abcd","eeee",LocalDateTime.now());
+	}
+	
+	//Xml list
+	@GetMapping(value="/getXmlList" , produces=MediaType.APPLICATION_XML_VALUE)
+	public List<MemoDto> f4() {
+		log.info("GET /rest/getXmlList...");
+		List<MemoDto> list = new ArrayList();
+		for(int i=1;i<=	50;i++) {
+			list.add(new MemoDto(i,"A"+i,"eee",LocalDateTime.now()));
+		}
+		return list;
+	}
+
+	//Xml list를 true false값에 의해 표시
+	@GetMapping(value="/getXmlList2/{show}" , produces=MediaType.APPLICATION_XML_VALUE)
+	public  ResponseEntity< List<MemoDto> > f5(@PathVariable("show") boolean show) {
+		log.info("GET /rest/getXmlList2...");
+		
+		if(show) {
+			List<MemoDto> list = new ArrayList();
+			for(int i=0;i<50;i++) {
+				list.add(new MemoDto(i,"A"+i,"eee",LocalDateTime.now()));
+			}
+			return ResponseEntity.status(HttpStatus.OK).body(list);
+		}	
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(null);	
+	}
+```
