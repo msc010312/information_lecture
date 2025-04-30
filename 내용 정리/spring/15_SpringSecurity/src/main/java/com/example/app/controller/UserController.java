@@ -6,6 +6,9 @@ import java.time.format.DateTimeFormatter;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,8 +17,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.app.domain.dto.UserDto;
+import com.example.app.domain.service.UserServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,11 +28,46 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserController {
 
+	@Autowired
+	private UserServiceImpl userServiceImpl;
+	
 	@InitBinder
 	public void dataBinder(WebDataBinder webDataBinder) {
 		log.info("UserController dataBinder ..." + webDataBinder);
 		webDataBinder.registerCustomEditor(String.class, "phone", new PhoneEditor());
 		webDataBinder.registerCustomEditor(LocalDate.class, "birthday", new BirthdayEditor());
+	}
+//	@GetMapping("/user")
+//	public void user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+//		log.info("get /user " + principalDetails);
+////		log.info("name " + authentication.getName());
+////		log.info("getPrincipal " + authentication.getPrincipal());
+////		log.info("Authorities " + authentication.getAuthorities());
+////		log.info("Details " + authentication.getDetails());
+////		log.info("Credential " + authentication.getCredentials());
+//	}
+	
+	@GetMapping("/user")
+	public void user(Model model) {
+		log.info("get /user");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		log.info("authentication : " + authentication);
+		model.addAttribute("auth",authentication);
+	}
+	
+	@GetMapping("/manager")
+	public void manager() {
+		log.info("get /manager");
+	}
+	
+	@GetMapping("/admin")
+	public void admin() {
+		log.info("get /admin");
+	}
+
+	@GetMapping("/login")
+	public void login() {
+		log.info("get /login");
 	}
 	
 	@GetMapping("/join")
@@ -35,12 +75,19 @@ public class UserController {
 		log.info("GET /join..");
 	}
 	@PostMapping("/join")
-	public void join_post(@Valid UserDto dto,BindingResult bindingResult,Model model) {
+	public String join_post(@Valid UserDto dto,BindingResult bindingResult,Model model, RedirectAttributes redirectAttributes) {
 		log.info("POST /join.." + dto);
-		
 		for(FieldError error : bindingResult.getFieldErrors()) {
 			log.info("Error Field : "+error.getField()+" Error Msg : "+error.getDefaultMessage());
 			model.addAttribute(error.getField(),error.getDefaultMessage());
+			return "join";
+		}
+		boolean isJoin = userServiceImpl.userJoin(dto);
+		if(isJoin) {
+			redirectAttributes.addFlashAttribute("message","회원가입완료");
+			return "redirect:/login";
+		} else {
+			return "join";
 		}
 	}
 	
