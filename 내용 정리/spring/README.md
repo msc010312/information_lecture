@@ -230,3 +230,10 @@ pom.xml 의존주입
 ```
 
 ## Spring Security
++ ROLE별 권한체크
++ CSRF TOKEN
++ Custom Login Page
++ PasswordEncoder
++ InMemory to PrincipalDetailsService
++ Handler
++ Remember Me
