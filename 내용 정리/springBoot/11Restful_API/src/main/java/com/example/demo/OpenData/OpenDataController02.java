@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -26,7 +27,7 @@ public class OpenDataController02 {
     String nx = "89";
     String ny ="90";
     @GetMapping("/forcast")
-    public void forcast() {
+    public void forcast(Model model) {
         log.info("get open data forcast");
         url+="?serviceKey="+serviceKey;
         url+="&numOfRows="+numOfRows;
@@ -47,6 +48,7 @@ public class OpenDataController02 {
         Items items = body.getItems();
         List<Item> list = items.getItem();
         list.stream().forEach(System.out::println);
+        model.addAttribute("list", list);
     }
 
     @Data
