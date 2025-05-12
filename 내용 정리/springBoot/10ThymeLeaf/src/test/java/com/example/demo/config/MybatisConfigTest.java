@@ -9,16 +9,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+
 class MybatisConfigTest {
 
     @Autowired
     private SqlSessionFactory sqlSessionFactory;
 
     @Test
-    public void t1() throws Exception {
+    public void t1() throws Exception{
         assertNotNull(sqlSessionFactory);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         assertNotNull(sqlSession);
     }
-
 }

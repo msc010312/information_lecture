@@ -16,11 +16,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class User {
-    @Id // id값 지정
-    @Column(length = 255) // 길이, notnull 설정
+    @Id
+    @Column(length = 100) //varchar
     private String username;
     @Column(length = 255, nullable = false)
     private String password;
     @Column(length = 255)
     private String role;
+
 }

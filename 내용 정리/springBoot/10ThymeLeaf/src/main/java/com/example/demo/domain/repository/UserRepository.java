@@ -1,9 +1,9 @@
 package com.example.demo.domain.repository;
 
 import com.example.demo.domain.entity.User;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +21,4 @@ public interface UserRepository extends JpaRepository<User,String> {
 
     @Query("SELECT u FROM User u WHERE u.username LIKE CONCAT('%',:username,'%')")
     List<User> selectAllLikeUsername(@Param("username") String username);
-
 }

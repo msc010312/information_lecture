@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 
+
 @Mapper
 public interface MemoMapper {
-	
+
 	@SelectKey(statement="select max(id)+1 from tbl_memo",keyProperty = "id",before = false, resultType = int.class)
-	@Insert(value = "insert into tbl_memo values(#{id},#{text},#{writer},#{createAt})")
-	public int insert(MemoDto memoDto);
+	@Insert("insert into tbl_memo values(#{id},#{text},#{writer},#{createAt})")
+	public int insert(MemoDto dto);
+	
 	
 	@Update("update tbl_memo set text=#{text} where id=#{id}")
 	public int update(MemoDto dto);
@@ -26,26 +28,25 @@ public interface MemoMapper {
 	
 	@Select("select * from tbl_memo")
 	public List<MemoDto> selectAll(); 
-
 	
 	@Results(id="MemoResultMap", value= {
 			@Result(property = "id",column="id"),
 			@Result(property = "text", column="text")
 	})
 	@Select("select * from tbl_memo")
-	public List< Map<String,Object> > selectAllResultMap(); 
+	public List< Map<String,Object> > selectAllResultMap(); 	
 	
-////	XML방식
+	//XML 방식
 	public int insertXml(MemoDto memoDto);
 	public int updateXml(MemoDto memoDto);
-	public int deleteXml(@Param("id") int id);
+	public int deleteXml(@Param("id")int id); //다른 파라미터를 받을 수도 있기 때문에 @Param
 	public MemoDto selectAtXml(int id);
-	public List<MemoDto> selectAllXml();
-	public List< Map<String,Object> > selectAllResultMapXml();
-
-	public List<Map<String,Object>>  Select_if_xml(Map<String,Object> param);
-	public List<Map<String,Object>>  Select_when_xml(Map<String,Object> param);
-
+	public List<MemoDto> selectAllXml(); 
+	public List< Map<String,Object> > selectAllResultMapXml(); 
+	
+	
+	//동적쿼리
+	public List< Map<String,Object> > Select_if_xml( Map<String,Object> param);
+	public List< Map<String,Object> > Select_when_xml( Map<String,Object> param);
+	
 }
-
-

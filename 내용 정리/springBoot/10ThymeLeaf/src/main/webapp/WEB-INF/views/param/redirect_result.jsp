@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>REDIRECT_RESULT PAGE</h1>
-	${r1}<br>
-	${r2}<br>
-	${r3}<br>
-	
+ <h1>redirect_result PAGE</h1>
+${r1 } <br/>
+${r2 } <br/>
+${r3 } <br/>
 </body>
 </html>

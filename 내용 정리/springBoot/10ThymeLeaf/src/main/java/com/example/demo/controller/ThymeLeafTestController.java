@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/th")
 @Slf4j
-public class ThymeLeafTestController {
+@RequestMapping("/th")
+public class ThymeleafTestController {
 
     @Autowired
-    MemoRepository memoRepository;
+    private MemoRepository memoRepository;
 
     @GetMapping("/test1")
-    public void test1(Model model) {
-        log.info("get test1 mapping");
+    public void test1(Model model){
+        log.info("GET /th/test1....");
         model.addAttribute("name","hong");
         MemoDto memo = new MemoDto();
         memo.setId(111);
         memo.setText("aaa");
-        memo.setWriter("aaa");
+        memo.setWriter("aaa@naver.com");
         model.addAttribute("memo",memo);
 
         model.addAttribute("isAuth",false);
@@ -37,18 +37,20 @@ public class ThymeLeafTestController {
         model.addAttribute("memoList",memoList);
     }
 
+
     @GetMapping("/param1")
     public void param1(@ModelAttribute MemoDto memoDto){
-        log.info("get param1 memodto"+ memoDto);
+        log.info("GET /th/param1..." + memoDto);
     }
-
     @GetMapping("/param2/{id}/{text}/{writer}")
     public void param2(@ModelAttribute MemoDto memoDto){
-        log.info("get param2 memodto"+ memoDto);
+        log.info("GET /th/param2..." + memoDto);
     }
 
     @GetMapping("/test2")
-    public void test2() {
-        log.info("get test2");
+    public void test2(){
+        log.info("GET /th/test2...");
     }
+
+
 }

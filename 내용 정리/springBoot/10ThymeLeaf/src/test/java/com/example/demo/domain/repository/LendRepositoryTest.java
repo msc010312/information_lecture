@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class LendRepositoryTest {
 
@@ -25,52 +23,56 @@ class LendRepositoryTest {
     @Autowired
     private BookRepository bookRepository;
 
-    @Test
-    public void t1() throws Exception {
-        // 저장되어있는 도서정보를 가지는 book
-        Book book = bookRepository.findById(333L).get();
 
-        // 저장되어있는 유저정보를 가지는 user
+    @Test
+    public void t1() throws Exception{
+
+        //저장되어있는 도서코드를 가지는 Book
+        Book book = bookRepository.findById(3333L).get();
+        //저장되어있는 유저정보를 가지는 User
         User user = userRepository.findById("user2").get();
 
         Lend lend = new Lend();
         lend.setBook(book);
         lend.setUser(user);
         lendRepository.save(lend);
-
     }
 
     @Test
-    public void t2() throws Exception {
-        Lend lend = lendRepository.findById(111l).get();
-        Book book = bookRepository.findById(111L).get();
-
+    public void t2() throws Exception{
+        Lend lend = lendRepository.findById(1L).get();
+        Book book = bookRepository.findById(4444L).get();
         lend.setBook(book);
+        //Update
         lendRepository.save(lend);
     }
 
     @Test
-    public void t3() throws Exception {
-        List<Lend> list = lendRepository.findLendsByUser("user1");
-        list.stream().forEach(System.out::println);
+    public void t3() throws Exception{
+        lendRepository.deleteById(1L);
     }
 
     @Test
-    public void t4() throws Exception {
-        List<Lend> list = lendRepository.findLendsByUserAndBook();
-        list.stream().forEach(System.out::println);
+    public void t4() throws Exception{
+    List<Lend> list = lendRepository.findLendsByUser("user1");
+    list.stream().forEach(System.out::println);
+
     }
 
     @Test
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class) //commit 을 미뤄야 하기 때문에 트랜잭션 써야함
     public void t5() throws Exception {
-        System.out.println("----fetch 방식 테스트 시작----");
-        Optional<Lend> lendOptional = lendRepository.findById(2L);
-        System.out.println("----findbyid----");
-        Lend lend = lendOptional.get();
-        System.out.println("----getUser()");
-        User user = lend.getUser(); // Lazy Option 사용시 해당 시점에서 쿼리 실행
+        System.out.println("------------FETCH 방식 테스트 시작--------------------");
+        Optional<Lend> Lendoptional = lendRepository.findById(1L);
+        System.out.println("------------findByID(1L)--------------------");
+
+        Lend lend = Lendoptional.get();
+        System.out.println("------------getUser()--------------------");
+        User user = lend.getUser(); // LAZY Option 사용시 해당 시점에서 쿼리 실행
         System.out.println(user);
-        System.out.println("----fetch 방식 테스트 종료----");
+
+        System.out.println("------------FETCH 방식 테스트 종료--------------------");
+
+
     }
 }

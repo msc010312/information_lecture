@@ -24,25 +24,26 @@ repositories {
 }
 
 dependencies {
-
+	//THYMELEAF
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	//WEB
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	//lombok
+	//LOMBOK
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	//test
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-	//thymeleaf
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-
-	//Rest
+	//REST
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.19.0'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.0'
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.0'
+
+	//TEST
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+
 }
 
 tasks.named('test') {

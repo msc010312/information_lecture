@@ -18,11 +18,11 @@ public class TxTestService {
     @Autowired
     private MemoMapper memoMapper;
 
-    @Transactional(rollbackFor = SQLException.class,transactionManager = "dataSourceTransactionManager")
-    public void addMemoTx(MemoDto dto) throws Exception	 {
-        log.info("MemoService's addMemoTx Call! ");
-        memoMapper.insert(dto);//01 정상INSERT
-        throw new SQLException();
+        @Transactional(rollbackFor = SQLException.class,transactionManager = "dataSourceTransactionManager")
+        public void addMemoTx(MemoDto dto) throws Exception	 {
+            log.info("MemoService's addMemoTx Call! ");
+            memoMapper.insert(dto);//01 정상INSERT
+            throw new SQLException();
     }
 
     //JPA REPOSITORY
@@ -39,3 +39,4 @@ public class TxTestService {
         throw new SQLException();
     }
 }
+

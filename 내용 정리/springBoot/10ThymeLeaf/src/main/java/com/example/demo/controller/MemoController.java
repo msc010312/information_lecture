@@ -22,56 +22,58 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 @RequestMapping("/memo")
 public class MemoController {
-	
+
 	@InitBinder
 	public void dataBinder(WebDataBinder webDataBinder) {
-		log.info("MemoController's dataBinder ..." + webDataBinder);
-		webDataBinder.registerCustomEditor(LocalDate.class, "dateTest", new DateTestEditor());
+		
+		log.info("MemoController's dataBinder" + webDataBinder);
+		webDataBinder.registerCustomEditor(LocalDate.class, "dateTest",new DateTestEditor());
 	}
+	
 	
 	
 	@GetMapping("/add")
 	public void add_get() {
 		log.info("GET /memo/add...");
 	}
-
+	
 	@PostMapping("/add")
 	public void add_post(@Valid MemoDto dto, BindingResult bindingResult, Model model) {
-		log.info("POST /memo/add..."+dto);
+		log.info("POST /memo/add..." + dto);
 		
 		if(bindingResult.hasErrors()) {
-//			log.info("유효성 에러발생 : " + bindingResult.getFieldError("id").getDefaultMessage());
-			
-			for(FieldError error : bindingResult.getFieldErrors()) {
-				log.info("Error Field : "+error.getField()+" Error Msg : "+error.getDefaultMessage());
+//			log.info("유효성 에러 발생:" + bindingResult.getFieldError("id").getDefaultMessage() );
+			for(FieldError error: bindingResult.getFieldErrors()) {
+				log.info("Error Filed:" + error.getField()+" Error Msg :"+error.getDefaultMessage());
 				model.addAttribute(error.getField(),error.getDefaultMessage());
 			}
-			
-		}
 		
+		}
 	}
-	
-	// static private 	
+	// 필요하면 쓰는 용도
+	// static private
 	private static class DateTestEditor extends PropertyEditorSupport {
 
 		@Override
 		public void setAsText(String dateTest) throws IllegalArgumentException {
-			log.info("DateTestEditor's setAsText invoke.." + dateTest);
+			log.info("DateTestEditor's setAdText invoke..." + dateTest);
 			LocalDate date = null;
 			if(dateTest.isEmpty()) {
-				date = LocalDate.now();
+				 date = LocalDate.now();
 			}else {
-				//yyyy#MM#dd -> yyyy-MM-dd(LocalDate format)
-				dateTest = dateTest.replaceAll("#", "-");
-				date = LocalDate.parse(dateTest,DateTimeFormatter.ofPattern("yyyy-MM-dd"));		
-			}
-			
-			setValue(date);
+				//yyyy#MM#dd -> yyyy-MM-dd(LocalDate Formt)
+				dateTest=dateTest.replaceAll("#", "-");
+				 date = LocalDate.parse(dateTest,DateTimeFormatter.ofPattern("yyyy#MM#dd")); //아웃포맷팅이기 때문에 dateTest.replaceAll("#", "-"); 필요
 
+			} 
+				
+			
+			
+			setValue(date);  //바인딩 처리
+			
 		}
+			
+		
 
 	}
-
 }
-
-

@@ -17,28 +17,28 @@ public class MybatisConfig {
 	@Autowired
 	private DataSource dataSource3;
 
-	@Bean 
+	@Bean
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource3);
-		
-	    // Mapper XML 파일의 위치 설정
-	    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-	    Resource[] resources = resolver.getResources("classpath*:mapper/*.xml");
-	    sessionFactory.setMapperLocations(resources);
-	    
-		
+
+		// Mapper XML 파일의 위치 설정
+		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		Resource[] resources = resolver.getResources("classpath*:mapper/*.xml");
+		sessionFactory.setMapperLocations(resources);
+
 		return sessionFactory.getObject();
+
 	}
-	
-//    @Autowired
-//    private SqlSessionFactory sqlSessionFactory;
 
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-        return new SqlSessionTemplate(sqlSessionFactory());
-    }
-    
-    
+	// -----------------------
+	// sqlSession 생성
+	// -----------------------
+//	@Autowired
+//	private SqlSessionFactory sqlSessionFactory;
+
+	@Bean
+	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+		return new SqlSessionTemplate(sqlSessionFactory());
+	}
 }
-

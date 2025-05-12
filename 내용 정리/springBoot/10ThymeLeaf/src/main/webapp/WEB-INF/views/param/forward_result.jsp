@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>FORWARD_RESULT PAGE</h1>
-	${f1}<br>
-	${f2}<br>
-	${f3}<br>
-	
+ <h1>forward_result PAGE</h1>
+${f1 } <br/>
+${f2 } <br/>
+${f3 } <br/>
 </body>
 </html>

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 
 @SpringBootTest
 public class DataSourceTests {
+
     @Autowired
     private DataSource dataSource;
 
@@ -18,11 +19,11 @@ public class DataSourceTests {
         System.out.println(dataSource);
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("insert into tbl_memo values(?,?,?,now())");
+
         pstmt.setInt(1,111);
-        pstmt.setString(2,"ababaabab");
+        pstmt.setString(2,"ababab");
         pstmt.setString(3,"springboot@test.com");
+
         pstmt.executeUpdate();
     }
-
-
 }

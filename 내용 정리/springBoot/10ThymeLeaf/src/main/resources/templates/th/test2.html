@@ -5,10 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-  <!-- header -->
-  <div th:replace="~{th/fragments/header::headerFragment}"></div>
-  <div>test2 page</div>
-  <!-- footer -->
-  <div th:replace="~{th/fragments/footer::footerFragment}"></div>
+    <!-- 헤더 영역 -->
+    <div th:insert="~{th/fragments/header::headerFragment}"></div>
+    <h2>TEST2 PAGE</h2>
+    <!-- 푸터 영역 -->
+    <div th:replace="~{th/fragments/footer::footerFragment}"></div>
+
 </body>
 </html>

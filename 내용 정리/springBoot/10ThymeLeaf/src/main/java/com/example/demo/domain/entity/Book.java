@@ -13,12 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Book {
-    @Id // id값 지정
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) // 자동증가 옵션
-    @Column(name="bookcode") // 컬럼명 설정
-    private Long bookCode;
-    @Column(name="bookname")
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) //AI (자동증가 처리) Auto Implements
+    @Column(name="bookcode")    //언더바 처리 없이 그대로 저장됨
+    private Long bookCode;     //카멜표기법으로 적어서 book_code 로 저장됨
+   @Column(name="bookname")
     private String bookName;
     private String publisher;
     private String isbn;
+
+
 }

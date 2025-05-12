@@ -5,15 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class TxTestServiceTest {
 
     @Autowired
     private TxTestService txTestService;
     @Test
-    void t2() throws Exception {
+    void t2() throws Exception { //마이바티스 테스트임
         txTestService.addMemoTx(new MemoDto(1,"TEST1"));
     }
 

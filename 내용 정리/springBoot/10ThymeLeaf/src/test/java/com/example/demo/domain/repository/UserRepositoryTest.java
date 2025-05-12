@@ -7,30 +7,44 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class UserRepositoryTest {
+
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    public void t1() throws Exception{
-        User user = User.builder()
-                .username("user1")
-                .password("1234")
-                .role("ROLE_USER")
-                .build();
-        userRepository.save(user);
+    public void t1() {
+        //INSERT
+//        User user =
+//                User.builder()
+//                        .username("홍길동")
+//                        .password("1234")
+//                        .role("admin")
+//                        .build();
+////        userRepository.save(user);
+//
+//        //UPDATE
+//        user.setUsername("홍길동");
+//        user.setPassword("4321");
+//        user.setRole("manager");
+//
+//        userRepository.save(user);
+
+        //DELETE
+//        userRepository.deleteById("홍길동");
+
+
     }
 
     @Test
     public void t2() throws Exception{
-//        List<User> list =  userRepository.selectByRole("ROLE_USER");
+//        List<User> list =userRepository.selectByRole("ROLE_USER");
 //        list.stream().forEach(System.out::println);
 
-        List<User> list =  userRepository.selectAllLikeUsername("1");
-        list.stream().forEach(System.out::println);
+       List<User> list = userRepository.selectAllLikeUsername("1");
+       list.stream().forEach(System.out::println);
 
+       //되네
     }
 }
