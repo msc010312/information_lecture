@@ -104,8 +104,7 @@ public class KakaoLoginController {
         log.info("Get unlink");
         String url ="https://kauth.kakao.com/oauth/logout";
         HttpHeaders header = new HttpHeaders();
-        header.add("client_id",CLIENT_ID);
-        header.add("logout_redirect_uri",LOGOUT_REDIRECT_URI);
+        header.add("Authorization","Bearer "+this.kakaoTokenResp.getAccess_token());
         // Entity
         HttpEntity entity = new HttpEntity(header);
         RestTemplate rt = new RestTemplate();
