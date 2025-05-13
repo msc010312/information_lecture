@@ -13,4 +13,8 @@ public class KakaoMapController {
     public void index(){
         log.info("get /01");
     }
+    @GetMapping("/02")
+    public void index2() {
+        log.info("get /02");
+    }
 }
