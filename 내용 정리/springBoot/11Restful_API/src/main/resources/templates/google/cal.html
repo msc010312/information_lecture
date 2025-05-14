@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.17/index.global.min.js"></script>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        googleCalendarApiKey: 'AIzaSyAZRxD5pl25_WRuScFcJgR9-eTZ2tG4oR8',
+        events: {
+          googleCalendarId: '8200ba5cbe870edafc1a8f45fdaeb6b7fcf9888633f1583c57e40b944c86b940@group.calendar.google.com'
+        },
+        eventClick: function(info) {
+        info.jsEvent.preventDefault(); // 기본 기능 해제
+          console.log(info);
+          console.log(info.event._def.title);
+          // alert('Event: ' + info.event.title);
+          // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+          // alert('View: ' + info.view.type);
+
+          // change the border color just for fun
+          info.el.style.borderColor = 'red';
+        }
+
+      });
+
+
+      calendar.render();
+
+    });
+
+
+
+    </script>
+</head>
+<body>
+    <h1>google calendar</h1>
+    <div id='calendar' style="height:100vh;"></div>
+</body>
+</html>
