@@ -65,7 +65,9 @@ public class SecurityConfig {
             exception.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
             exception.accessDeniedHandler(new CustomAccessDeniedHandler());
         });
-
+        http.oauth2Login((oauth2)->{
+           oauth2.loginPage("/login");
+        });
         return http.build();
     }
 
