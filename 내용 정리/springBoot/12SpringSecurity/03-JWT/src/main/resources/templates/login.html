@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>login</h1>
+	<form action="/login" method="post">
+		<div>
+			<label>username : </label>
+			<input name="username"/>
+		</div>
+		<div>
+			<label>password : </label>
+			<input name="password" type="password"/>
+		</div>
+		<div>
+			<label for="rememberMe">날 기억해줘</label>
+			<input id="rememberMe" type="checkbox" name="remember-me"/>
+		</div>
+		<button>로그인</button>
+<!--		<input type="hidden" name="_csrf" value="${_csrf.token }"/>-->
+	</form>
+	<span th:text="${message}"></span>
+	<span th:text="${param.error}"></span>
+	<div>
+		<a href="/oauth2/authorization/kakao">카카오 로그인</a><br>
+		<a href="/oauth2/authorization/naver">네이버 로그인</a><br>
+		<a href="/oauth2/authorization/google">구글 로그인</a><br>
+	</div>
+</body>
+</html>
