@@ -15,8 +15,11 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
-		log.error("CustomLoginFailureHandler's on AuthenticationFailureHandler invoke");
-		response.sendRedirect("/login?error=?"+exception.getMessage());
+
+		log.error("CustomLoginFailureHandler's onAuthenticationFailure invoke..") ;
+		response.sendRedirect("/login");
 	}
+
+
 
 }

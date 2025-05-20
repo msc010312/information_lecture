@@ -16,8 +16,15 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 	public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
 
-		log.error("CustomAuthenticationEntryPoint's commence invoke");
-		response.sendRedirect("/login?error="+authException.getMessage());
+		log.error("CustomAuthenticationEntryPoint's commence invoke....");
+		response.sendRedirect("/login");
 	}
 
 }
+
+
+
+
+
+
+

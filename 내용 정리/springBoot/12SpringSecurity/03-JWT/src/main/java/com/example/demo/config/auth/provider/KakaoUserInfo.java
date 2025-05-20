@@ -10,9 +10,9 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class KaKaoUserInfo implements Oauth2UserInfo{
+public class KakaoUserInfo implements OAuth2UserInfo{
     private Long id;
-    private LocalDateTime connected_at;
+    private LocalDateTime created_at;
     private Map<String,Object> properties;
     private Map<String,Object> kakao_account;
 
@@ -23,12 +23,12 @@ public class KaKaoUserInfo implements Oauth2UserInfo{
 
     @Override
     public String getEmail() {
-        return (String)properties.get("email");
+        return (String)kakao_account.get("email");
     }
 
     @Override
     public String getProvider() {
-        return "kakao";
+        return "Kakao";
     }
 
     @Override
@@ -40,4 +40,5 @@ public class KaKaoUserInfo implements Oauth2UserInfo{
     public Map<String, Object> getAttributes() {
         return null;
     }
+//    private Map<String,Object> attributes;
 }

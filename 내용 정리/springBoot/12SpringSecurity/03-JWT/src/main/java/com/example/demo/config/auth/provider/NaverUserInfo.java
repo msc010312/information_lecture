@@ -9,9 +9,10 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NaverUserInfo implements Oauth2UserInfo{
+public class NaverUserInfo implements OAuth2UserInfo{
     private String id;
     private Map<String,Object> attributes;
+
 
     @Override
     public String getName() {

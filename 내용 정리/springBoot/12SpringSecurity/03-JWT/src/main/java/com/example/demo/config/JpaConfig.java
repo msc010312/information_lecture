@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,11 @@ import java.util.Properties;
 
 @Configuration
 @EntityScan(basePackages = {"com.example.demo.domain.entity"})
-@EnableJpaRepositories(basePackages = {"com.example.demo.domain.repository"}, transactionManagerRef = "jpaTransactionManager")
+@EnableJpaRepositories
+(
+                basePackages ="com.example.demo.domain.repository",
+                transactionManagerRef = "jpaTransactionManager"
+)
 public class JpaConfig {
     @Autowired
     private DataSource dataSource;
@@ -45,8 +50,8 @@ public class JpaConfig {
         return entityManagerFactoryBean;
     }
 
-//
-//    //애플리케이션 시작 시 데이터베이스 초기화
+
+    //애플리케이션 시작 시 데이터베이스 초기화
 //    @Bean
 //    public DataSourceInitializer dataSourceInitializer() {
 //        DataSourceInitializer initializer = new DataSourceInitializer();
@@ -54,8 +59,8 @@ public class JpaConfig {
 //        initializer.setDatabasePopulator(databasePopulator());
 //        return initializer;
 //    }
-//
-//    //schema.sql과 data.sql 스크립트를 실행
+
+    //schema.sql과 data.sql 스크립트를 실행
 //    private DatabasePopulator databasePopulator() {
 //        //Spring Framework에서 제공하는 클래스로, 외부 리소스에 정의된 SQL 스크립트를 사용하여 데이터베이스를 초기화하거나 정리하는 데 사용
 //        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
@@ -68,3 +73,4 @@ public class JpaConfig {
 //    }
 
 }
+

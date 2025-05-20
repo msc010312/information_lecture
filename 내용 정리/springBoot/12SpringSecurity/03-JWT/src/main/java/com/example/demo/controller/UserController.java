@@ -23,56 +23,70 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@GetMapping("/login")
+	public void login() {
+		log.info("GET /login...");
+	}
+	
 //	@GetMapping("/user")
-//	public void user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-//		log.info("get /user " + principalDetails);
-////		log.info("name " + authentication.getName());
-////		log.info("getPrincipal " + authentication.getPrincipal());
-////		log.info("Authorities " + authentication.getAuthorities());
-////		log.info("Details " + authentication.getDetails());
-////		log.info("Credential " + authentication.getCredentials());
+//	public void user(Authentication authentication) {
+//		log.info("GET /user..." + authentication);
+//		log.info("name..." + authentication.getName());
+//		log.info("principal..." + authentication.getPrincipal());
+//		log.info("authorities..." + authentication.getAuthorities());
+//		log.info("details..." + authentication.getDetails());
+//		log.info("credential..." + authentication.getCredentials());
+//	}
+	
+//	@GetMapping("/user")
+//	public void user(@AuthenticationPrincipal Principal principal) {
+//		log.info("GET /user..." + principal);
 //	}
 	
 	@GetMapping("/user")
 	public void user(Model model) {
-		log.info("get /user");
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		log.info("authentication : " + authentication);
-		model.addAttribute("auth",authentication);
+		log.info("GET /user...");
+		Authentication authenticaton = 
+		SecurityContextHolder.getContext().getAuthentication();
+		log.info("authentication : " + authenticaton);
+		
+		model.addAttribute("auth",authenticaton);
+		
 	}
 	
 	@GetMapping("/manager")
 	public void manager() {
-		log.info("get /manager");
+		log.info("GET /manager...");	
 	}
-	
 	@GetMapping("/admin")
 	public void admin() {
-		log.info("get /admin");
+		log.info("GET /admin...");	
 	}
-
-	@GetMapping("/login")
-	public void login() {
-		log.info("get /login");
-	}
+	
+	
 	
 	@GetMapping("/join")
 	public void join() {
 		log.info("GET /join..");
 	}
+
 	@PostMapping("/join")
-	public String join_post(UserDto dto, RedirectAttributes redirectAttributes) {
+	public String join_post(UserDto dto, RedirectAttributes redirectAttributes ) {
 		log.info("POST /join.." + dto);
-		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+
+		//DTO->ENTITY(DB저장) , ENTITY->DTO(뷰로전달)
+		dto.setPassword(  passwordEncoder.encode( dto.getPassword() ) );
 		userRepository.save(dto.toEntity());
-		boolean isJoin = true;
+
+		boolean isJoin  = true;
 		if(isJoin) {
-			redirectAttributes.addFlashAttribute("message","회원가입완료");
+			redirectAttributes.addFlashAttribute("message","회원가입 완료!");
 			return "redirect:/login";
-		} else {
-			return "join";
 		}
+		else
+			return "join";
 	}
+
 }
 
 

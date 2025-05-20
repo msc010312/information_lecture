@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Optional;
@@ -47,16 +48,19 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                     .filter(cookie -> cookie.getName().equals(JwtProperties.ACCESS_TOKEN_COOKIE_NAME)).findFirst()
                     .map(cookie -> cookie.getValue())
                     .orElse(null);
+
         } catch (Exception ignored) {
+
 
         }
         if (token != null) {
             try {
-                if(jwtTokenProvider.validateToken(token)) { // 토큰 유효성 체크
+                if(jwtTokenProvider.validateToken(token)) {
                     Authentication authentication = getUsernamePasswordAuthenticationToken(token);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                     System.out.println("[JWTAUTHORIZATIONFILTER] : " + authentication);
                 }
+
             } catch (ExpiredJwtException e)     //토큰만료시 예외처리(쿠키 제거)
             {
 
@@ -79,14 +83,11 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
      * User가 없다면 null
      */
     private Authentication getUsernamePasswordAuthenticationToken(String token) {
-
         Authentication authentication = jwtTokenProvider.getAuthentication(token);
         Optional<User> user = userRepository.findById(authentication.getName()); // 유저를 유저명으로 찾습니다.
         System.out.println("JwtAuthorizationFilter.getUsernamePasswordAuthenticationToken...authenticationToken : " +authentication );
-        if(user!=null)
-        {
+        if(user.isPresent())
             return authentication;
-        }
         return null; // 유저가 없으면 NULL
     }
 

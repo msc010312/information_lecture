@@ -1,5 +1,6 @@
 package com.example.demo.config.auth.exceptionHandler;
 
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,8 +16,9 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
-		log.error("CustomAccessDeniedHandler's handler invoke");
-		response.sendRedirect("/login?error="+accessDeniedException.getMessage());
+		log.error("CustomAccessDeniedHandler's handle invoke..");
+		response.sendRedirect("/login");
+
 	}
 
 }

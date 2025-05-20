@@ -11,31 +11,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
-	private String username;		//유저ID
-	private String password;	//패스워드
+	private String username;
+	private String password;
 	private String role;
 
-	// OAUTH2 CLIENT INFO
+	//OAUTH2 CLIENT INFO
 	private String provider;
 	private String providerId;
-
-	// DTO -> ENTITY
-	public User toEntity() {
+	//DTO->ENTITY
+	public User toEntity(){
 		return User.builder()
-				.username(this.getUsername())
-				.password(this.getPassword())
+				.username(this.username)
+				.password(this.password)
 				.role("ROLE_USER")
 				.build();
-
 	}
-
-	// Entity -> DTO
+	//ENTITY->DTO
 	public static UserDto toDto(User user){
 		return UserDto.builder()
-				.username(user.getUsername())
-				.password(user.getPassword())
-				.role(user.getRole())
-				.build();
+					.username(user.getUsername())
+					.password(user.getPassword())
+					.role(user.getRole())
+					.build();
 	}
-
 }

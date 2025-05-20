@@ -9,27 +9,27 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoogleUserInfo implements Oauth2UserInfo{
+public class GoogleUserInfo implements OAuth2UserInfo{
     private String id;
     private Map<String,Object> attributes;
 
     @Override
     public String getName() {
-        return "";
+        return (String)attributes.get("name");
     }
 
     @Override
     public String getEmail() {
-        return "";
+        return (String)attributes.get("email");
     }
 
     @Override
     public String getProvider() {
-        return "";
+        return "google";
     }
 
     @Override
     public String getProviderId() {
-        return "";
+        return this.id;
     }
 }
