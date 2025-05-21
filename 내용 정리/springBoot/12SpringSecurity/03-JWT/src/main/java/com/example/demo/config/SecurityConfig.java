@@ -35,7 +35,8 @@ public class SecurityConfig {
 	private UserRepository userRepository;
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
-
+	@Autowired
+	private JwtAuthorizationFilter jwtAuthorizationFilter;
 
 	@Bean
 	protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -82,7 +83,7 @@ public class SecurityConfig {
 			sessionManagerConfigure.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		});
 
-		http.addFilterBefore(new JwtAuthorizationFilter(userRepository,jwtTokenProvider), LogoutFilter.class);
+		http.addFilterBefore(jwtAuthorizationFilter, LogoutFilter.class);
 
 		return http.build();
 		

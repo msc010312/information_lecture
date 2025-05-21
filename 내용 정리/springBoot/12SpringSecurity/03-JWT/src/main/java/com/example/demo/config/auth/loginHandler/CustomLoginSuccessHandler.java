@@ -41,6 +41,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		cookie.setPath("/");
 		response.addCookie(cookie);
 
+
 		//JwtToken DB 저장
 		JwtToken jwtToken = new JwtToken();
 		jwtToken.setAccessToken(tokenInfo.getAccessToken());
@@ -48,6 +49,31 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		jwtToken.setUsername(authentication.getName());
 		jwtToken.setCreatedAt(LocalDateTime.now());
 		jwtTokenRepository.save(jwtToken);
+
+		//		로그인 처리
+		//---------------------------------
+		//최초로그인(Client's AT x , DB x)
+		//---------------------------------
+		//- Client에게 AT 전송
+		//- DB 저장
+
+
+
+		//---------------------------------
+		//기존로그인(Client's AT o , DB o)
+		//---------------------------------
+		//	- AT 만료 x -> 로그인 완료처리
+		//	- AT 만료 o -> RT x -> AT 갱신
+		//	- AT 만료 o -> RT o -> AT,RT새로발급 + DB저장
+		//------------------------------
+		//기존로그인(Client's AT o , DB x)
+		//------------------------------
+		//-
+		//---------------------------------
+		//기존로그인(Client's AT x , DB o) -예외상황
+		//---------------------------------
+		//-
+
 
 		response.sendRedirect(request.getContextPath()+"/");
 

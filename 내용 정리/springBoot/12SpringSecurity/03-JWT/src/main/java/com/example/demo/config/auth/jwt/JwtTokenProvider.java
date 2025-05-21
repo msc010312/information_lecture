@@ -10,6 +10,7 @@ import com.example.demo.domain.repository.UserRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class JwtTokenProvider {
 
     //Key 저장
     @Setter
+    @Getter
     private Key key;
 
     @PostConstruct
@@ -140,9 +142,10 @@ public class JwtTokenProvider {
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             log.info("Invalid JWT Token", e);
-//        }
-//        catch (ExpiredJwtException e) {
-//            log.info("Expired JWT Token", e);
+        }
+        catch (ExpiredJwtException e) {
+            log.info("Expired JWT Token", e);
+            throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "토큰만료");
 
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT Token", e);

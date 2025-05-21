@@ -2,15 +2,18 @@ package com.example.demo.config.auth.logoutHandler;
 
 import com.example.demo.config.auth.PrincipalDetails;
 import com.example.demo.config.auth.jwt.JwtProperties;
+import com.example.demo.domain.repository.JwtTokenRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -24,9 +27,11 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Value("${spring.security.oauth2.client.kakao.logout.redirect.uri}")
 	String KAKAO_LOGOUT_REDIRECT_URI;
 
-
+	@Autowired
+	private JwtTokenRepository jwtTokenRepository;
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
 		log.info("CustomLogoutSuccessHandler onLogoutSuccess invoke.." + authentication);
@@ -36,6 +41,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 				.filter(cookie -> cookie.getName().equals(JwtProperties.ACCESS_TOKEN_COOKIE_NAME)).findFirst()
 				.map(cookie -> cookie.getValue())
 				.orElse(null);
+//		jwtTokenRepository.deleteByAccessToken(token);
 
 		Cookie cookie = new Cookie(JwtProperties.ACCESS_TOKEN_COOKIE_NAME, null);
 		cookie.setMaxAge(0);
