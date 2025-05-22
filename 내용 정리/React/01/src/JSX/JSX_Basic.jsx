@@ -25,3 +25,30 @@ export function Element4({auth,name}){
         return <h2>name : {name}</h2>
     }
 }
+
+// 반복문 처리
+export const Element5 = (props) => {
+    const list = props.list;
+    return (
+        <div className="items">
+            {list.map((item,index)=>{
+                console.log(item);
+                return <div key={index}>{item}</div>
+            })}
+        </div>
+    );
+}
+
+// 기본 컴포넌트 EXPORT
+const DefaultComponent1 = () => {
+    return <h1>component 1</h1>
+}
+
+const DefaultComponent2 = () => {
+    return <h1>component 2</h1>
+}
+
+export default {
+    DefaultComponent1,
+    DefaultComponent2
+}
