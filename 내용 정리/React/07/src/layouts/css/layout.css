@@ -1,0 +1,13 @@
+main {
+    display: flex;
+}
+
+.aside {
+    min-width: 300px;
+    height: 100vh;
+    border : 1px solid #333;
+}
+
+.section {
+
+}
