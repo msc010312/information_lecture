@@ -1,0 +1,72 @@
+version: '3.8'
+
+networks:
+  custom-network:
+    driver: bridge
+
+services:
+  fn:
+    image: matic0312/dockerhub-test:fn
+    container_name: fn-container
+    ports:
+      - "3000:80"
+    depends_on:
+      - bn
+    networks:
+      - custom-network
+
+  bn:
+    image: matic0312/dockerhub-test:bn
+    container_name: bn-container
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-container:3306/bookdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Zhfldk11!
+      SPRING_REDIS_HOST: redis
+      SERVER_PORT: 8090
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - custom-network
+
+  db:
+    image: matic0312/dockerhub-test:db
+    container_name: db-container
+    ports:
+      - "3330:3306"
+    networks:
+      custom-network:
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      # - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Zhfldk11!
+      MYSQL_DATABASE: bookdb
+      MYSQL_USER: dbconn
+      MYSQL_PASSWORD: Zhfldk11!
+      MYSQL_ROOT_HOST: '%'
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  redis:
+    image: matic0312/dockerhub-test:redis
+    container_name: redis-container
+    ports:
+      - "6379:6379"
+    networks:
+      - custom-network
+
+volumes:
+  db-data:
+
+
